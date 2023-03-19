@@ -90,7 +90,7 @@ class conv_embedding(nn.Module):
 
 class PoolingTransformer(nn.Module):
     def __init__(self, image_size, patch_size, stride, base_dims, depth, heads,
-                 mlp_ratio, num_classes=1000, in_chans=3,
+                 mlp_ratio, num_classes=10, in_chans=3,
                  attn_drop_rate=.0, drop_rate=.0, drop_path_rate=.0):
         super(PoolingTransformer, self).__init__()
 
@@ -230,9 +230,9 @@ class DistilledPoolingTransformer(PoolingTransformer):
 @register_model
 def pit(config, pretrained, **kwargs):
     model = PoolingTransformer(
-        image_size=224,
+        image_size=32,
         patch_size=config['patch_size'][0],
-        stride=8,
+        stride=2,
         base_dims=config['base_dim'],
         depth=config['layer_num'],
         heads=config['num_heads'],
@@ -248,9 +248,9 @@ def pit(config, pretrained, **kwargs):
 @register_model
 def pit_s(config, pretrained, **kwargs):
     model = PoolingTransformer(
-        image_size=224,
+        image_size=32,
         patch_size=config['patch_size'][0],
-        stride=8,
+        stride=2,
         base_dims=config['base_dim'],
         depth=config['layer_num'],
         heads=config['num_heads'],
@@ -267,9 +267,9 @@ def pit_s(config, pretrained, **kwargs):
 @register_model
 def pit_xs(config, pretrained, **kwargs):
     model = PoolingTransformer(
-        image_size=224,
+        image_size=32,#change to 32(224 for original)
         patch_size=config['patch_size'][0],
-        stride=8,
+        stride=2,#8 for original
         base_dims=config['base_dim'],
         depth=config['layer_num'],
         heads=config['num_heads'],
@@ -285,9 +285,9 @@ def pit_xs(config, pretrained, **kwargs):
 @register_model
 def pit_ti(config, pretrained, **kwargs):
     model = PoolingTransformer(
-        image_size=224,
+        image_size=32,
         patch_size=config['patch_size'][0],
-        stride=8,
+        stride=2,
         base_dims=config['base_dim'],
         depth=config['layer_num'],
         heads=config['num_heads'],
@@ -304,7 +304,7 @@ def pit_ti(config, pretrained, **kwargs):
 @register_model
 def pit_b_distilled(pretrained, **kwargs):
     model = DistilledPoolingTransformer(
-        image_size=224,
+        image_size=32, #224
         patch_size=14,
         stride=7,
         base_dims=[64, 64, 64],
@@ -361,9 +361,9 @@ def pit_xs_distilled(pretrained, **kwargs):
 @register_model
 def pit_ti_distilled(pretrained, **kwargs):
     model = DistilledPoolingTransformer(
-        image_size=224,
-        patch_size=16,
-        stride=8,
+        image_size=32,#224
+        patch_size=4,#16
+        stride=2,#8
         base_dims=[32, 32, 32],
         depth=[2, 6, 4],
         heads=[2, 4, 8],

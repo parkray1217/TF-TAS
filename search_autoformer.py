@@ -83,8 +83,7 @@ class Searcher(object):
         self.choices = choices
         self.all_res = []
 
-    def save_checkpoint(self):
-
+    def save_checkpoint(self): 
         info = {}
         info['top_accuracies'] = self.top_accuracies
         info['memory'] = self.memory
@@ -132,7 +131,7 @@ class Searcher(object):
         res = {'name': cand['id']}
         indicators = compute_indicators.find_indicators(self.model_without_ddp,
                                             self.train_loader,
-                                            ('random', 1, 1000),
+                                            ('random', 1, 10), #change into 10/100
                                             self.device)
         if self.top == {}:
             self.top['cand']=cand
@@ -192,9 +191,9 @@ def get_args_parser():
     # search parameters
     parser.add_argument('--indicator-name', default='dss', type=str)
     parser.add_argument('--max-epochs', type=int, default=1)
-    parser.add_argument('--population-num', type=int, default=8000)
-    parser.add_argument('--param-limits', type=float, default=23)
-    parser.add_argument('--min-param-limits', type=float, default=3)
+    parser.add_argument('--population-num', type=int, default=200)#8000
+    parser.add_argument('--param-limits', type=float, default=100) #23
+    parser.add_argument('--min-param-limits', type=float, default=0)#3
 
     # config file
     parser.add_argument('--cfg',help='experiment configure file name',required=True,type=str)
@@ -214,8 +213,8 @@ def get_args_parser():
     parser.add_argument('--model', default='', type=str, metavar='MODEL',
                         help='Name of model to train')
 
-    parser.add_argument('--input-size', default=224, type=int)
-    parser.add_argument('--patch_size', default=16, type=int)
+    parser.add_argument('--input-size', default=32, type=int)#224
+    parser.add_argument('--patch_size', default=4, type=int)#16
 
     parser.add_argument('--drop', type=float, default=0.0, metavar='PCT',
                         help='Dropout rate (default: 0.)')
@@ -467,7 +466,7 @@ def main(args):
         (time.time() - t) / 3600))
 
 
-if __name__ == '__main__':
+if __name__ == '__main__':  
     parser = argparse.ArgumentParser('Training-free Transformer Search', parents=[get_args_parser()])
     args = parser.parse_args()
     if args.output_dir:

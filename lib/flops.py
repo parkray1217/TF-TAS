@@ -1,7 +1,7 @@
 import torch.nn as nn
 
 
-def count_flops(model, subnet_m=None, subnet_c=None, input_shape=[3, 224, 224], heads_share=False):
+def count_flops(model, subnet_m=None, subnet_c=None, input_shape=[3, 32, 32], heads_share=False): ##count flops [3,224,224]
     flops = []
     c, w, h = input_shape
     for m in model.modules():
@@ -17,7 +17,7 @@ def count_flops(model, subnet_m=None, subnet_c=None, input_shape=[3, 224, 224], 
         elif 'AttentionSuper' in m._get_name() and m.qkv.samples:
             flops.append(m.get_complexity(h*w))
             c_in = m.proj.sample_out_dim
-        elif isinstance(m, nn.Linear) and m.out_features == 1000:
+        elif isinstance(m, nn.Linear) and m.out_features == 10: #1000
             flops.append(m.get_complexity(h*w))
             c_in = m.sample_out_dim
     return sum(flops)

@@ -18,9 +18,9 @@ def gelu(x: torch.Tensor) -> torch.Tensor:
         return x * 0.5 * (1.0 + torch.erf(x / math.sqrt(2.0)))
 
 
-class Vision_TransformerSuper(nn.Module):
+class Vision_TransformerSuper(nn.Module): #change
 
-    def __init__(self, img_size=224, patch_size=16, in_chans=3, num_classes=1000, embed_dim=768, depth=12,
+    def __init__(self, img_size=32, patch_size=4, in_chans=3, num_classes=10, embed_dim=256, depth=12,
                  num_heads=12, mlp_ratio=4., qkv_bias=False, qk_scale=None, drop_rate=0., attn_drop_rate=0.,
                  drop_path_rate=0., pre_norm=True, scale=False, gp=False, relative_position=False, change_qkv=False, abs_pos = True, max_relative_position=14):
         super(Vision_TransformerSuper, self).__init__()

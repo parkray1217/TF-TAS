@@ -47,15 +47,15 @@ class ImageNet_Withhold(Dataset):
         else:
             if train:
                 self.transforms = transforms.Compose([
-                    transforms.RandomSizedCrop(224),
-                    transforms.RandomHorizontalFlip(),
+                    transforms.RandomSizedCrop(36), ##256
+                    transforms.RandomHorizontalFlip(), 
                     transforms.ToTensor(),
                     normalize,
                 ])
             else:
                 self.transforms = transforms.Compose([
-                    transforms.Scale(256),
-                    transforms.CenterCrop(224),
+                    transforms.Scale(36), #256
+                    transforms.CenterCrop(32), ##224
                     transforms.ToTensor(),
                     normalize,
                 ])

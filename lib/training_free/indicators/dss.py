@@ -6,14 +6,14 @@ import torch.nn as nn
 
 @indicator('dss', bn=False, mode='param')
 def compute_dss_per_weight(net, inputs, targets, mode, split_data=1, loss_fn=None):
-
-    device = inputs.device
+# compute per weight,only use "net","inputs","mode"
+    device = inputs.device #decide the device
 
     @torch.no_grad()
     def linearize(net):
         signs = {}
         for name, param in net.state_dict().items():
-            signs[name] = torch.sign(param)
+            signs[name] = torch.sign(param) # change the tensor in to [1,-1,...]
             param.abs_()
         return signs
 
@@ -25,10 +25,10 @@ def compute_dss_per_weight(net, inputs, targets, mode, split_data=1, loss_fn=Non
 
     signs = linearize(net)
 
-    net.zero_grad()
-    input_dim = list(inputs[0,:].shape)
-    inputs = torch.ones([1] + input_dim).float().to(device)
-    output = net.forward(inputs)
+    net.zero_grad() #initialize the grad to '0'
+    input_dim = list(inputs[0,:].shape) #dimension of input
+    inputs = torch.ones([1] + input_dim).float().to(device) #a tensor contains only '1'
+    output = net.forward(inputs) #output = the output after go through the forward
     torch.sum(output).backward()
 
     def dss(layer):
@@ -41,7 +41,7 @@ def compute_dss_per_weight(net, inputs, targets, mode, split_data=1, loss_fn=Non
                                                                                                        nn.Linear) and layer.out_features == layer.in_features and layer.samples:
             if layer.samples['weight'].grad is not None:
                 return torch.abs(
-                    torch.norm(layer.samples['weight'].grad, 'nuc') * torch.norm(layer.samples['weight'], 'nuc'))
+                    torch.norm(layer.samples['weight'].grad, 'nuc') * torch.norm(layer.samples['weight'], 'nuc')) #calculate the nuc norm
             else:
                 return torch.zeros_like(layer.samples['weight'])
         if isinstance(layer,
@@ -50,7 +50,7 @@ def compute_dss_per_weight(net, inputs, targets, mode, split_data=1, loss_fn=Non
                 return torch.abs(layer.samples['weight'].grad * layer.samples['weight'])
             else:
                 return torch.zeros_like(layer.samples['weight'])
-        elif isinstance(layer, torch.nn.Linear) and layer.out_features == 1000:
+        elif isinstance(layer, torch.nn.Linear) and layer.out_features == 10:#need to change to 1000
             if layer.weight.grad is not None:
                 return torch.abs(layer.weight.grad * layer.weight)
             else:

@@ -4,17 +4,19 @@ import torch.nn.functional as F
 from model.utils import to_2tuple
 import numpy as np
 
-class PatchembedSuper(nn.Module):
-    def __init__(self, img_size=224, patch_size=16, in_chans=3, embed_dim=768, scale=False):
+class PatchembedSuper(nn.Module): #all changed to 32
+    def __init__(self, img_size=32, patch_size=4, in_chans=3, embed_dim=256, scale=False):
         super(PatchembedSuper, self).__init__()
 
         img_size = to_2tuple(img_size)
         patch_size = to_2tuple(patch_size)
         num_patches = (img_size[1] // patch_size[1]) * (img_size[0] // patch_size[0])
+        #calculate num of patches
         self.img_size = img_size
         self.patch_size = patch_size
         self.num_patches = num_patches
         self.proj = nn.Conv2d(in_chans, embed_dim, kernel_size=patch_size, stride=patch_size)
+        # using conv instead of linear layer (hybird)
         self.super_embed_dim = embed_dim
         self.scale = scale
 
@@ -31,7 +33,7 @@ class PatchembedSuper(nn.Module):
         if self.scale:
             self.sampled_scale = self.super_embed_dim / sample_embed_dim
     def forward(self, x):
-        B, C, H, W = x.shape
+        B, C, H, W = x.shape #batch size,channel,h,w=resolution of images
         assert H == self.img_size[0] and W == self.img_size[1], \
             f"Input image size ({H}*{W}) doesn't match model ({self.img_size[0]}*{self.img_size[1]})."
         x = F.conv2d(x, self.sampled_weight, self.sampled_bias, stride=self.patch_size, padding=self.proj.padding, dilation=self.proj.dilation).flatten(2).transpose(1,2)

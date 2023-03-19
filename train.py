@@ -30,7 +30,7 @@ from collections import OrderedDict
 def get_args_parser():
     parser = argparse.ArgumentParser('Training and Evaluation Script', add_help=False)
     parser.add_argument('--batch-size', default=256, type=int)
-    parser.add_argument('--epochs', default=300, type=int)
+    parser.add_argument('--epochs', default=50, type=int) #300
     # config file
     parser.add_argument('--cfg',help='experiment configure file name',required=True,type=str)
 
@@ -51,8 +51,8 @@ def get_args_parser():
                         help='Type of space to search')
 
     parser.add_argument('--mode', type=str, default='retrain', choices=['super', 'retrain'], help='mode of AutoFormer')
-    parser.add_argument('--input-size', default=224, type=int)
-    parser.add_argument('--patch_size', default=16, type=int)
+    parser.add_argument('--input-size', default=32, type=int)
+    parser.add_argument('--patch_size', default=4, type=int)
 
     parser.add_argument('--drop', type=float, default=0.0, metavar='PCT',
                         help='Dropout rate (default: 0.)')
