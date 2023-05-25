@@ -51,8 +51,8 @@ def get_args_parser():
                         help='Type of space to search')
 
     parser.add_argument('--mode', type=str, default='retrain', choices=['super', 'retrain'], help='mode of AutoFormer')
-    parser.add_argument('--input-size', default=32, type=int)
-    parser.add_argument('--patch_size', default=4, type=int)
+    parser.add_argument('--input-size', default=7, type=int)
+    parser.add_argument('--patch_size', default=1, type=int)
 
     parser.add_argument('--drop', type=float, default=0.0, metavar='PCT',
                         help='Dropout rate (default: 0.)')
@@ -156,7 +156,7 @@ def get_args_parser():
     # Dataset parameters
     parser.add_argument('--data-path', default='./data/imagenet/', type=str,
                         help='dataset path')
-    parser.add_argument('--data-set', default='IMNET', choices=['CIFAR10', 'CIFAR100', 'IMNET'],
+    parser.add_argument('--data-set', default='IMNET', choices=['CIFAR10', 'CIFAR100', 'IMNET','Indian'],
                         type=str, help='Image Net dataset path')
     parser.add_argument('--inat-category', default='name',
                         choices=['kingdom', 'phylum', 'class', 'order', 'supercategory', 'family', 'genus', 'name'],
@@ -315,9 +315,11 @@ def main(args):
 
     if args.mixup > 0.:
         # smoothing is handled with mixup label transform
-        criterion = SoftTargetCrossEntropy()
+        # criterion = SoftTargetCrossEntropy()
+        criterion = torch.nn.CrossEntropyLoss()
     elif args.smoothing:
-        criterion = LabelSmoothingCrossEntropy(smoothing=args.smoothing)
+        # criterion = LabelSmoothingCrossEntropy(smoothing=args.smoothing)
+        criterion = torch.nn.CrossEntropyLoss()
     else:
         criterion = torch.nn.CrossEntropyLoss()
 

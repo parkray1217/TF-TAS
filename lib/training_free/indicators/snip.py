@@ -27,10 +27,10 @@ def compute_snip_per_weight(net, inputs, targets, mode, loss_fn, split_data=1):
         if layer._get_name() == 'PatchembedSuper':
             layer.weight_mask = nn.Parameter(torch.ones_like(layer.sampled_weight))
             layer.sampled_weight = layer.sampled_weight.detach()
-        if isinstance(layer, nn.Linear) and layer.out_features != 1000 and layer.samples:
+        if isinstance(layer, nn.Linear) and layer.out_features != 10 and layer.samples:
             layer.weight_mask = nn.Parameter(torch.ones_like(layer.samples['weight']))
             layer.samples['weight'] = layer.samples['weight'].detach()
-        if isinstance(layer, nn.Linear) and layer.out_features == 1000:
+        if isinstance(layer, nn.Linear) and layer.out_features == 10:
             layer.weight_mask = nn.Parameter(torch.ones_like(layer.samples['weight']))
             layer.samples['weight'] = layer.samples['weight'].detach()
 
@@ -38,9 +38,9 @@ def compute_snip_per_weight(net, inputs, targets, mode, loss_fn, split_data=1):
         if layer._get_name() == 'PatchembedSuper':
             layer.forward = types.MethodType(snip_forward_conv2d, layer)
 
-        if isinstance(layer, nn.Linear) and layer.out_features != 1000 and layer.samples:
+        if isinstance(layer, nn.Linear) and layer.out_features != 10 and layer.samples:
             layer.forward = types.MethodType(snip_forward_linear, layer)
-        if isinstance(layer, nn.Linear) and layer.out_features == 1000:
+        if isinstance(layer, nn.Linear) and layer.out_features == 10:
             layer.forward = types.MethodType(snip_forward_linear, layer)
 
     # Compute gradients (but don't apply them)
@@ -61,12 +61,12 @@ def compute_snip_per_weight(net, inputs, targets, mode, loss_fn, split_data=1):
                 return torch.abs(layer.weight_mask.grad)
             else:
                 return torch.zeros_like(layer.weight)
-        if isinstance(layer, nn.Linear) and layer.out_features != 1000 and layer.samples:
+        if isinstance(layer, nn.Linear) and layer.out_features != 10 and layer.samples:
             if layer.weight_mask.grad is not None:
                 return torch.abs(layer.weight_mask.grad)
             else:
                 return torch.zeros_like(layer.weight)
-        if isinstance(layer, nn.Linear) and layer.out_features == 1000:
+        if isinstance(layer, nn.Linear) and layer.out_features == 10:
             if layer.weight_mask.grad is not None:
                 return torch.abs(layer.weight_mask.grad)
             else:

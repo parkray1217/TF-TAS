@@ -236,7 +236,7 @@ def get_ntk_n(networks, recalbn=0, train_mode=False, num_batch=None,
 
 
 @indicator('te_nas', bn=False, mode='param')
-def compute_NTK_score( model, resolution=224, batch_size=64):
+def compute_NTK_score( model, resolution=32, batch_size=64):
     gpu=0
     ntk_score = get_ntk_n([model], recalbn=0, train_mode=True, num_batch=1,
                            batch_size=batch_size, image_size=resolution, gpu=gpu)[0]

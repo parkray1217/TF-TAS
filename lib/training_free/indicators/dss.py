@@ -13,7 +13,7 @@ def compute_dss_per_weight(net, inputs, targets, mode, split_data=1, loss_fn=Non
     def linearize(net):
         signs = {}
         for name, param in net.state_dict().items():
-            signs[name] = torch.sign(param) # change the tensor in to [1,-1,...]
+            signs[name] = torch.sign(param) # change the tensor in to [1,-1,...] weight&bias
             param.abs_()
         return signs
 
@@ -45,12 +45,12 @@ def compute_dss_per_weight(net, inputs, targets, mode, split_data=1, loss_fn=Non
             else:
                 return torch.zeros_like(layer.samples['weight'])
         if isinstance(layer,
-                      nn.Linear) and 'qkv' not in layer._get_name() and layer.out_features != layer.in_features and layer.out_features != 1000 and layer.samples:
+                      nn.Linear) and 'qkv' not in layer._get_name() and layer.out_features != layer.in_features and layer.out_features != 16 and layer.samples: #change into 10
             if layer.samples['weight'].grad is not None:
                 return torch.abs(layer.samples['weight'].grad * layer.samples['weight'])
             else:
                 return torch.zeros_like(layer.samples['weight'])
-        elif isinstance(layer, torch.nn.Linear) and layer.out_features == 10:#need to change to 1000
+        elif isinstance(layer, torch.nn.Linear) and layer.out_features == 16:#need to change to 1000
             if layer.weight.grad is not None:
                 return torch.abs(layer.weight.grad * layer.weight)
             else:

@@ -63,7 +63,8 @@ def train_one_epoch(model: torch.nn.Module, criterion: torch.nn.Module,
             model_module = unwrap_model(model)
             model_module.set_sample_config(config=config)
         if mixup_fn is not None:
-            samples, targets = mixup_fn(samples, targets)
+            # samples, targets = mixup_fn(samples, targets)
+            samples, targets = samples,targets
         if amp:
             with torch.cuda.amp.autocast():
                 if teacher_model:
@@ -74,6 +75,11 @@ def train_one_epoch(model: torch.nn.Module, criterion: torch.nn.Module,
                     loss = 1/2 * criterion(outputs, targets) + 1/2 * teach_loss(outputs, teacher_label.squeeze())
                 else:
                     outputs = model(samples)
+                    # print("shape output")
+                    # print(outputs.shape)
+                    # print(outputs)
+                    # print("target output ")
+                    # print(targets.shape)
                     loss = criterion(outputs, targets)
         else:
             outputs = model(samples)

@@ -3,7 +3,7 @@ import torch
 import torch.nn as nn
 import torch.nn.functional as F
 
-def get_some_data(train_dataloader, num_batches, device):
+def get_some_data(train_dataloader, num_batches, device): #get input and label
     traindata = []
     dataloader_iter = iter(train_dataloader)
     for _ in range(num_batches):
@@ -57,7 +57,7 @@ def get_layer_metric_array_dss(net, metric, mode):
             continue
         if isinstance(layer, nn.Linear) and layer.samples:
             metric_array.append(metric(layer))
-        if isinstance(layer, torch.nn.Linear) and layer.out_features == 10: #need to change
+        if isinstance(layer, torch.nn.Linear) and layer.out_features == 16: #need to change
             metric_array.append(metric(layer))
     return metric_array
 

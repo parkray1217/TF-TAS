@@ -5,7 +5,7 @@ import torch
 import scipy
 import scipy.io as sio
 from skimage import io
-
+from .datasethyper import Label_train_indian,Label_true_indian,Label_test_indian
 from torchvision import datasets, transforms
 from torchvision.datasets.folder import ImageFolder, default_loader
 
@@ -20,16 +20,16 @@ class Flowers(ImageFolder):
         self.loader = default_loader
         self.target_transform = None
         self.transform = transform
-        label_path = os.path.join(root, 'imagelabels.mat')
+        label_path = os.path.join(root, 'imagelabels.mat') #路径拼接
         split_path = os.path.join(root, 'setid.mat')
 
         print('Dataset Flowers is trained with resolution 224!')
 
         # labels
-        labels = sio.loadmat(label_path)['labels'][0]
+        labels = sio.loadmat(label_path)['labels'][0] #load所有label
         self.img_to_label = dict()
         for i in range(len(labels)):
-            self.img_to_label[i] = labels[i]
+            self.img_to_label[i] = labels[i] #把label
 
         splits = sio.loadmat(split_path)
         self.trnid, self.valid, self.tstid = sorted(splits['trnid'][0].tolist()), \
@@ -157,6 +157,9 @@ def build_dataset(is_train, args, folder_name=None):
     if args.data_set == 'CIFAR10':
         dataset = datasets.CIFAR10(args.data_path, train=is_train, transform=transform, download=True)
         nb_classes = 10
+    elif args.data_set == 'Indian':
+        dataset = IndianPine(is_train)
+        nb_classes = 16
     elif args.data_set == 'CIFAR100':
         dataset = datasets.CIFAR100(args.data_path, train=is_train, transform=transform, download=True)
         nb_classes = 100
@@ -188,7 +191,7 @@ def build_dataset(is_train, args, folder_name=None):
 
     return dataset, nb_classes
 
-def build_transform(is_train, args):
+def build_transform(is_train, args): #加augmentation
     resize_im = args.input_size > 32
     if is_train:
         # this should always dispatch to transforms_imagenet_train
@@ -220,3 +223,9 @@ def build_transform(is_train, args):
     t.append(transforms.ToTensor())
     t.append(transforms.Normalize(IMAGENET_DEFAULT_MEAN, IMAGENET_DEFAULT_STD))
     return transforms.Compose(t)
+
+def IndianPine(is_train):
+  if is_train:
+    return Label_train_indian
+  else:
+    return Label_test_indian

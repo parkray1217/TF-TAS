@@ -37,10 +37,11 @@ def calc_indicator(name, net, device, *args, **kwargs):
 
 
 def load_all():
-   # from . import snip
-   # from . import grasp
-   # from . import NASWOT
-   # from . import te_nas
+#    from . import NASWOT
+#    from . import snip
+#    from . import grasp
+#    from . import te_nas
    from . import dss
+#    from . import NASWOT
 
 load_all()

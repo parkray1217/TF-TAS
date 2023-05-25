@@ -28,6 +28,7 @@ def logdet(K):
     s, ld = np.linalg.slogdet(K)
     return ld
 
+
 def get_batch_jacobian(net, x):
     net.zero_grad()
     x.requires_grad_(True)
@@ -37,8 +38,8 @@ def get_batch_jacobian(net, x):
     # return jacob, target.detach(), y.detach()
     return jacob, y.detach()
 
-@indicator('NASWOT', bn=False, mode='param')
-def compute_nas_score(model, device, resolution=224, batch_size=64):
+@indicator('NASWOT', bn=True, mode='param')
+def compute_nas_score(model, device, resolution=32, batch_size=64): #resolution changed
     gpu=0
     if gpu is not None:
         torch.cuda.set_device(gpu)
@@ -91,7 +92,7 @@ def compute_nas_score(model, device, resolution=224, batch_size=64):
 def parse_cmd_options(argv):
     parser = argparse.ArgumentParser()
     parser.add_argument('--batch_size', type=int, default=16, help='number of instances in one mini-batch.')
-    parser.add_argument('--input_image_size', type=int, default=None,
+    parser.add_argument('--input_image_size', type=int, default=32,
                         help='resolution of input image, usually 32 for CIFAR and 224 for ImageNet.')
     parser.add_argument('--repeat_times', type=int, default=32)
     parser.add_argument('--gpu', type=int, default=None)

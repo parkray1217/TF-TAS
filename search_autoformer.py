@@ -189,9 +189,9 @@ def get_args_parser():
     parser.add_argument('--batch-size', default=64, type=int)
 
     # search parameters
-    parser.add_argument('--indicator-name', default='dss', type=str)
+    parser.add_argument('--indicator-name', default='dss', type=str) #change indicator
     parser.add_argument('--max-epochs', type=int, default=1)
-    parser.add_argument('--population-num', type=int, default=200)#8000
+    parser.add_argument('--population-num', type=int, default=500)#8000
     parser.add_argument('--param-limits', type=float, default=100) #23
     parser.add_argument('--min-param-limits', type=float, default=0)#3
 
@@ -213,8 +213,8 @@ def get_args_parser():
     parser.add_argument('--model', default='', type=str, metavar='MODEL',
                         help='Name of model to train')
 
-    parser.add_argument('--input-size', default=32, type=int)#224
-    parser.add_argument('--patch_size', default=4, type=int)#16
+    parser.add_argument('--input-size', default=7, type=int)#224 #145
+    parser.add_argument('--patch_size', default=1, type=int)#16 #4 #1
 
     parser.add_argument('--drop', type=float, default=0.0, metavar='PCT',
                         help='Dropout rate (default: 0.)')
@@ -317,7 +317,7 @@ def get_args_parser():
     # Dataset parameters
     parser.add_argument('--data-path', default='/dataset/imagenet', type=str,
                         help='dataset path')
-    parser.add_argument('--data-set', default='IMNET', choices=['CIFAR10', 'CIFAR100', 'IMNET'],
+    parser.add_argument('--data-set', default='IMNET', choices=['CIFAR10', 'CIFAR100', 'IMNET','Indian'],
                         type=str, help='Image Net dataset path')
     parser.add_argument('--inat-category', default='name',
                         choices=['kingdom', 'phylum', 'class', 'order', 'supercategory', 'family', 'genus', 'name'],

@@ -20,7 +20,7 @@ def gelu(x: torch.Tensor) -> torch.Tensor:
 
 class Vision_TransformerSuper(nn.Module): #change
 
-    def __init__(self, img_size=32, patch_size=4, in_chans=3, num_classes=10, embed_dim=256, depth=12,
+    def __init__(self, img_size=7, patch_size=1, in_chans=147, num_classes=16, embed_dim=256, depth=12,
                  num_heads=12, mlp_ratio=4., qkv_bias=False, qk_scale=None, drop_rate=0., attn_drop_rate=0.,
                  drop_path_rate=0., pre_norm=True, scale=False, gp=False, relative_position=False, change_qkv=False, abs_pos = True, max_relative_position=14):
         super(Vision_TransformerSuper, self).__init__()
@@ -48,6 +48,7 @@ class Vision_TransformerSuper(nn.Module): #change
         self.sample_output_dim = None
 
         self.blocks = nn.ModuleList()
+        
         dpr = [x.item() for x in torch.linspace(0, drop_path_rate, depth)]  # stochastic depth decay rule
 
         for i in range(depth):
@@ -60,6 +61,10 @@ class Vision_TransformerSuper(nn.Module): #change
 
         # parameters for vision transformer
         num_patches = self.patch_embed_super.num_patches
+        #加了skipcat不好记得删掉
+        self.skipcat = nn.ModuleList([])
+        for _ in range(depth-2):
+            self.skipcat.append(nn.Conv2d(num_patches+1, num_patches+1, [1, 2], 1, 0))
 
         self.abs_pos = abs_pos
         if self.abs_pos:
@@ -148,16 +153,26 @@ class Vision_TransformerSuper(nn.Module): #change
     def forward_features(self, x):
         B = x.shape[0]
         x = self.patch_embed_super(x)
+        # print("x size is:")
+        # print(x.shape)
         cls_tokens = self.cls_token[..., :self.sample_embed_dim[0]].expand(B, -1, -1)
         x = torch.cat((cls_tokens, x), dim=1)
+        # print("x size after cls is:")
+        # print(x.shape)
         if self.abs_pos:
             x = x + self.pos_embed[..., :self.sample_embed_dim[0]]
 
         x = F.dropout(x, p=self.sample_dropout, training=self.training)
 
         # start_time = time.time()
+        last_output = []
+        nl = 0
         for blk in self.blocks:
+            last_output.append(x)
+            if nl > 1:             
+               x = self.skipcat[nl-2](torch.cat([x.unsqueeze(3), last_output[nl-2].unsqueeze(3)], dim=3)).squeeze(3)
             x = blk(x)
+            nl += 1
         # print(time.time()-start_time)
         if self.pre_norm:
             x = self.norm(x)
@@ -170,6 +185,7 @@ class Vision_TransformerSuper(nn.Module): #change
     def forward(self, x):
         x = self.forward_features(x)
         x = self.head(x)
+        # print(x.shape)
         return x
     def forward_features_pre_GAP(self, x):
         B = x.shape[0]
@@ -182,8 +198,16 @@ class Vision_TransformerSuper(nn.Module): #change
         x = F.dropout(x, p=self.sample_dropout, training=self.training)
 
         # start_time = time.time()
+        # for blk in self.blocks:
+        #     x = blk(x)
+        last_output_1 = []
+        nll = 0
         for blk in self.blocks:
+            last_output_1.append(x)
+            if nll > 1:             
+               x = self.skipcat[nll-2](torch.cat([x.unsqueeze(3), last_output_1[nll-2].unsqueeze(3)], dim=3)).squeeze(3)
             x = blk(x)
+            nll += 1
         # print(time.time()-start_time)
         if self.pre_norm:
             x = self.norm(x)
@@ -287,7 +311,9 @@ class TransformerEncoderLayer(nn.Module):
         # start_time = time.time()
 
         residual = x
+        # print(x.shape)
         x = self.maybe_layer_norm(self.attn_layer_norm, x, before=True)
+        # print(x.shape)
         x = self.attn(x)
         x = F.dropout(x, p=self.sample_attn_dropout, training=self.training)
         x = self.drop_path(x)
