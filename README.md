@@ -30,17 +30,31 @@ The layout of Imagenet data:
       img1.jpeg
     class2/
       img2.jpeg
-``` 
+```
+
+**For Hyperspectralformer search**
+
+Indian pine dataset is downloaded
+
+(simply use patches=7,band patches=3 as same as we use in spectralformer, you can modify the "datasethyper.py" to change different combination for the input)
 
 ### Searching
 
 bash search_autoformer.sh
+
+**For hyperspectralformer**
+
+use "search_indian.sh"
 
 ### Retraining
 
 **Note that the subnet is specified in train_searched_result.sh with "--cfg" **
 
 bash train_searched_result.sh
+
+**For hyperspectralformer**
+
+use "train_searched_200_hyper" for multi-job, change the amount inside to fit different subnets
 
 ## Citation
 
@@ -54,3 +68,6 @@ If you use our code for your paper, please cite:
   year={2022}
 }
 ```
+
+
+

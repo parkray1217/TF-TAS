@@ -11,9 +11,10 @@ from ..p_utils import get_layer_metric_array
 
 
 def snip_forward_conv2d(self, x):
+        x = x.unsqueeze(2).permute(0, 3, 2, 1) #不是indian pine的话记得注释掉
         return F.conv2d(x, self.sampled_weight * self.weight_mask, self.sampled_bias,
                         stride=self.patch_size, padding=self.proj.padding, dilation=self.proj.dilation).flatten(2).transpose(1,2)
-
+        
 def snip_forward_linear(self, x):
         return F.linear(x, self.samples['weight'] * self.weight_mask, self.samples['bias'])
 

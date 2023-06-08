@@ -17,14 +17,14 @@ def chooose_train_and_test_point(train_data, test_data, true_data, num_classes):
     #-------------------------for train data------------------------------------
     for i in range(num_classes): #16
         each_class = []
-        each_class = np.argwhere(train_data==(i+1))#返回所有标签等于i+1的索引值
-        number_train.append(each_class.shape[0])#append该标签下训练数据的数量
-        pos_train[i] = each_class #position[0]存放就是class=1的所有数据的位置索引值
+        each_class = np.argwhere(train_data==(i+1))
+        number_train.append(each_class.shape[0])
+        pos_train[i] = each_class
 
     total_pos_train = pos_train[0]
     for i in range(1, num_classes):
         total_pos_train = np.r_[total_pos_train, pos_train[i]] #(695,2)
-    total_pos_train = total_pos_train.astype(int) #拼接后面所有pos train
+    total_pos_train = total_pos_train.astype(int)
     #--------------------------for test data------------------------------------
     for i in range(num_classes):
         each_class = []
@@ -34,7 +34,7 @@ def chooose_train_and_test_point(train_data, test_data, true_data, num_classes):
 
     total_pos_test = pos_test[0]
     for i in range(1, num_classes):
-        total_pos_test = np.r_[total_pos_test, pos_test[i]] #(9671,2)
+        total_pos_test = np.r_[total_pos_test, pos_test[i]]
     total_pos_test = total_pos_test.astype(int)
     #--------------------------for true data------------------------------------
     for i in range(num_classes+1):
@@ -50,22 +50,16 @@ def chooose_train_and_test_point(train_data, test_data, true_data, num_classes):
 
     return total_pos_train, total_pos_test, total_pos_true, number_train, number_test, number_true
 #-------------------------------------------------------------------------------
-# 边界拓展：镜像(?为啥)（是因为最外围的图像没有neighbor么？）
 def mirror_hsi(height,width,band,input_normalize,patch=5):
     padding=patch//2 #if patch=5 padding=2
     mirror_hsi=np.zeros((height+2*padding,width+2*padding,band),dtype=float)
-    #中心区域
     mirror_hsi[padding:(padding+height),padding:(padding+width),:]=input_normalize
-    #左边镜像（(好像是为了把padding部分补上图像？）
     for i in range(padding):
         mirror_hsi[padding:(height+padding),i,:]=input_normalize[:,padding-i-1,:]
-    #右边镜像
     for i in range(padding):
         mirror_hsi[padding:(height+padding),width+padding+i,:]=input_normalize[:,width-1-i,:]
-    #上边镜像
     for i in range(padding):
         mirror_hsi[i,:,:]=mirror_hsi[padding*2-i-1,:,:]
-    #下边镜像
     for i in range(padding):
         mirror_hsi[height+padding+i,:,:]=mirror_hsi[height+padding-1-i,:,:]
 
@@ -75,7 +69,6 @@ def mirror_hsi(height,width,band,input_normalize,patch=5):
     print("**************************************************")
     return mirror_hsi
 #-------------------------------------------------------------------------------
-# 获取patch的图像数据
 def gain_neighborhood_pixel(mirror_image, point, i, patch=5):
     x = point[i,0]
     y = point[i,1]
@@ -160,7 +153,7 @@ TR = data['TR'] # train dataset
 TE = data['TE'] # test dataset
 input = data['input'] #(145,145,200)
 label = TR + TE # content in the blank: label(1-16)
-num_classes = np.max(TR)# TR空格中的的最大值
+num_classes = np.max(TR)
 
 # normalize data by band norm
 input_normalize = np.zeros(input.shape) #(145,145,200)
