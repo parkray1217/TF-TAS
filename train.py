@@ -25,12 +25,13 @@ import timm
 from model.pit_space import pit
 from model.autoformer_space import Vision_TransformerSuper
 from collections import OrderedDict
+from sklearn.metrics import confusion_matrix
 
 
 def get_args_parser():
     parser = argparse.ArgumentParser('Training and Evaluation Script', add_help=False)
-    parser.add_argument('--batch-size', default=256, type=int)
-    parser.add_argument('--epochs', default=50, type=int) #300
+    parser.add_argument('--batch-size', default=64, type=int)
+    parser.add_argument('--epochs', default=100, type=int) #300
     # config file
     parser.add_argument('--cfg',help='experiment configure file name',required=True,type=str)
 
@@ -156,7 +157,7 @@ def get_args_parser():
     # Dataset parameters
     parser.add_argument('--data-path', default='./data/imagenet/', type=str,
                         help='dataset path')
-    parser.add_argument('--data-set', default='IMNET', choices=['CIFAR10', 'CIFAR100', 'IMNET','Indian'],
+    parser.add_argument('--data-set', default='IMNET', choices=['CIFAR10', 'CIFAR100', 'IMNET','Indian','Pavia','Houston'],
                         type=str, help='Image Net dataset path')
     parser.add_argument('--inat-category', default='name',
                         choices=['kingdom', 'phylum', 'class', 'order', 'supercategory', 'family', 'genus', 'name'],
@@ -191,6 +192,25 @@ def get_args_parser():
 
     return parser
 
+def output_metric(tar, pre):
+    matrix = confusion_matrix(tar, pre)
+    OA, AA_mean, Kappa, AA = cal_results(matrix)
+    return OA, AA_mean, Kappa, AA
+#-------------------------------------------------------------------------------
+def cal_results(matrix):
+    shape = np.shape(matrix)
+    number = 0
+    sum = 0
+    AA = np.zeros([shape[0]], dtype=np.float)
+    for i in range(shape[0]):
+        number += matrix[i, i] #混合矩阵对角线相加 number=所有预测对的数量
+        AA[i] = matrix[i, i] / np.sum(matrix[i, :]) #AA[0]正确预测为负占所有负标签的比例，AA[1]正确预测为正占所有正标签的比例
+        sum += np.sum(matrix[i, :]) * np.sum(matrix[:, i])
+    OA = number / np.sum(matrix) #正确的除以全体
+    AA_mean = np.mean(AA)
+    pe = sum / (np.sum(matrix) ** 2)
+    Kappa = (OA - pe) / (1 - pe)
+    return OA, AA_mean, Kappa, AA
 def main(args):
 
     utils.init_distributed_mode(args)
@@ -367,8 +387,8 @@ def main(args):
     print("Start training")
     start_time = time.time()
     max_accuracy = 0.0
-
-    for epoch in range(args.start_epoch, args.epochs):
+    results_oa = [] 
+    for epoch in range(args.start_epoch, args.epochs): #在这里把target和predict引出来
         if args.distributed:
             data_loader_train.sampler.set_epoch(epoch)
 
@@ -395,10 +415,24 @@ def main(args):
                     'args': args,
                 }, checkpoint_path)
 
-        test_stats = evaluate(data_loader_val, model_type, model, device, amp=args.amp, choices=choices, mode = args.mode, retrain_config=retrain_config)
+        tar_v, pre_v,test_stats = evaluate(data_loader_val, model_type, model, device, amp=args.amp, choices=choices, mode = args.mode, retrain_config=retrain_config)
         print(f"Accuracy of the network on the {len(dataset_val)} test images: {test_stats['acc1']:.1f}%")
         max_accuracy = max(max_accuracy, test_stats["acc1"])
         print(f'Max accuracy: {max_accuracy:.2f}%')
+        OA2, AA_mean2, Kappa2, AA2 = output_metric(tar_v, pre_v)
+        results_oa.append((OA2, AA2, Kappa2,AA2))
+        best_result = results_oa[0]
+        OA_best, AA_best, Kappa_best,AA2_best = best_result
+        results_oa.sort(key=lambda x: x[0], reverse=True)
+        print("**************************************************")
+        print("Accuracy results:")
+        print("OA: {:.4f} | AA: {:.4f} | Kappa: {:.4f}".format(OA2, AA_mean2, Kappa2))
+        print(AA2)
+        print("**************************************************")
+        print("Best Result:")
+        print("OA: {:.4f} | AA: {:.4f} | Kappa: {:.4f}".format(OA_best, AA_best, Kappa_best))
+        print(AA2_best)
+        print("**************************************************")
 
         log_stats = {**{f'train_{k}': v for k, v in train_stats.items()},
                      **{f'test_{k}': v for k, v in test_stats.items()},

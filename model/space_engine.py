@@ -11,6 +11,22 @@ import random
 import time
 from lib.flops import count_flops
 from thop import profile
+import numpy as np
+
+def acc_list(output, target, topk=(1,)):
+    maxk = max(topk)
+    batch_size = target.size(0)
+
+    _, pred = output.topk(maxk, 1, True, True)
+    pred = pred.t()
+    correct = pred.eq(target.view(1, -1).expand_as(pred))
+
+    res = []
+    for k in topk:
+        correct_k = correct[:k].view(-1).float().sum(0)
+        res.append(correct_k.mul_(100.0/batch_size))
+    
+    return res, target, pred.squeeze()
 
 def sample_configs(choices):
 
@@ -145,6 +161,8 @@ def evaluate(data_loader, model_type, model, device, amp=True, choices=None, mod
         parameters = model_module.get_sampled_params_numel(config)
         print("sampled model parameters: {}".format(parameters))
 
+    tar = np.array([])
+    pre = np.array([])
     for images, target in metric_logger.log_every(data_loader, 10, header):
         images = images.to(device, non_blocking=True)
         target = target.to(device, non_blocking=True)
@@ -158,6 +176,9 @@ def evaluate(data_loader, model_type, model, device, amp=True, choices=None, mod
             loss = criterion(output, target)
 
         acc1, acc5 = accuracy(output, target, topk=(1, 5))
+        _,t,p = acc_list(output,target,topk=(1,))
+        tar = np.append(tar, t.data.cpu().numpy())    #target
+        pre = np.append(pre, p.data.cpu().numpy())    #predicted
 
         batch_size = images.shape[0]
         metric_logger.update(loss=loss.item())
@@ -168,4 +189,4 @@ def evaluate(data_loader, model_type, model, device, amp=True, choices=None, mod
     print('* Acc@1 {top1.global_avg:.3f} Acc@5 {top5.global_avg:.3f} loss {losses.global_avg:.3f}'
           .format(top1=metric_logger.acc1, top5=metric_logger.acc5, losses=metric_logger.loss))
 
-    return {k: meter.global_avg for k, meter in metric_logger.meters.items()}
+    return tar,pre,{k: meter.global_avg for k, meter in metric_logger.meters.items()}
