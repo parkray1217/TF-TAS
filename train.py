@@ -420,19 +420,24 @@ def main(args):
         max_accuracy = max(max_accuracy, test_stats["acc1"])
         print(f'Max accuracy: {max_accuracy:.2f}%')
         OA2, AA_mean2, Kappa2, AA2 = output_metric(tar_v, pre_v)
-        results_oa.append((OA2, AA2, Kappa2,AA2))
+        results_oa.append((OA2, AA_mean2, Kappa2,AA2))
+        results_oa.sort(key=lambda x: x[0], reverse=True)
         best_result = results_oa[0]
         OA_best, AA_best, Kappa_best,AA2_best = best_result
-        results_oa.sort(key=lambda x: x[0], reverse=True)
         print("**************************************************")
         print("Accuracy results:")
         print("OA: {:.4f} | AA: {:.4f} | Kappa: {:.4f}".format(OA2, AA_mean2, Kappa2))
         print(AA2)
         print("**************************************************")
-        print("Best Result:")
-        print("OA: {:.4f} | AA: {:.4f} | Kappa: {:.4f}".format(OA_best, AA_best, Kappa_best))
-        print(AA2_best)
-        print("**************************************************")
+        # print("Best Result:")
+        # print(OA_best)
+        # print(AA_best)
+        # print(Kappa_best)
+        # print("OA: {:.4f} | AA: {:.4f} | Kappa: {:.4f}".format(OA_best[0][0], AA_best[0][0], Kappa_best[0][0]))
+        # print(AA2_best)
+        # print("**************************************************")
+        # print("Best Result:")
+        # print("OA: {:.4f} | AA: {:.4f} | Kappa: {:.4f}".format(OA_best, AA_best, Kappa_best))
 
         log_stats = {**{f'train_{k}': v for k, v in train_stats.items()},
                      **{f'test_{k}': v for k, v in test_stats.items()},
@@ -442,7 +447,11 @@ def main(args):
         if args.output_dir and utils.is_main_process():
             with (output_dir / "log.txt").open("a") as f:
                 f.write(json.dumps(log_stats) + "\n")
-
+    print("**************************************************")
+    print("Best Result:")
+    print("OA: {:.4f} | AA: {:.4f} | Kappa: {:.4f}".format(OA_best, AA_best, Kappa_best))
+    # print(AA2_best)
+    print("**************************************************")
     total_time = time.time() - start_time
     total_time_str = str(datetime.timedelta(seconds=int(total_time)))
     print('Training time {}'.format(total_time_str))
