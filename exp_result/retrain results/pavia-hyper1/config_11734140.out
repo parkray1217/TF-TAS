@@ -1,0 +1,1929 @@
+height=610,width=340,band=103
+**************************************************
+patch is : 7
+mirror_image shape : [616,346,103]
+**************************************************
+x_train shape = (630, 7, 7, 103), type = float32
+x_test  shape = (630, 7, 7, 103), type = float32
+x_true  shape = (207382, 7, 7, 103), type = float32
+**************************************************
+x_train_band shape = (630, 147, 103), type = float32
+x_test_band  shape = (630, 147, 103), type = float32
+x_true_band  shape = (207382, 147, 103), type = float32
+**************************************************
+y_train: shape = (630,) ,type = int64
+y_test: shape = (630,) ,type = int64
+y_true: shape = (207382,) ,type = int64
+**************************************************
+| distributed init (rank 0): env://
+Namespace(aa='rand-m9-mstd0.5-inc1', amp=True, batch_size=64, cfg='./experiments/pavia-config1/configspace-hyper-pavia322.yaml', change_qkv=False, clip_grad=None, color_jitter=0.4, cooldown_epochs=10, cutmix=1.0, cutmix_minmax=None, data_path='./dataset/cifar10', data_set='Pavia', decay_epochs=30, decay_rate=0.1, device='cuda', dist_backend='nccl', dist_eval=False, dist_url='env://', distributed=True, drop=0.0, drop_block=None, drop_path=0.1, epochs=100, eval=False, gp=False, gpu=0, inat_category='name', input_size=7, lr=0.0005, lr_noise=None, lr_noise_pct=0.67, lr_noise_std=1.0, lr_power=1.0, max_relative_position=14, min_lr=1e-05, mixup=0.8, mixup_mode='batch', mixup_prob=1.0, mixup_switch_prob=0.5, mode='retrain', model='', model_ema=False, model_ema_decay=0.99996, model_ema_force_cpu=False, model_type='AUTOFORMER', momentum=0.9, no_abs_pos=False, num_workers=6, opt='adamw', opt_betas=None, opt_eps=1e-08, output_dir='./pavia-final-exp-500/config322', patch_size=1, patience_epochs=10, pin_mem=True, platform='pai', post_norm=False, rank=0, recount=1, relative_position=False, remode='pixel', repeated_aug=True, reprob=0.25, resplit=False, resume='', rpe_type='bias', sched='cosine', seed=0, smoothing=0.1, start_epoch=0, teacher_model='', train_interpolation='bicubic', warmup_epochs=5, warmup_lr=1e-06, weight_decay=0.05, world_size=1)
+{'SUPERNET': {'MLP_RATIO': 8.0, 'NUM_HEADS': 6, 'EMBED_DIM': 384, 'DEPTH': 7}, 'SEARCH_SPACE': {'MLP_RATIO': [8, 16, 32], 'NUM_HEADS': [3, 4, 6], 'DEPTH': [4, 5, 6, 7], 'EMBED_DIM': [32, 64, 128, 196]}, 'RETRAIN': {'MLP_RATIO': [32, 8, 16, 16, 16, 32, 8], 'NUM_HEADS': [4, 4, 4, 4, 6, 6, 6], 'DEPTH': 7, 'EMBED_DIM': 64}}
+number of params: 20899601
+Start training
+{'layer_num': 7, 'embed_dim': [64, 64, 64, 64, 64, 64, 64], 'num_heads': [4, 4, 4, 4, 6, 6, 6], 'mlp_ratio': [32, 8, 16, 16, 16, 32, 8]}
+1772553
+FLOPS is 7944509440
+Epoch: [0]  [0/8]  eta: 0:00:14  lr: 0.000001  loss: 2.2190 (2.2190)  time: 1.8465  data: 1.6927  max mem: 2558
+Epoch: [0]  [7/8]  eta: 0:00:00  lr: 0.000001  loss: 2.1966 (2.2072)  time: 0.2720  data: 0.2116  max mem: 2558
+Epoch: [0] Total time: 0:00:02 (0.3212 s / it)
+Averaged stats: lr: 0.000001  loss: 2.1966 (2.2072)
+sampled model config: {'layer_num': 7, 'embed_dim': [64, 64, 64, 64, 64, 64, 64], 'num_heads': [4, 4, 4, 4, 6, 6, 6], 'mlp_ratio': [32, 8, 16, 16, 16, 32, 8]}
+sampled model parameters: 1772553
+Test:  [0/5]  eta: 0:00:08  loss: 2.0935 (2.0935)  acc1: 26.5625 (26.5625)  acc5: 100.0000 (100.0000)  time: 1.7944  data: 1.7186  max mem: 4001
+Test:  [4/5]  eta: 0:00:00  loss: 2.1846 (2.1944)  acc1: 1.6949 (6.8254)  acc5: 65.6250 (56.8254)  time: 0.3821  data: 0.3437  max mem: 4001
+Test: Total time: 0:00:02 (0.4572 s / it)
+* Acc@1 6.825 Acc@5 56.825 loss 2.194
+Accuracy of the network on the 630 test images: 6.8%
+Max accuracy: 6.83%
+**************************************************
+Accuracy results:
+OA: 0.0683 | AA: 0.0683 | Kappa: -0.0482
+**************************************************
+{'layer_num': 7, 'embed_dim': [64, 64, 64, 64, 64, 64, 64], 'num_heads': [4, 4, 4, 4, 6, 6, 6], 'mlp_ratio': [32, 8, 16, 16, 16, 32, 8]}
+1772553
+FLOPS is 7944509440
+Epoch: [1]  [0/8]  eta: 0:00:14  lr: 0.000001  loss: 2.1999 (2.1999)  time: 1.7805  data: 1.7127  max mem: 4001
+Epoch: [1]  [7/8]  eta: 0:00:00  lr: 0.000001  loss: 2.1797 (2.1844)  time: 0.2630  data: 0.2141  max mem: 4001
+Epoch: [1] Total time: 0:00:02 (0.3073 s / it)
+Averaged stats: lr: 0.000001  loss: 2.1797 (2.1844)
+sampled model config: {'layer_num': 7, 'embed_dim': [64, 64, 64, 64, 64, 64, 64], 'num_heads': [4, 4, 4, 4, 6, 6, 6], 'mlp_ratio': [32, 8, 16, 16, 16, 32, 8]}
+sampled model parameters: 1772553
+Test:  [0/5]  eta: 0:00:08  loss: 2.0948 (2.0948)  acc1: 28.1250 (28.1250)  acc5: 100.0000 (100.0000)  time: 1.7397  data: 1.7216  max mem: 4001
+Test:  [4/5]  eta: 0:00:00  loss: 2.1682 (2.1867)  acc1: 2.5424 (7.3016)  acc5: 65.6250 (57.1429)  time: 0.3603  data: 0.3444  max mem: 4001
+Test: Total time: 0:00:02 (0.4355 s / it)
+* Acc@1 7.302 Acc@5 57.143 loss 2.187
+Accuracy of the network on the 630 test images: 7.3%
+Max accuracy: 7.30%
+**************************************************
+Accuracy results:
+OA: 0.0730 | AA: 0.0730 | Kappa: -0.0429
+**************************************************
+{'layer_num': 7, 'embed_dim': [64, 64, 64, 64, 64, 64, 64], 'num_heads': [4, 4, 4, 4, 6, 6, 6], 'mlp_ratio': [32, 8, 16, 16, 16, 32, 8]}
+1772553
+FLOPS is 7944509440
+Epoch: [2]  [0/8]  eta: 0:00:14  lr: 0.000013  loss: 2.1968 (2.1968)  time: 1.7695  data: 1.7129  max mem: 4001
+Epoch: [2]  [7/8]  eta: 0:00:00  lr: 0.000013  loss: 2.1407 (2.1505)  time: 0.2628  data: 0.2141  max mem: 4001
+Epoch: [2] Total time: 0:00:02 (0.3073 s / it)
+Averaged stats: lr: 0.000013  loss: 2.1407 (2.1505)
+sampled model config: {'layer_num': 7, 'embed_dim': [64, 64, 64, 64, 64, 64, 64], 'num_heads': [4, 4, 4, 4, 6, 6, 6], 'mlp_ratio': [32, 8, 16, 16, 16, 32, 8]}
+sampled model parameters: 1772553
+Test:  [0/5]  eta: 0:00:08  loss: 2.0899 (2.0899)  acc1: 24.2188 (24.2188)  acc5: 95.3125 (95.3125)  time: 1.7521  data: 1.7338  max mem: 4001
+Test:  [4/5]  eta: 0:00:00  loss: 2.0892 (2.0818)  acc1: 27.3438 (32.5397)  acc5: 93.2203 (89.0476)  time: 0.3630  data: 0.3468  max mem: 4001
+Test: Total time: 0:00:02 (0.4355 s / it)
+* Acc@1 32.540 Acc@5 89.048 loss 2.082
+Accuracy of the network on the 630 test images: 32.5%
+Max accuracy: 32.54%
+**************************************************
+Accuracy results:
+OA: 0.3254 | AA: 0.3254 | Kappa: 0.2411
+**************************************************
+{'layer_num': 7, 'embed_dim': [64, 64, 64, 64, 64, 64, 64], 'num_heads': [4, 4, 4, 4, 6, 6, 6], 'mlp_ratio': [32, 8, 16, 16, 16, 32, 8]}
+1772553
+FLOPS is 7944509440
+Epoch: [3]  [0/8]  eta: 0:00:14  lr: 0.000026  loss: 2.0844 (2.0844)  time: 1.7742  data: 1.7159  max mem: 4001
+Epoch: [3]  [7/8]  eta: 0:00:00  lr: 0.000026  loss: 2.0203 (2.0146)  time: 0.2650  data: 0.2145  max mem: 4001
+Epoch: [3] Total time: 0:00:02 (0.3102 s / it)
+Averaged stats: lr: 0.000026  loss: 2.0203 (2.0146)
+sampled model config: {'layer_num': 7, 'embed_dim': [64, 64, 64, 64, 64, 64, 64], 'num_heads': [4, 4, 4, 4, 6, 6, 6], 'mlp_ratio': [32, 8, 16, 16, 16, 32, 8]}
+sampled model parameters: 1772553
+Test:  [0/5]  eta: 0:00:08  loss: 2.0923 (2.0923)  acc1: 6.2500 (6.2500)  acc5: 87.5000 (87.5000)  time: 1.7358  data: 1.7180  max mem: 4001
+Test:  [4/5]  eta: 0:00:00  loss: 1.8626 (1.8944)  acc1: 76.5625 (52.3810)  acc5: 99.2188 (96.8254)  time: 0.3597  data: 0.3436  max mem: 4001
+Test: Total time: 0:00:02 (0.4365 s / it)
+* Acc@1 52.381 Acc@5 96.825 loss 1.894
+Accuracy of the network on the 630 test images: 52.4%
+Max accuracy: 52.38%
+**************************************************
+Accuracy results:
+OA: 0.5238 | AA: 0.5238 | Kappa: 0.4643
+**************************************************
+{'layer_num': 7, 'embed_dim': [64, 64, 64, 64, 64, 64, 64], 'num_heads': [4, 4, 4, 4, 6, 6, 6], 'mlp_ratio': [32, 8, 16, 16, 16, 32, 8]}
+1772553
+FLOPS is 7944509440
+Epoch: [4]  [0/8]  eta: 0:00:14  lr: 0.000038  loss: 1.8753 (1.8753)  time: 1.7518  data: 1.6970  max mem: 4001
+Epoch: [4]  [7/8]  eta: 0:00:00  lr: 0.000038  loss: 1.8534 (1.8695)  time: 0.2606  data: 0.2121  max mem: 4001
+Epoch: [4] Total time: 0:00:02 (0.3102 s / it)
+Averaged stats: lr: 0.000038  loss: 1.8534 (1.8695)
+sampled model config: {'layer_num': 7, 'embed_dim': [64, 64, 64, 64, 64, 64, 64], 'num_heads': [4, 4, 4, 4, 6, 6, 6], 'mlp_ratio': [32, 8, 16, 16, 16, 32, 8]}
+sampled model parameters: 1772553
+Test:  [0/5]  eta: 0:00:08  loss: 1.7680 (1.7680)  acc1: 69.5312 (69.5312)  acc5: 100.0000 (100.0000)  time: 1.7061  data: 1.6883  max mem: 4001
+Test:  [4/5]  eta: 0:00:00  loss: 1.7680 (1.7748)  acc1: 69.5312 (58.4127)  acc5: 99.2188 (98.8889)  time: 0.3536  data: 0.3377  max mem: 4001
+Test: Total time: 0:00:02 (0.4313 s / it)
+* Acc@1 58.413 Acc@5 98.889 loss 1.775
+Accuracy of the network on the 630 test images: 58.4%
+Max accuracy: 58.41%
+**************************************************
+Accuracy results:
+OA: 0.5841 | AA: 0.5841 | Kappa: 0.5321
+**************************************************
+{'layer_num': 7, 'embed_dim': [64, 64, 64, 64, 64, 64, 64], 'num_heads': [4, 4, 4, 4, 6, 6, 6], 'mlp_ratio': [32, 8, 16, 16, 16, 32, 8]}
+1772553
+FLOPS is 7944509440
+Epoch: [5]  [0/8]  eta: 0:00:14  lr: 0.000050  loss: 1.7450 (1.7450)  time: 1.7688  data: 1.7095  max mem: 4001
+Epoch: [5]  [7/8]  eta: 0:00:00  lr: 0.000050  loss: 1.7450 (1.7518)  time: 0.2623  data: 0.2137  max mem: 4001
+Epoch: [5] Total time: 0:00:02 (0.3093 s / it)
+Averaged stats: lr: 0.000050  loss: 1.7450 (1.7518)
+sampled model config: {'layer_num': 7, 'embed_dim': [64, 64, 64, 64, 64, 64, 64], 'num_heads': [4, 4, 4, 4, 6, 6, 6], 'mlp_ratio': [32, 8, 16, 16, 16, 32, 8]}
+sampled model parameters: 1772553
+Test:  [0/5]  eta: 0:00:08  loss: 1.6874 (1.6874)  acc1: 57.0312 (57.0312)  acc5: 99.2188 (99.2188)  time: 1.7437  data: 1.7246  max mem: 4001
+Test:  [4/5]  eta: 0:00:00  loss: 1.6874 (1.6937)  acc1: 54.6875 (52.0635)  acc5: 98.4375 (97.6190)  time: 0.3619  data: 0.3449  max mem: 4001
+Test: Total time: 0:00:02 (0.4367 s / it)
+* Acc@1 52.063 Acc@5 97.619 loss 1.694
+Accuracy of the network on the 630 test images: 52.1%
+Max accuracy: 58.41%
+**************************************************
+Accuracy results:
+OA: 0.5206 | AA: 0.5206 | Kappa: 0.4607
+**************************************************
+{'layer_num': 7, 'embed_dim': [64, 64, 64, 64, 64, 64, 64], 'num_heads': [4, 4, 4, 4, 6, 6, 6], 'mlp_ratio': [32, 8, 16, 16, 16, 32, 8]}
+1772553
+FLOPS is 7944509440
+Epoch: [6]  [0/8]  eta: 0:00:14  lr: 0.000062  loss: 1.8404 (1.8404)  time: 1.7749  data: 1.7235  max mem: 4001
+Epoch: [6]  [7/8]  eta: 0:00:00  lr: 0.000062  loss: 1.6713 (1.6818)  time: 0.2626  data: 0.2155  max mem: 4001
+Epoch: [6] Total time: 0:00:02 (0.3139 s / it)
+Averaged stats: lr: 0.000062  loss: 1.6713 (1.6818)
+sampled model config: {'layer_num': 7, 'embed_dim': [64, 64, 64, 64, 64, 64, 64], 'num_heads': [4, 4, 4, 4, 6, 6, 6], 'mlp_ratio': [32, 8, 16, 16, 16, 32, 8]}
+sampled model parameters: 1772553
+Test:  [0/5]  eta: 0:00:09  loss: 1.8430 (1.8430)  acc1: 12.5000 (12.5000)  acc5: 100.0000 (100.0000)  time: 1.8217  data: 1.7980  max mem: 4001
+Test:  [4/5]  eta: 0:00:00  loss: 1.6318 (1.6297)  acc1: 77.9661 (51.7460)  acc5: 100.0000 (99.8413)  time: 0.3770  data: 0.3596  max mem: 4001
+Test: Total time: 0:00:02 (0.4688 s / it)
+* Acc@1 51.746 Acc@5 99.841 loss 1.630
+Accuracy of the network on the 630 test images: 51.7%
+Max accuracy: 58.41%
+**************************************************
+Accuracy results:
+OA: 0.5175 | AA: 0.5175 | Kappa: 0.4571
+**************************************************
+{'layer_num': 7, 'embed_dim': [64, 64, 64, 64, 64, 64, 64], 'num_heads': [4, 4, 4, 4, 6, 6, 6], 'mlp_ratio': [32, 8, 16, 16, 16, 32, 8]}
+1772553
+FLOPS is 7944509440
+Epoch: [7]  [0/8]  eta: 0:00:14  lr: 0.000062  loss: 1.6690 (1.6690)  time: 1.8219  data: 1.7637  max mem: 4001
+Epoch: [7]  [7/8]  eta: 0:00:00  lr: 0.000062  loss: 1.5943 (1.6133)  time: 0.2679  data: 0.2205  max mem: 4001
+Epoch: [7] Total time: 0:00:02 (0.3139 s / it)
+Averaged stats: lr: 0.000062  loss: 1.5943 (1.6133)
+sampled model config: {'layer_num': 7, 'embed_dim': [64, 64, 64, 64, 64, 64, 64], 'num_heads': [4, 4, 4, 4, 6, 6, 6], 'mlp_ratio': [32, 8, 16, 16, 16, 32, 8]}
+sampled model parameters: 1772553
+Test:  [0/5]  eta: 0:00:08  loss: 1.7361 (1.7361)  acc1: 33.5938 (33.5938)  acc5: 100.0000 (100.0000)  time: 1.7382  data: 1.7204  max mem: 4001
+Test:  [4/5]  eta: 0:00:00  loss: 1.6731 (1.5651)  acc1: 75.7812 (61.1111)  acc5: 100.0000 (99.6825)  time: 0.3601  data: 0.3441  max mem: 4001
+Test: Total time: 0:00:02 (0.4378 s / it)
+* Acc@1 61.111 Acc@5 99.683 loss 1.565
+Accuracy of the network on the 630 test images: 61.1%
+Max accuracy: 61.11%
+**************************************************
+Accuracy results:
+OA: 0.6111 | AA: 0.6111 | Kappa: 0.5625
+**************************************************
+{'layer_num': 7, 'embed_dim': [64, 64, 64, 64, 64, 64, 64], 'num_heads': [4, 4, 4, 4, 6, 6, 6], 'mlp_ratio': [32, 8, 16, 16, 16, 32, 8]}
+1772553
+FLOPS is 7944509440
+Epoch: [8]  [0/8]  eta: 0:00:14  lr: 0.000062  loss: 1.6951 (1.6951)  time: 1.7538  data: 1.6942  max mem: 4001
+Epoch: [8]  [7/8]  eta: 0:00:00  lr: 0.000062  loss: 1.5702 (1.5651)  time: 0.2610  data: 0.2118  max mem: 4001
+Epoch: [8] Total time: 0:00:02 (0.3079 s / it)
+Averaged stats: lr: 0.000062  loss: 1.5702 (1.5651)
+sampled model config: {'layer_num': 7, 'embed_dim': [64, 64, 64, 64, 64, 64, 64], 'num_heads': [4, 4, 4, 4, 6, 6, 6], 'mlp_ratio': [32, 8, 16, 16, 16, 32, 8]}
+sampled model parameters: 1772553
+Test:  [0/5]  eta: 0:00:08  loss: 1.8242 (1.8242)  acc1: 15.6250 (15.6250)  acc5: 100.0000 (100.0000)  time: 1.7336  data: 1.7149  max mem: 4001
+Test:  [4/5]  eta: 0:00:00  loss: 1.6276 (1.5378)  acc1: 75.0000 (64.4444)  acc5: 100.0000 (99.8413)  time: 0.3599  data: 0.3430  max mem: 4001
+Test: Total time: 0:00:02 (0.4349 s / it)
+* Acc@1 64.444 Acc@5 99.841 loss 1.538
+Accuracy of the network on the 630 test images: 64.4%
+Max accuracy: 64.44%
+**************************************************
+Accuracy results:
+OA: 0.6444 | AA: 0.6444 | Kappa: 0.6000
+**************************************************
+{'layer_num': 7, 'embed_dim': [64, 64, 64, 64, 64, 64, 64], 'num_heads': [4, 4, 4, 4, 6, 6, 6], 'mlp_ratio': [32, 8, 16, 16, 16, 32, 8]}
+1772553
+FLOPS is 7944509440
+Epoch: [9]  [0/8]  eta: 0:00:14  lr: 0.000062  loss: 1.5791 (1.5791)  time: 1.7760  data: 1.7182  max mem: 4001
+Epoch: [9]  [7/8]  eta: 0:00:00  lr: 0.000062  loss: 1.4909 (1.4962)  time: 0.2631  data: 0.2148  max mem: 4001
+Epoch: [9] Total time: 0:00:02 (0.3089 s / it)
+Averaged stats: lr: 0.000062  loss: 1.4909 (1.4962)
+sampled model config: {'layer_num': 7, 'embed_dim': [64, 64, 64, 64, 64, 64, 64], 'num_heads': [4, 4, 4, 4, 6, 6, 6], 'mlp_ratio': [32, 8, 16, 16, 16, 32, 8]}
+sampled model parameters: 1772553
+Test:  [0/5]  eta: 0:00:08  loss: 1.7003 (1.7003)  acc1: 42.1875 (42.1875)  acc5: 100.0000 (100.0000)  time: 1.7220  data: 1.7024  max mem: 4001
+Test:  [4/5]  eta: 0:00:00  loss: 1.5085 (1.4744)  acc1: 73.4375 (67.1429)  acc5: 100.0000 (99.6825)  time: 0.3570  data: 0.3405  max mem: 4001
+Test: Total time: 0:00:02 (0.4311 s / it)
+* Acc@1 67.143 Acc@5 99.683 loss 1.474
+Accuracy of the network on the 630 test images: 67.1%
+Max accuracy: 67.14%
+**************************************************
+Accuracy results:
+OA: 0.6714 | AA: 0.6714 | Kappa: 0.6304
+**************************************************
+{'layer_num': 7, 'embed_dim': [64, 64, 64, 64, 64, 64, 64], 'num_heads': [4, 4, 4, 4, 6, 6, 6], 'mlp_ratio': [32, 8, 16, 16, 16, 32, 8]}
+1772553
+FLOPS is 7944509440
+Epoch: [10]  [0/8]  eta: 0:00:13  lr: 0.000061  loss: 1.3690 (1.3690)  time: 1.7247  data: 1.6657  max mem: 4001
+Epoch: [10]  [7/8]  eta: 0:00:00  lr: 0.000061  loss: 1.4550 (1.4464)  time: 0.2587  data: 0.2082  max mem: 4001
+Epoch: [10] Total time: 0:00:02 (0.3032 s / it)
+Averaged stats: lr: 0.000061  loss: 1.4550 (1.4464)
+sampled model config: {'layer_num': 7, 'embed_dim': [64, 64, 64, 64, 64, 64, 64], 'num_heads': [4, 4, 4, 4, 6, 6, 6], 'mlp_ratio': [32, 8, 16, 16, 16, 32, 8]}
+sampled model parameters: 1772553
+Test:  [0/5]  eta: 0:00:08  loss: 1.6729 (1.6729)  acc1: 24.2188 (24.2188)  acc5: 100.0000 (100.0000)  time: 1.7144  data: 1.6962  max mem: 4001
+Test:  [4/5]  eta: 0:00:00  loss: 1.4488 (1.4691)  acc1: 86.4407 (66.5079)  acc5: 99.2188 (99.5238)  time: 0.3553  data: 0.3393  max mem: 4001
+Test: Total time: 0:00:02 (0.4247 s / it)
+* Acc@1 66.508 Acc@5 99.524 loss 1.469
+Accuracy of the network on the 630 test images: 66.5%
+Max accuracy: 67.14%
+**************************************************
+Accuracy results:
+OA: 0.6651 | AA: 0.6651 | Kappa: 0.6232
+**************************************************
+{'layer_num': 7, 'embed_dim': [64, 64, 64, 64, 64, 64, 64], 'num_heads': [4, 4, 4, 4, 6, 6, 6], 'mlp_ratio': [32, 8, 16, 16, 16, 32, 8]}
+1772553
+FLOPS is 7944509440
+Epoch: [11]  [0/8]  eta: 0:00:14  lr: 0.000061  loss: 1.3192 (1.3192)  time: 1.7707  data: 1.7154  max mem: 4001
+Epoch: [11]  [7/8]  eta: 0:00:00  lr: 0.000061  loss: 1.4436 (1.4499)  time: 0.2610  data: 0.2145  max mem: 4001
+Epoch: [11] Total time: 0:00:02 (0.3051 s / it)
+Averaged stats: lr: 0.000061  loss: 1.4436 (1.4499)
+sampled model config: {'layer_num': 7, 'embed_dim': [64, 64, 64, 64, 64, 64, 64], 'num_heads': [4, 4, 4, 4, 6, 6, 6], 'mlp_ratio': [32, 8, 16, 16, 16, 32, 8]}
+sampled model parameters: 1772553
+Test:  [0/5]  eta: 0:00:08  loss: 1.6184 (1.6184)  acc1: 35.9375 (35.9375)  acc5: 100.0000 (100.0000)  time: 1.7245  data: 1.7067  max mem: 4001
+Test:  [4/5]  eta: 0:00:00  loss: 1.3975 (1.4214)  acc1: 87.5000 (69.6825)  acc5: 100.0000 (99.8413)  time: 0.3574  data: 0.3414  max mem: 4001
+Test: Total time: 0:00:02 (0.4318 s / it)
+* Acc@1 69.683 Acc@5 99.841 loss 1.421
+Accuracy of the network on the 630 test images: 69.7%
+Max accuracy: 69.68%
+**************************************************
+Accuracy results:
+OA: 0.6968 | AA: 0.6968 | Kappa: 0.6589
+**************************************************
+{'layer_num': 7, 'embed_dim': [64, 64, 64, 64, 64, 64, 64], 'num_heads': [4, 4, 4, 4, 6, 6, 6], 'mlp_ratio': [32, 8, 16, 16, 16, 32, 8]}
+1772553
+FLOPS is 7944509440
+Epoch: [12]  [0/8]  eta: 0:00:14  lr: 0.000061  loss: 1.4350 (1.4350)  time: 1.7764  data: 1.7167  max mem: 4001
+Epoch: [12]  [7/8]  eta: 0:00:00  lr: 0.000061  loss: 1.3969 (1.3914)  time: 0.2631  data: 0.2146  max mem: 4001
+Epoch: [12] Total time: 0:00:02 (0.3126 s / it)
+Averaged stats: lr: 0.000061  loss: 1.3969 (1.3914)
+sampled model config: {'layer_num': 7, 'embed_dim': [64, 64, 64, 64, 64, 64, 64], 'num_heads': [4, 4, 4, 4, 6, 6, 6], 'mlp_ratio': [32, 8, 16, 16, 16, 32, 8]}
+sampled model parameters: 1772553
+Test:  [0/5]  eta: 0:00:08  loss: 1.6384 (1.6384)  acc1: 29.6875 (29.6875)  acc5: 100.0000 (100.0000)  time: 1.7491  data: 1.7282  max mem: 4001
+Test:  [4/5]  eta: 0:00:00  loss: 1.3993 (1.3880)  acc1: 83.5938 (71.9048)  acc5: 100.0000 (100.0000)  time: 0.3630  data: 0.3457  max mem: 4001
+Test: Total time: 0:00:02 (0.4397 s / it)
+* Acc@1 71.905 Acc@5 100.000 loss 1.388
+Accuracy of the network on the 630 test images: 71.9%
+Max accuracy: 71.90%
+**************************************************
+Accuracy results:
+OA: 0.7190 | AA: 0.7190 | Kappa: 0.6839
+**************************************************
+{'layer_num': 7, 'embed_dim': [64, 64, 64, 64, 64, 64, 64], 'num_heads': [4, 4, 4, 4, 6, 6, 6], 'mlp_ratio': [32, 8, 16, 16, 16, 32, 8]}
+1772553
+FLOPS is 7944509440
+Epoch: [13]  [0/8]  eta: 0:00:14  lr: 0.000061  loss: 1.3454 (1.3454)  time: 1.7672  data: 1.7087  max mem: 4001
+Epoch: [13]  [7/8]  eta: 0:00:00  lr: 0.000061  loss: 1.3722 (1.3851)  time: 0.2622  data: 0.2136  max mem: 4001
+Epoch: [13] Total time: 0:00:02 (0.3094 s / it)
+Averaged stats: lr: 0.000061  loss: 1.3722 (1.3851)
+sampled model config: {'layer_num': 7, 'embed_dim': [64, 64, 64, 64, 64, 64, 64], 'num_heads': [4, 4, 4, 4, 6, 6, 6], 'mlp_ratio': [32, 8, 16, 16, 16, 32, 8]}
+sampled model parameters: 1772553
+Test:  [0/5]  eta: 0:00:08  loss: 1.5793 (1.5793)  acc1: 44.5312 (44.5312)  acc5: 100.0000 (100.0000)  time: 1.7277  data: 1.7090  max mem: 4001
+Test:  [4/5]  eta: 0:00:00  loss: 1.3766 (1.3675)  acc1: 84.3750 (73.6508)  acc5: 100.0000 (99.6825)  time: 0.3581  data: 0.3418  max mem: 4001
+Test: Total time: 0:00:02 (0.4326 s / it)
+* Acc@1 73.651 Acc@5 99.683 loss 1.368
+Accuracy of the network on the 630 test images: 73.7%
+Max accuracy: 73.65%
+**************************************************
+Accuracy results:
+OA: 0.7365 | AA: 0.7365 | Kappa: 0.7036
+**************************************************
+{'layer_num': 7, 'embed_dim': [64, 64, 64, 64, 64, 64, 64], 'num_heads': [4, 4, 4, 4, 6, 6, 6], 'mlp_ratio': [32, 8, 16, 16, 16, 32, 8]}
+1772553
+FLOPS is 7944509440
+Epoch: [14]  [0/8]  eta: 0:00:14  lr: 0.000060  loss: 1.3090 (1.3090)  time: 1.7669  data: 1.7047  max mem: 4001
+Epoch: [14]  [7/8]  eta: 0:00:00  lr: 0.000060  loss: 1.3090 (1.3291)  time: 0.2648  data: 0.2131  max mem: 4001
+Epoch: [14] Total time: 0:00:02 (0.3142 s / it)
+Averaged stats: lr: 0.000060  loss: 1.3090 (1.3291)
+sampled model config: {'layer_num': 7, 'embed_dim': [64, 64, 64, 64, 64, 64, 64], 'num_heads': [4, 4, 4, 4, 6, 6, 6], 'mlp_ratio': [32, 8, 16, 16, 16, 32, 8]}
+sampled model parameters: 1772553
+Test:  [0/5]  eta: 0:00:08  loss: 1.6561 (1.6561)  acc1: 29.6875 (29.6875)  acc5: 96.8750 (96.8750)  time: 1.7433  data: 1.7199  max mem: 4001
+Test:  [4/5]  eta: 0:00:00  loss: 1.3110 (1.3461)  acc1: 87.5000 (72.3810)  acc5: 100.0000 (99.0476)  time: 0.3611  data: 0.3440  max mem: 4001
+Test: Total time: 0:00:02 (0.4384 s / it)
+* Acc@1 72.381 Acc@5 99.048 loss 1.346
+Accuracy of the network on the 630 test images: 72.4%
+Max accuracy: 73.65%
+**************************************************
+Accuracy results:
+OA: 0.7238 | AA: 0.7238 | Kappa: 0.6893
+**************************************************
+{'layer_num': 7, 'embed_dim': [64, 64, 64, 64, 64, 64, 64], 'num_heads': [4, 4, 4, 4, 6, 6, 6], 'mlp_ratio': [32, 8, 16, 16, 16, 32, 8]}
+1772553
+FLOPS is 7944509440
+Epoch: [15]  [0/8]  eta: 0:00:14  lr: 0.000060  loss: 1.2908 (1.2908)  time: 1.7556  data: 1.7032  max mem: 4001
+Epoch: [15]  [7/8]  eta: 0:00:00  lr: 0.000060  loss: 1.3394 (1.3449)  time: 0.2624  data: 0.2129  max mem: 4001
+Epoch: [15] Total time: 0:00:02 (0.3066 s / it)
+Averaged stats: lr: 0.000060  loss: 1.3394 (1.3449)
+sampled model config: {'layer_num': 7, 'embed_dim': [64, 64, 64, 64, 64, 64, 64], 'num_heads': [4, 4, 4, 4, 6, 6, 6], 'mlp_ratio': [32, 8, 16, 16, 16, 32, 8]}
+sampled model parameters: 1772553
+Test:  [0/5]  eta: 0:00:08  loss: 1.5746 (1.5746)  acc1: 40.6250 (40.6250)  acc5: 100.0000 (100.0000)  time: 1.7422  data: 1.7228  max mem: 4001
+Test:  [4/5]  eta: 0:00:00  loss: 1.3576 (1.3137)  acc1: 82.8125 (77.1429)  acc5: 100.0000 (99.8413)  time: 0.3610  data: 0.3446  max mem: 4001
+Test: Total time: 0:00:02 (0.4335 s / it)
+* Acc@1 77.143 Acc@5 99.841 loss 1.314
+Accuracy of the network on the 630 test images: 77.1%
+Max accuracy: 77.14%
+**************************************************
+Accuracy results:
+OA: 0.7730 | AA: 0.7730 | Kappa: 0.7446
+**************************************************
+{'layer_num': 7, 'embed_dim': [64, 64, 64, 64, 64, 64, 64], 'num_heads': [4, 4, 4, 4, 6, 6, 6], 'mlp_ratio': [32, 8, 16, 16, 16, 32, 8]}
+1772553
+FLOPS is 7944509440
+Epoch: [16]  [0/8]  eta: 0:00:14  lr: 0.000060  loss: 1.2340 (1.2340)  time: 1.7933  data: 1.7350  max mem: 4001
+Epoch: [16]  [7/8]  eta: 0:00:00  lr: 0.000060  loss: 1.2985 (1.3126)  time: 0.2668  data: 0.2169  max mem: 4001
+Epoch: [16] Total time: 0:00:02 (0.3117 s / it)
+Averaged stats: lr: 0.000060  loss: 1.2985 (1.3126)
+sampled model config: {'layer_num': 7, 'embed_dim': [64, 64, 64, 64, 64, 64, 64], 'num_heads': [4, 4, 4, 4, 6, 6, 6], 'mlp_ratio': [32, 8, 16, 16, 16, 32, 8]}
+sampled model parameters: 1772553
+Test:  [0/5]  eta: 0:00:09  loss: 1.5342 (1.5342)  acc1: 50.0000 (50.0000)  acc5: 100.0000 (100.0000)  time: 1.8235  data: 1.8047  max mem: 4001
+Test:  [4/5]  eta: 0:00:00  loss: 1.3609 (1.3045)  acc1: 78.9062 (77.7778)  acc5: 100.0000 (99.6825)  time: 0.3781  data: 0.3610  max mem: 4001
+Test: Total time: 0:00:02 (0.4493 s / it)
+* Acc@1 77.778 Acc@5 99.683 loss 1.304
+Accuracy of the network on the 630 test images: 77.8%
+Max accuracy: 77.78%
+**************************************************
+Accuracy results:
+OA: 0.7778 | AA: 0.7778 | Kappa: 0.7500
+**************************************************
+{'layer_num': 7, 'embed_dim': [64, 64, 64, 64, 64, 64, 64], 'num_heads': [4, 4, 4, 4, 6, 6, 6], 'mlp_ratio': [32, 8, 16, 16, 16, 32, 8]}
+1772553
+FLOPS is 7944509440
+Epoch: [17]  [0/8]  eta: 0:00:14  lr: 0.000059  loss: 1.2213 (1.2213)  time: 1.7900  data: 1.7322  max mem: 4001
+Epoch: [17]  [7/8]  eta: 0:00:00  lr: 0.000059  loss: 1.2656 (1.2520)  time: 0.2649  data: 0.2165  max mem: 4001
+Epoch: [17] Total time: 0:00:02 (0.3094 s / it)
+Averaged stats: lr: 0.000059  loss: 1.2656 (1.2520)
+sampled model config: {'layer_num': 7, 'embed_dim': [64, 64, 64, 64, 64, 64, 64], 'num_heads': [4, 4, 4, 4, 6, 6, 6], 'mlp_ratio': [32, 8, 16, 16, 16, 32, 8]}
+sampled model parameters: 1772553
+Test:  [0/5]  eta: 0:00:08  loss: 1.5193 (1.5193)  acc1: 46.8750 (46.8750)  acc5: 100.0000 (100.0000)  time: 1.7564  data: 1.7382  max mem: 4001
+Test:  [4/5]  eta: 0:00:00  loss: 1.2863 (1.2809)  acc1: 84.3750 (75.3968)  acc5: 100.0000 (99.6825)  time: 0.3637  data: 0.3477  max mem: 4001
+Test: Total time: 0:00:02 (0.4344 s / it)
+* Acc@1 75.397 Acc@5 99.683 loss 1.281
+Accuracy of the network on the 630 test images: 75.4%
+Max accuracy: 77.78%
+**************************************************
+Accuracy results:
+OA: 0.7540 | AA: 0.7540 | Kappa: 0.7232
+**************************************************
+{'layer_num': 7, 'embed_dim': [64, 64, 64, 64, 64, 64, 64], 'num_heads': [4, 4, 4, 4, 6, 6, 6], 'mlp_ratio': [32, 8, 16, 16, 16, 32, 8]}
+1772553
+FLOPS is 7944509440
+Epoch: [18]  [0/8]  eta: 0:00:14  lr: 0.000059  loss: 1.2796 (1.2796)  time: 1.7617  data: 1.7037  max mem: 4001
+Epoch: [18]  [7/8]  eta: 0:00:00  lr: 0.000059  loss: 1.2557 (1.2612)  time: 0.2605  data: 0.2130  max mem: 4001
+Epoch: [18] Total time: 0:00:02 (0.3053 s / it)
+Averaged stats: lr: 0.000059  loss: 1.2557 (1.2612)
+sampled model config: {'layer_num': 7, 'embed_dim': [64, 64, 64, 64, 64, 64, 64], 'num_heads': [4, 4, 4, 4, 6, 6, 6], 'mlp_ratio': [32, 8, 16, 16, 16, 32, 8]}
+sampled model parameters: 1772553
+Test:  [0/5]  eta: 0:00:08  loss: 1.4929 (1.4929)  acc1: 42.1875 (42.1875)  acc5: 100.0000 (100.0000)  time: 1.7264  data: 1.7081  max mem: 4001
+Test:  [4/5]  eta: 0:00:00  loss: 1.2650 (1.2560)  acc1: 83.5938 (77.6190)  acc5: 100.0000 (99.6825)  time: 0.3577  data: 0.3417  max mem: 4001
+Test: Total time: 0:00:02 (0.4281 s / it)
+* Acc@1 77.619 Acc@5 99.683 loss 1.256
+Accuracy of the network on the 630 test images: 77.6%
+Max accuracy: 77.78%
+**************************************************
+Accuracy results:
+OA: 0.7762 | AA: 0.7762 | Kappa: 0.7482
+**************************************************
+{'layer_num': 7, 'embed_dim': [64, 64, 64, 64, 64, 64, 64], 'num_heads': [4, 4, 4, 4, 6, 6, 6], 'mlp_ratio': [32, 8, 16, 16, 16, 32, 8]}
+1772553
+FLOPS is 7944509440
+Epoch: [19]  [0/8]  eta: 0:00:14  lr: 0.000058  loss: 1.1729 (1.1729)  time: 1.7611  data: 1.7026  max mem: 4001
+Epoch: [19]  [7/8]  eta: 0:00:00  lr: 0.000058  loss: 1.1869 (1.2220)  time: 0.2595  data: 0.2128  max mem: 4001
+Epoch: [19] Total time: 0:00:02 (0.3057 s / it)
+Averaged stats: lr: 0.000058  loss: 1.1869 (1.2220)
+sampled model config: {'layer_num': 7, 'embed_dim': [64, 64, 64, 64, 64, 64, 64], 'num_heads': [4, 4, 4, 4, 6, 6, 6], 'mlp_ratio': [32, 8, 16, 16, 16, 32, 8]}
+sampled model parameters: 1772553
+Test:  [0/5]  eta: 0:00:08  loss: 1.5495 (1.5495)  acc1: 37.5000 (37.5000)  acc5: 100.0000 (100.0000)  time: 1.7301  data: 1.7104  max mem: 4001
+Test:  [4/5]  eta: 0:00:00  loss: 1.2122 (1.2410)  acc1: 85.9375 (76.1905)  acc5: 100.0000 (99.5238)  time: 0.3584  data: 0.3421  max mem: 4001
+Test: Total time: 0:00:02 (0.4293 s / it)
+* Acc@1 76.190 Acc@5 99.524 loss 1.241
+Accuracy of the network on the 630 test images: 76.2%
+Max accuracy: 77.78%
+**************************************************
+Accuracy results:
+OA: 0.7619 | AA: 0.7619 | Kappa: 0.7321
+**************************************************
+{'layer_num': 7, 'embed_dim': [64, 64, 64, 64, 64, 64, 64], 'num_heads': [4, 4, 4, 4, 6, 6, 6], 'mlp_ratio': [32, 8, 16, 16, 16, 32, 8]}
+1772553
+FLOPS is 7944509440
+Epoch: [20]  [0/8]  eta: 0:00:14  lr: 0.000058  loss: 1.1788 (1.1788)  time: 1.7668  data: 1.7090  max mem: 4001
+Epoch: [20]  [7/8]  eta: 0:00:00  lr: 0.000058  loss: 1.1788 (1.1783)  time: 0.2622  data: 0.2136  max mem: 4001
+Epoch: [20] Total time: 0:00:02 (0.3071 s / it)
+Averaged stats: lr: 0.000058  loss: 1.1788 (1.1783)
+sampled model config: {'layer_num': 7, 'embed_dim': [64, 64, 64, 64, 64, 64, 64], 'num_heads': [4, 4, 4, 4, 6, 6, 6], 'mlp_ratio': [32, 8, 16, 16, 16, 32, 8]}
+sampled model parameters: 1772553
+Test:  [0/5]  eta: 0:00:08  loss: 1.5275 (1.5275)  acc1: 39.8438 (39.8438)  acc5: 100.0000 (100.0000)  time: 1.7183  data: 1.6979  max mem: 4001
+Test:  [4/5]  eta: 0:00:00  loss: 1.2275 (1.2281)  acc1: 82.0312 (76.9841)  acc5: 100.0000 (99.6825)  time: 0.3560  data: 0.3396  max mem: 4001
+Test: Total time: 0:00:02 (0.4267 s / it)
+* Acc@1 76.984 Acc@5 99.683 loss 1.228
+Accuracy of the network on the 630 test images: 77.0%
+Max accuracy: 77.78%
+**************************************************
+Accuracy results:
+OA: 0.7698 | AA: 0.7698 | Kappa: 0.7411
+**************************************************
+{'layer_num': 7, 'embed_dim': [64, 64, 64, 64, 64, 64, 64], 'num_heads': [4, 4, 4, 4, 6, 6, 6], 'mlp_ratio': [32, 8, 16, 16, 16, 32, 8]}
+1772553
+FLOPS is 7944509440
+Epoch: [21]  [0/8]  eta: 0:00:14  lr: 0.000057  loss: 1.1527 (1.1527)  time: 1.7872  data: 1.7258  max mem: 4001
+Epoch: [21]  [7/8]  eta: 0:00:00  lr: 0.000057  loss: 1.1632 (1.1806)  time: 0.2631  data: 0.2158  max mem: 4001
+Epoch: [21] Total time: 0:00:02 (0.3074 s / it)
+Averaged stats: lr: 0.000057  loss: 1.1632 (1.1806)
+sampled model config: {'layer_num': 7, 'embed_dim': [64, 64, 64, 64, 64, 64, 64], 'num_heads': [4, 4, 4, 4, 6, 6, 6], 'mlp_ratio': [32, 8, 16, 16, 16, 32, 8]}
+sampled model parameters: 1772553
+Test:  [0/5]  eta: 0:00:08  loss: 1.4169 (1.4169)  acc1: 67.1875 (67.1875)  acc5: 100.0000 (100.0000)  time: 1.7497  data: 1.7314  max mem: 4001
+Test:  [4/5]  eta: 0:00:00  loss: 1.2437 (1.1971)  acc1: 77.3438 (78.5714)  acc5: 100.0000 (99.6825)  time: 0.3623  data: 0.3463  max mem: 4001
+Test: Total time: 0:00:02 (0.4336 s / it)
+* Acc@1 78.571 Acc@5 99.683 loss 1.197
+Accuracy of the network on the 630 test images: 78.6%
+Max accuracy: 78.57%
+**************************************************
+Accuracy results:
+OA: 0.7857 | AA: 0.7857 | Kappa: 0.7589
+**************************************************
+{'layer_num': 7, 'embed_dim': [64, 64, 64, 64, 64, 64, 64], 'num_heads': [4, 4, 4, 4, 6, 6, 6], 'mlp_ratio': [32, 8, 16, 16, 16, 32, 8]}
+1772553
+FLOPS is 7944509440
+Epoch: [22]  [0/8]  eta: 0:00:14  lr: 0.000057  loss: 1.0941 (1.0941)  time: 1.7754  data: 1.7180  max mem: 4001
+Epoch: [22]  [7/8]  eta: 0:00:00  lr: 0.000057  loss: 1.1212 (1.1466)  time: 0.2655  data: 0.2148  max mem: 4001
+Epoch: [22] Total time: 0:00:02 (0.3099 s / it)
+Averaged stats: lr: 0.000057  loss: 1.1212 (1.1466)
+sampled model config: {'layer_num': 7, 'embed_dim': [64, 64, 64, 64, 64, 64, 64], 'num_heads': [4, 4, 4, 4, 6, 6, 6], 'mlp_ratio': [32, 8, 16, 16, 16, 32, 8]}
+sampled model parameters: 1772553
+Test:  [0/5]  eta: 0:00:08  loss: 1.4197 (1.4197)  acc1: 48.4375 (48.4375)  acc5: 100.0000 (100.0000)  time: 1.7176  data: 1.6986  max mem: 4001
+Test:  [4/5]  eta: 0:00:00  loss: 1.2393 (1.1810)  acc1: 78.9062 (78.2540)  acc5: 100.0000 (99.8413)  time: 0.3567  data: 0.3397  max mem: 4001
+Test: Total time: 0:00:02 (0.4312 s / it)
+* Acc@1 78.254 Acc@5 99.841 loss 1.181
+Accuracy of the network on the 630 test images: 78.3%
+Max accuracy: 78.57%
+**************************************************
+Accuracy results:
+OA: 0.7825 | AA: 0.7825 | Kappa: 0.7554
+**************************************************
+{'layer_num': 7, 'embed_dim': [64, 64, 64, 64, 64, 64, 64], 'num_heads': [4, 4, 4, 4, 6, 6, 6], 'mlp_ratio': [32, 8, 16, 16, 16, 32, 8]}
+1772553
+FLOPS is 7944509440
+Epoch: [23]  [0/8]  eta: 0:00:13  lr: 0.000056  loss: 1.0877 (1.0877)  time: 1.7464  data: 1.6874  max mem: 4001
+Epoch: [23]  [7/8]  eta: 0:00:00  lr: 0.000056  loss: 1.0883 (1.1339)  time: 0.2566  data: 0.2110  max mem: 4001
+Epoch: [23] Total time: 0:00:02 (0.3002 s / it)
+Averaged stats: lr: 0.000056  loss: 1.0883 (1.1339)
+sampled model config: {'layer_num': 7, 'embed_dim': [64, 64, 64, 64, 64, 64, 64], 'num_heads': [4, 4, 4, 4, 6, 6, 6], 'mlp_ratio': [32, 8, 16, 16, 16, 32, 8]}
+sampled model parameters: 1772553
+Test:  [0/5]  eta: 0:00:08  loss: 1.3920 (1.3920)  acc1: 51.5625 (51.5625)  acc5: 100.0000 (100.0000)  time: 1.7187  data: 1.6958  max mem: 4001
+Test:  [4/5]  eta: 0:00:00  loss: 1.1910 (1.1779)  acc1: 85.5932 (77.9365)  acc5: 100.0000 (99.8413)  time: 0.3561  data: 0.3392  max mem: 4001
+Test: Total time: 0:00:02 (0.4284 s / it)
+* Acc@1 77.937 Acc@5 99.841 loss 1.178
+Accuracy of the network on the 630 test images: 77.9%
+Max accuracy: 78.57%
+**************************************************
+Accuracy results:
+OA: 0.7794 | AA: 0.7794 | Kappa: 0.7518
+**************************************************
+{'layer_num': 7, 'embed_dim': [64, 64, 64, 64, 64, 64, 64], 'num_heads': [4, 4, 4, 4, 6, 6, 6], 'mlp_ratio': [32, 8, 16, 16, 16, 32, 8]}
+1772553
+FLOPS is 7944509440
+Epoch: [24]  [0/8]  eta: 0:00:14  lr: 0.000056  loss: 1.1885 (1.1885)  time: 1.7977  data: 1.7350  max mem: 4001
+Epoch: [24]  [7/8]  eta: 0:00:00  lr: 0.000056  loss: 1.1216 (1.1248)  time: 0.2648  data: 0.2169  max mem: 4001
+Epoch: [24] Total time: 0:00:02 (0.3105 s / it)
+Averaged stats: lr: 0.000056  loss: 1.1216 (1.1248)
+sampled model config: {'layer_num': 7, 'embed_dim': [64, 64, 64, 64, 64, 64, 64], 'num_heads': [4, 4, 4, 4, 6, 6, 6], 'mlp_ratio': [32, 8, 16, 16, 16, 32, 8]}
+sampled model parameters: 1772553
+Test:  [0/5]  eta: 0:00:08  loss: 1.2928 (1.2928)  acc1: 66.4062 (66.4062)  acc5: 100.0000 (100.0000)  time: 1.7508  data: 1.7324  max mem: 4001
+Test:  [4/5]  eta: 0:00:00  loss: 1.1650 (1.1546)  acc1: 83.0508 (80.4762)  acc5: 100.0000 (99.8413)  time: 0.3625  data: 0.3465  max mem: 4001
+Test: Total time: 0:00:02 (0.4349 s / it)
+* Acc@1 80.476 Acc@5 99.841 loss 1.155
+Accuracy of the network on the 630 test images: 80.5%
+Max accuracy: 80.48%
+**************************************************
+Accuracy results:
+OA: 0.8048 | AA: 0.8048 | Kappa: 0.7804
+**************************************************
+{'layer_num': 7, 'embed_dim': [64, 64, 64, 64, 64, 64, 64], 'num_heads': [4, 4, 4, 4, 6, 6, 6], 'mlp_ratio': [32, 8, 16, 16, 16, 32, 8]}
+1772553
+FLOPS is 7944509440
+Epoch: [25]  [0/8]  eta: 0:00:14  lr: 0.000055  loss: 1.0235 (1.0235)  time: 1.7520  data: 1.6996  max mem: 4001
+Epoch: [25]  [7/8]  eta: 0:00:00  lr: 0.000055  loss: 1.0801 (1.0999)  time: 0.2627  data: 0.2125  max mem: 4001
+Epoch: [25] Total time: 0:00:02 (0.3070 s / it)
+Averaged stats: lr: 0.000055  loss: 1.0801 (1.0999)
+sampled model config: {'layer_num': 7, 'embed_dim': [64, 64, 64, 64, 64, 64, 64], 'num_heads': [4, 4, 4, 4, 6, 6, 6], 'mlp_ratio': [32, 8, 16, 16, 16, 32, 8]}
+sampled model parameters: 1772553
+Test:  [0/5]  eta: 0:00:08  loss: 1.3156 (1.3156)  acc1: 64.8438 (64.8438)  acc5: 100.0000 (100.0000)  time: 1.7440  data: 1.7244  max mem: 4001
+Test:  [4/5]  eta: 0:00:00  loss: 1.1402 (1.1373)  acc1: 86.4407 (80.7937)  acc5: 100.0000 (99.6825)  time: 0.3612  data: 0.3449  max mem: 4001
+Test: Total time: 0:00:02 (0.4320 s / it)
+* Acc@1 80.794 Acc@5 99.683 loss 1.137
+Accuracy of the network on the 630 test images: 80.8%
+Max accuracy: 80.79%
+**************************************************
+Accuracy results:
+OA: 0.8079 | AA: 0.8079 | Kappa: 0.7839
+**************************************************
+{'layer_num': 7, 'embed_dim': [64, 64, 64, 64, 64, 64, 64], 'num_heads': [4, 4, 4, 4, 6, 6, 6], 'mlp_ratio': [32, 8, 16, 16, 16, 32, 8]}
+1772553
+FLOPS is 7944509440
+Epoch: [26]  [0/8]  eta: 0:00:14  lr: 0.000055  loss: 1.0669 (1.0669)  time: 1.8079  data: 1.7486  max mem: 4001
+Epoch: [26]  [7/8]  eta: 0:00:00  lr: 0.000055  loss: 1.0614 (1.0665)  time: 0.2665  data: 0.2186  max mem: 4001
+Epoch: [26] Total time: 0:00:02 (0.3115 s / it)
+Averaged stats: lr: 0.000055  loss: 1.0614 (1.0665)
+sampled model config: {'layer_num': 7, 'embed_dim': [64, 64, 64, 64, 64, 64, 64], 'num_heads': [4, 4, 4, 4, 6, 6, 6], 'mlp_ratio': [32, 8, 16, 16, 16, 32, 8]}
+sampled model parameters: 1772553
+Test:  [0/5]  eta: 0:00:08  loss: 1.4012 (1.4012)  acc1: 55.4688 (55.4688)  acc5: 100.0000 (100.0000)  time: 1.7661  data: 1.7419  max mem: 4001
+Test:  [4/5]  eta: 0:00:00  loss: 1.0742 (1.1053)  acc1: 85.1562 (82.0635)  acc5: 100.0000 (99.8413)  time: 0.3656  data: 0.3484  max mem: 4001
+Test: Total time: 0:00:02 (0.4358 s / it)
+* Acc@1 82.063 Acc@5 99.841 loss 1.105
+Accuracy of the network on the 630 test images: 82.1%
+Max accuracy: 82.06%
+**************************************************
+Accuracy results:
+OA: 0.8206 | AA: 0.8206 | Kappa: 0.7982
+**************************************************
+{'layer_num': 7, 'embed_dim': [64, 64, 64, 64, 64, 64, 64], 'num_heads': [4, 4, 4, 4, 6, 6, 6], 'mlp_ratio': [32, 8, 16, 16, 16, 32, 8]}
+1772553
+FLOPS is 7944509440
+Epoch: [27]  [0/8]  eta: 0:00:14  lr: 0.000054  loss: 1.0576 (1.0576)  time: 1.7685  data: 1.7093  max mem: 4001
+Epoch: [27]  [7/8]  eta: 0:00:00  lr: 0.000054  loss: 1.0893 (1.0796)  time: 0.2624  data: 0.2137  max mem: 4001
+Epoch: [27] Total time: 0:00:02 (0.3066 s / it)
+Averaged stats: lr: 0.000054  loss: 1.0893 (1.0796)
+sampled model config: {'layer_num': 7, 'embed_dim': [64, 64, 64, 64, 64, 64, 64], 'num_heads': [4, 4, 4, 4, 6, 6, 6], 'mlp_ratio': [32, 8, 16, 16, 16, 32, 8]}
+sampled model parameters: 1772553
+Test:  [0/5]  eta: 0:00:08  loss: 1.2908 (1.2908)  acc1: 72.6562 (72.6562)  acc5: 100.0000 (100.0000)  time: 1.7460  data: 1.7273  max mem: 4001
+Test:  [4/5]  eta: 0:00:00  loss: 1.1085 (1.1203)  acc1: 84.7458 (80.9524)  acc5: 100.0000 (99.6825)  time: 0.3624  data: 0.3455  max mem: 4001
+Test: Total time: 0:00:02 (0.4353 s / it)
+* Acc@1 80.952 Acc@5 99.683 loss 1.120
+Accuracy of the network on the 630 test images: 81.0%
+Max accuracy: 82.06%
+**************************************************
+Accuracy results:
+OA: 0.8095 | AA: 0.8095 | Kappa: 0.7857
+**************************************************
+{'layer_num': 7, 'embed_dim': [64, 64, 64, 64, 64, 64, 64], 'num_heads': [4, 4, 4, 4, 6, 6, 6], 'mlp_ratio': [32, 8, 16, 16, 16, 32, 8]}
+1772553
+FLOPS is 7944509440
+Epoch: [28]  [0/8]  eta: 0:00:14  lr: 0.000054  loss: 1.1311 (1.1311)  time: 1.7696  data: 1.7118  max mem: 4001
+Epoch: [28]  [7/8]  eta: 0:00:00  lr: 0.000054  loss: 1.0850 (1.0734)  time: 0.2609  data: 0.2140  max mem: 4001
+Epoch: [28] Total time: 0:00:02 (0.3060 s / it)
+Averaged stats: lr: 0.000054  loss: 1.0850 (1.0734)
+sampled model config: {'layer_num': 7, 'embed_dim': [64, 64, 64, 64, 64, 64, 64], 'num_heads': [4, 4, 4, 4, 6, 6, 6], 'mlp_ratio': [32, 8, 16, 16, 16, 32, 8]}
+sampled model parameters: 1772553
+Test:  [0/5]  eta: 0:00:08  loss: 1.2700 (1.2700)  acc1: 71.0938 (71.0938)  acc5: 100.0000 (100.0000)  time: 1.7329  data: 1.7147  max mem: 4001
+Test:  [4/5]  eta: 0:00:00  loss: 1.1713 (1.0970)  acc1: 81.2500 (82.0635)  acc5: 100.0000 (99.8413)  time: 0.3590  data: 0.3430  max mem: 4001
+Test: Total time: 0:00:02 (0.4339 s / it)
+* Acc@1 82.063 Acc@5 99.841 loss 1.097
+Accuracy of the network on the 630 test images: 82.1%
+Max accuracy: 82.06%
+**************************************************
+Accuracy results:
+OA: 0.8206 | AA: 0.8206 | Kappa: 0.7982
+**************************************************
+{'layer_num': 7, 'embed_dim': [64, 64, 64, 64, 64, 64, 64], 'num_heads': [4, 4, 4, 4, 6, 6, 6], 'mlp_ratio': [32, 8, 16, 16, 16, 32, 8]}
+1772553
+FLOPS is 7944509440
+Epoch: [29]  [0/8]  eta: 0:00:14  lr: 0.000053  loss: 1.0328 (1.0328)  time: 1.7697  data: 1.7114  max mem: 4001
+Epoch: [29]  [7/8]  eta: 0:00:00  lr: 0.000053  loss: 1.0182 (1.0280)  time: 0.2630  data: 0.2139  max mem: 4001
+Epoch: [29] Total time: 0:00:02 (0.3087 s / it)
+Averaged stats: lr: 0.000053  loss: 1.0182 (1.0280)
+sampled model config: {'layer_num': 7, 'embed_dim': [64, 64, 64, 64, 64, 64, 64], 'num_heads': [4, 4, 4, 4, 6, 6, 6], 'mlp_ratio': [32, 8, 16, 16, 16, 32, 8]}
+sampled model parameters: 1772553
+Test:  [0/5]  eta: 0:00:08  loss: 1.3246 (1.3246)  acc1: 59.3750 (59.3750)  acc5: 100.0000 (100.0000)  time: 1.7590  data: 1.7392  max mem: 4001
+Test:  [4/5]  eta: 0:00:00  loss: 1.0573 (1.0776)  acc1: 85.1562 (82.5397)  acc5: 100.0000 (99.8413)  time: 0.3642  data: 0.3479  max mem: 4001
+Test: Total time: 0:00:02 (0.4356 s / it)
+* Acc@1 82.540 Acc@5 99.841 loss 1.078
+Accuracy of the network on the 630 test images: 82.5%
+Max accuracy: 82.54%
+**************************************************
+Accuracy results:
+OA: 0.8254 | AA: 0.8254 | Kappa: 0.8036
+**************************************************
+{'layer_num': 7, 'embed_dim': [64, 64, 64, 64, 64, 64, 64], 'num_heads': [4, 4, 4, 4, 6, 6, 6], 'mlp_ratio': [32, 8, 16, 16, 16, 32, 8]}
+1772553
+FLOPS is 7944509440
+Epoch: [30]  [0/8]  eta: 0:00:14  lr: 0.000052  loss: 1.0824 (1.0824)  time: 1.7815  data: 1.7230  max mem: 4001
+Epoch: [30]  [7/8]  eta: 0:00:00  lr: 0.000052  loss: 1.0142 (1.0202)  time: 0.2627  data: 0.2154  max mem: 4001
+Epoch: [30] Total time: 0:00:02 (0.3066 s / it)
+Averaged stats: lr: 0.000052  loss: 1.0142 (1.0202)
+sampled model config: {'layer_num': 7, 'embed_dim': [64, 64, 64, 64, 64, 64, 64], 'num_heads': [4, 4, 4, 4, 6, 6, 6], 'mlp_ratio': [32, 8, 16, 16, 16, 32, 8]}
+sampled model parameters: 1772553
+Test:  [0/5]  eta: 0:00:09  loss: 1.2987 (1.2987)  acc1: 54.6875 (54.6875)  acc5: 100.0000 (100.0000)  time: 1.8046  data: 1.7852  max mem: 4001
+Test:  [4/5]  eta: 0:00:00  loss: 1.0905 (1.0622)  acc1: 83.5938 (81.7460)  acc5: 100.0000 (99.6825)  time: 0.3735  data: 0.3571  max mem: 4001
+Test: Total time: 0:00:02 (0.4485 s / it)
+* Acc@1 81.746 Acc@5 99.683 loss 1.062
+Accuracy of the network on the 630 test images: 81.7%
+Max accuracy: 82.54%
+**************************************************
+Accuracy results:
+OA: 0.8175 | AA: 0.8175 | Kappa: 0.7946
+**************************************************
+{'layer_num': 7, 'embed_dim': [64, 64, 64, 64, 64, 64, 64], 'num_heads': [4, 4, 4, 4, 6, 6, 6], 'mlp_ratio': [32, 8, 16, 16, 16, 32, 8]}
+1772553
+FLOPS is 7944509440
+Epoch: [31]  [0/8]  eta: 0:00:14  lr: 0.000052  loss: 1.0590 (1.0590)  time: 1.7897  data: 1.7356  max mem: 4001
+Epoch: [31]  [7/8]  eta: 0:00:00  lr: 0.000052  loss: 1.0051 (1.0242)  time: 0.2640  data: 0.2170  max mem: 4001
+Epoch: [31] Total time: 0:00:02 (0.3107 s / it)
+Averaged stats: lr: 0.000052  loss: 1.0051 (1.0242)
+sampled model config: {'layer_num': 7, 'embed_dim': [64, 64, 64, 64, 64, 64, 64], 'num_heads': [4, 4, 4, 4, 6, 6, 6], 'mlp_ratio': [32, 8, 16, 16, 16, 32, 8]}
+sampled model parameters: 1772553
+Test:  [0/5]  eta: 0:00:08  loss: 1.2504 (1.2504)  acc1: 75.7812 (75.7812)  acc5: 100.0000 (100.0000)  time: 1.7427  data: 1.7237  max mem: 4001
+Test:  [4/5]  eta: 0:00:00  loss: 1.1020 (1.0847)  acc1: 82.0312 (80.4762)  acc5: 100.0000 (99.8413)  time: 0.3618  data: 0.3448  max mem: 4001
+Test: Total time: 0:00:02 (0.4436 s / it)
+* Acc@1 80.476 Acc@5 99.841 loss 1.085
+Accuracy of the network on the 630 test images: 80.5%
+Max accuracy: 82.54%
+**************************************************
+Accuracy results:
+OA: 0.8048 | AA: 0.8048 | Kappa: 0.7804
+**************************************************
+{'layer_num': 7, 'embed_dim': [64, 64, 64, 64, 64, 64, 64], 'num_heads': [4, 4, 4, 4, 6, 6, 6], 'mlp_ratio': [32, 8, 16, 16, 16, 32, 8]}
+1772553
+FLOPS is 7944509440
+Epoch: [32]  [0/8]  eta: 0:00:14  lr: 0.000051  loss: 0.9315 (0.9315)  time: 1.7792  data: 1.7290  max mem: 4001
+Epoch: [32]  [7/8]  eta: 0:00:00  lr: 0.000051  loss: 0.9815 (1.0160)  time: 0.2636  data: 0.2161  max mem: 4001
+Epoch: [32] Total time: 0:00:02 (0.3100 s / it)
+Averaged stats: lr: 0.000051  loss: 0.9815 (1.0160)
+sampled model config: {'layer_num': 7, 'embed_dim': [64, 64, 64, 64, 64, 64, 64], 'num_heads': [4, 4, 4, 4, 6, 6, 6], 'mlp_ratio': [32, 8, 16, 16, 16, 32, 8]}
+sampled model parameters: 1772553
+Test:  [0/5]  eta: 0:00:08  loss: 1.2781 (1.2781)  acc1: 57.8125 (57.8125)  acc5: 100.0000 (100.0000)  time: 1.7226  data: 1.7040  max mem: 4001
+Test:  [4/5]  eta: 0:00:00  loss: 1.0552 (1.0326)  acc1: 85.1562 (82.8571)  acc5: 100.0000 (99.6825)  time: 0.3569  data: 0.3408  max mem: 4001
+Test: Total time: 0:00:02 (0.4272 s / it)
+* Acc@1 82.857 Acc@5 99.683 loss 1.033
+Accuracy of the network on the 630 test images: 82.9%
+Max accuracy: 82.86%
+**************************************************
+Accuracy results:
+OA: 0.8286 | AA: 0.8286 | Kappa: 0.8071
+**************************************************
+{'layer_num': 7, 'embed_dim': [64, 64, 64, 64, 64, 64, 64], 'num_heads': [4, 4, 4, 4, 6, 6, 6], 'mlp_ratio': [32, 8, 16, 16, 16, 32, 8]}
+1772553
+FLOPS is 7944509440
+Epoch: [33]  [0/8]  eta: 0:00:14  lr: 0.000050  loss: 0.9285 (0.9285)  time: 1.7627  data: 1.7051  max mem: 4001
+Epoch: [33]  [7/8]  eta: 0:00:00  lr: 0.000050  loss: 0.9419 (0.9782)  time: 0.2607  data: 0.2132  max mem: 4001
+Epoch: [33] Total time: 0:00:02 (0.3108 s / it)
+Averaged stats: lr: 0.000050  loss: 0.9419 (0.9782)
+sampled model config: {'layer_num': 7, 'embed_dim': [64, 64, 64, 64, 64, 64, 64], 'num_heads': [4, 4, 4, 4, 6, 6, 6], 'mlp_ratio': [32, 8, 16, 16, 16, 32, 8]}
+sampled model parameters: 1772553
+Test:  [0/5]  eta: 0:00:08  loss: 1.1456 (1.1456)  acc1: 77.3438 (77.3438)  acc5: 100.0000 (100.0000)  time: 1.7593  data: 1.7390  max mem: 4001
+Test:  [4/5]  eta: 0:00:00  loss: 0.9985 (1.0040)  acc1: 86.7188 (85.3968)  acc5: 100.0000 (99.8413)  time: 0.3642  data: 0.3478  max mem: 4001
+Test: Total time: 0:00:02 (0.4381 s / it)
+* Acc@1 85.397 Acc@5 99.841 loss 1.004
+Accuracy of the network on the 630 test images: 85.4%
+Max accuracy: 85.40%
+**************************************************
+Accuracy results:
+OA: 0.8540 | AA: 0.8540 | Kappa: 0.8357
+**************************************************
+{'layer_num': 7, 'embed_dim': [64, 64, 64, 64, 64, 64, 64], 'num_heads': [4, 4, 4, 4, 6, 6, 6], 'mlp_ratio': [32, 8, 16, 16, 16, 32, 8]}
+1772553
+FLOPS is 7944509440
+Epoch: [34]  [0/8]  eta: 0:00:14  lr: 0.000050  loss: 0.9608 (0.9608)  time: 1.7727  data: 1.7105  max mem: 4001
+Epoch: [34]  [7/8]  eta: 0:00:00  lr: 0.000050  loss: 0.9324 (0.9381)  time: 0.2621  data: 0.2138  max mem: 4001
+Epoch: [34] Total time: 0:00:02 (0.3108 s / it)
+Averaged stats: lr: 0.000050  loss: 0.9324 (0.9381)
+sampled model config: {'layer_num': 7, 'embed_dim': [64, 64, 64, 64, 64, 64, 64], 'num_heads': [4, 4, 4, 4, 6, 6, 6], 'mlp_ratio': [32, 8, 16, 16, 16, 32, 8]}
+sampled model parameters: 1772553
+Test:  [0/5]  eta: 0:00:08  loss: 1.2467 (1.2467)  acc1: 67.1875 (67.1875)  acc5: 100.0000 (100.0000)  time: 1.7281  data: 1.7079  max mem: 4001
+Test:  [4/5]  eta: 0:00:00  loss: 0.9982 (1.0173)  acc1: 85.1562 (82.8571)  acc5: 100.0000 (99.8413)  time: 0.3580  data: 0.3416  max mem: 4001
+Test: Total time: 0:00:02 (0.4332 s / it)
+* Acc@1 82.857 Acc@5 99.841 loss 1.017
+Accuracy of the network on the 630 test images: 82.9%
+Max accuracy: 85.40%
+**************************************************
+Accuracy results:
+OA: 0.8286 | AA: 0.8286 | Kappa: 0.8071
+**************************************************
+{'layer_num': 7, 'embed_dim': [64, 64, 64, 64, 64, 64, 64], 'num_heads': [4, 4, 4, 4, 6, 6, 6], 'mlp_ratio': [32, 8, 16, 16, 16, 32, 8]}
+1772553
+FLOPS is 7944509440
+Epoch: [35]  [0/8]  eta: 0:00:14  lr: 0.000049  loss: 0.9121 (0.9121)  time: 1.7583  data: 1.6996  max mem: 4001
+Epoch: [35]  [7/8]  eta: 0:00:00  lr: 0.000049  loss: 0.9322 (0.9556)  time: 0.2597  data: 0.2125  max mem: 4001
+Epoch: [35] Total time: 0:00:02 (0.3061 s / it)
+Averaged stats: lr: 0.000049  loss: 0.9322 (0.9556)
+sampled model config: {'layer_num': 7, 'embed_dim': [64, 64, 64, 64, 64, 64, 64], 'num_heads': [4, 4, 4, 4, 6, 6, 6], 'mlp_ratio': [32, 8, 16, 16, 16, 32, 8]}
+sampled model parameters: 1772553
+Test:  [0/5]  eta: 0:00:08  loss: 1.2081 (1.2081)  acc1: 60.1562 (60.1562)  acc5: 100.0000 (100.0000)  time: 1.7490  data: 1.7304  max mem: 4001
+Test:  [4/5]  eta: 0:00:00  loss: 0.9373 (0.9937)  acc1: 92.9688 (84.6032)  acc5: 100.0000 (99.5238)  time: 0.3630  data: 0.3461  max mem: 4001
+Test: Total time: 0:00:02 (0.4379 s / it)
+* Acc@1 84.603 Acc@5 99.524 loss 0.994
+Accuracy of the network on the 630 test images: 84.6%
+Max accuracy: 85.40%
+**************************************************
+Accuracy results:
+OA: 0.8460 | AA: 0.8460 | Kappa: 0.8268
+**************************************************
+{'layer_num': 7, 'embed_dim': [64, 64, 64, 64, 64, 64, 64], 'num_heads': [4, 4, 4, 4, 6, 6, 6], 'mlp_ratio': [32, 8, 16, 16, 16, 32, 8]}
+1772553
+FLOPS is 7944509440
+Epoch: [36]  [0/8]  eta: 0:00:14  lr: 0.000048  loss: 0.9791 (0.9791)  time: 1.8104  data: 1.7333  max mem: 4001
+Epoch: [36]  [7/8]  eta: 0:00:00  lr: 0.000048  loss: 0.9791 (0.9812)  time: 0.2683  data: 0.2167  max mem: 4001
+Epoch: [36] Total time: 0:00:02 (0.3153 s / it)
+Averaged stats: lr: 0.000048  loss: 0.9791 (0.9812)
+sampled model config: {'layer_num': 7, 'embed_dim': [64, 64, 64, 64, 64, 64, 64], 'num_heads': [4, 4, 4, 4, 6, 6, 6], 'mlp_ratio': [32, 8, 16, 16, 16, 32, 8]}
+sampled model parameters: 1772553
+Test:  [0/5]  eta: 0:00:08  loss: 1.2180 (1.2180)  acc1: 60.1562 (60.1562)  acc5: 100.0000 (100.0000)  time: 1.7455  data: 1.7222  max mem: 4001
+Test:  [4/5]  eta: 0:00:00  loss: 1.0104 (1.0463)  acc1: 73.4375 (78.4127)  acc5: 100.0000 (99.8413)  time: 0.3615  data: 0.3445  max mem: 4001
+Test: Total time: 0:00:02 (0.4392 s / it)
+* Acc@1 78.413 Acc@5 99.841 loss 1.046
+Accuracy of the network on the 630 test images: 78.4%
+Max accuracy: 85.40%
+**************************************************
+Accuracy results:
+OA: 0.7841 | AA: 0.7841 | Kappa: 0.7571
+**************************************************
+{'layer_num': 7, 'embed_dim': [64, 64, 64, 64, 64, 64, 64], 'num_heads': [4, 4, 4, 4, 6, 6, 6], 'mlp_ratio': [32, 8, 16, 16, 16, 32, 8]}
+1772553
+FLOPS is 7944509440
+Epoch: [37]  [0/8]  eta: 0:00:14  lr: 0.000047  loss: 0.9966 (0.9966)  time: 1.7529  data: 1.6951  max mem: 4001
+Epoch: [37]  [7/8]  eta: 0:00:00  lr: 0.000047  loss: 0.9503 (0.9674)  time: 0.2675  data: 0.2167  max mem: 4001
+Epoch: [37] Total time: 0:00:02 (0.3133 s / it)
+Averaged stats: lr: 0.000047  loss: 0.9503 (0.9674)
+sampled model config: {'layer_num': 7, 'embed_dim': [64, 64, 64, 64, 64, 64, 64], 'num_heads': [4, 4, 4, 4, 6, 6, 6], 'mlp_ratio': [32, 8, 16, 16, 16, 32, 8]}
+sampled model parameters: 1772553
+Test:  [0/5]  eta: 0:00:08  loss: 1.1282 (1.1282)  acc1: 79.6875 (79.6875)  acc5: 100.0000 (100.0000)  time: 1.7417  data: 1.7191  max mem: 4001
+Test:  [4/5]  eta: 0:00:00  loss: 1.0261 (0.9980)  acc1: 84.3750 (84.4444)  acc5: 100.0000 (99.8413)  time: 0.3607  data: 0.3438  max mem: 4001
+Test: Total time: 0:00:02 (0.4309 s / it)
+* Acc@1 84.444 Acc@5 99.841 loss 0.998
+Accuracy of the network on the 630 test images: 84.4%
+Max accuracy: 85.40%
+**************************************************
+Accuracy results:
+OA: 0.8444 | AA: 0.8444 | Kappa: 0.8250
+**************************************************
+{'layer_num': 7, 'embed_dim': [64, 64, 64, 64, 64, 64, 64], 'num_heads': [4, 4, 4, 4, 6, 6, 6], 'mlp_ratio': [32, 8, 16, 16, 16, 32, 8]}
+1772553
+FLOPS is 7944509440
+Epoch: [38]  [0/8]  eta: 0:00:14  lr: 0.000047  loss: 0.9060 (0.9060)  time: 1.7716  data: 1.7153  max mem: 4001
+Epoch: [38]  [7/8]  eta: 0:00:00  lr: 0.000047  loss: 0.9060 (0.9326)  time: 0.2630  data: 0.2144  max mem: 4001
+Epoch: [38] Total time: 0:00:02 (0.3131 s / it)
+Averaged stats: lr: 0.000047  loss: 0.9060 (0.9326)
+sampled model config: {'layer_num': 7, 'embed_dim': [64, 64, 64, 64, 64, 64, 64], 'num_heads': [4, 4, 4, 4, 6, 6, 6], 'mlp_ratio': [32, 8, 16, 16, 16, 32, 8]}
+sampled model parameters: 1772553
+Test:  [0/5]  eta: 0:00:08  loss: 1.1890 (1.1890)  acc1: 58.5938 (58.5938)  acc5: 100.0000 (100.0000)  time: 1.7387  data: 1.7190  max mem: 4001
+Test:  [4/5]  eta: 0:00:00  loss: 0.9821 (0.9687)  acc1: 84.3750 (82.8571)  acc5: 100.0000 (99.6825)  time: 0.3601  data: 0.3438  max mem: 4001
+Test: Total time: 0:00:02 (0.4349 s / it)
+* Acc@1 82.857 Acc@5 99.683 loss 0.969
+Accuracy of the network on the 630 test images: 82.9%
+Max accuracy: 85.40%
+**************************************************
+Accuracy results:
+OA: 0.8286 | AA: 0.8286 | Kappa: 0.8071
+**************************************************
+{'layer_num': 7, 'embed_dim': [64, 64, 64, 64, 64, 64, 64], 'num_heads': [4, 4, 4, 4, 6, 6, 6], 'mlp_ratio': [32, 8, 16, 16, 16, 32, 8]}
+1772553
+FLOPS is 7944509440
+Epoch: [39]  [0/8]  eta: 0:00:14  lr: 0.000046  loss: 0.9742 (0.9742)  time: 1.7550  data: 1.7013  max mem: 4001
+Epoch: [39]  [7/8]  eta: 0:00:00  lr: 0.000046  loss: 0.8857 (0.8971)  time: 0.2594  data: 0.2127  max mem: 4001
+Epoch: [39] Total time: 0:00:02 (0.3066 s / it)
+Averaged stats: lr: 0.000046  loss: 0.8857 (0.8971)
+sampled model config: {'layer_num': 7, 'embed_dim': [64, 64, 64, 64, 64, 64, 64], 'num_heads': [4, 4, 4, 4, 6, 6, 6], 'mlp_ratio': [32, 8, 16, 16, 16, 32, 8]}
+sampled model parameters: 1772553
+Test:  [0/5]  eta: 0:00:08  loss: 1.1054 (1.1054)  acc1: 74.2188 (74.2188)  acc5: 100.0000 (100.0000)  time: 1.7518  data: 1.7327  max mem: 4001
+Test:  [4/5]  eta: 0:00:00  loss: 1.0169 (0.9460)  acc1: 82.0312 (85.5556)  acc5: 100.0000 (99.6825)  time: 0.3635  data: 0.3466  max mem: 4001
+Test: Total time: 0:00:02 (0.4453 s / it)
+* Acc@1 85.556 Acc@5 99.683 loss 0.946
+Accuracy of the network on the 630 test images: 85.6%
+Max accuracy: 85.56%
+**************************************************
+Accuracy results:
+OA: 0.8556 | AA: 0.8556 | Kappa: 0.8375
+**************************************************
+{'layer_num': 7, 'embed_dim': [64, 64, 64, 64, 64, 64, 64], 'num_heads': [4, 4, 4, 4, 6, 6, 6], 'mlp_ratio': [32, 8, 16, 16, 16, 32, 8]}
+1772553
+FLOPS is 7944509440
+Epoch: [40]  [0/8]  eta: 0:00:14  lr: 0.000045  loss: 0.8366 (0.8366)  time: 1.7964  data: 1.7370  max mem: 4001
+Epoch: [40]  [7/8]  eta: 0:00:00  lr: 0.000045  loss: 0.8424 (0.8644)  time: 0.2646  data: 0.2171  max mem: 4001
+Epoch: [40] Total time: 0:00:02 (0.3122 s / it)
+Averaged stats: lr: 0.000045  loss: 0.8424 (0.8644)
+sampled model config: {'layer_num': 7, 'embed_dim': [64, 64, 64, 64, 64, 64, 64], 'num_heads': [4, 4, 4, 4, 6, 6, 6], 'mlp_ratio': [32, 8, 16, 16, 16, 32, 8]}
+sampled model parameters: 1772553
+Test:  [0/5]  eta: 0:00:09  loss: 1.1879 (1.1879)  acc1: 73.4375 (73.4375)  acc5: 99.2188 (99.2188)  time: 1.8043  data: 1.7864  max mem: 4001
+Test:  [4/5]  eta: 0:00:00  loss: 0.9300 (0.9346)  acc1: 83.5938 (84.9206)  acc5: 100.0000 (99.6825)  time: 0.3733  data: 0.3573  max mem: 4001
+Test: Total time: 0:00:02 (0.4533 s / it)
+* Acc@1 84.921 Acc@5 99.683 loss 0.935
+Accuracy of the network on the 630 test images: 84.9%
+Max accuracy: 85.56%
+**************************************************
+Accuracy results:
+OA: 0.8492 | AA: 0.8492 | Kappa: 0.8304
+**************************************************
+{'layer_num': 7, 'embed_dim': [64, 64, 64, 64, 64, 64, 64], 'num_heads': [4, 4, 4, 4, 6, 6, 6], 'mlp_ratio': [32, 8, 16, 16, 16, 32, 8]}
+1772553
+FLOPS is 7944509440
+Epoch: [41]  [0/8]  eta: 0:00:14  lr: 0.000044  loss: 0.8918 (0.8918)  time: 1.8454  data: 1.7853  max mem: 4001
+Epoch: [41]  [7/8]  eta: 0:00:00  lr: 0.000044  loss: 0.8755 (0.8747)  time: 0.2708  data: 0.2232  max mem: 4001
+Epoch: [41] Total time: 0:00:02 (0.3178 s / it)
+Averaged stats: lr: 0.000044  loss: 0.8755 (0.8747)
+sampled model config: {'layer_num': 7, 'embed_dim': [64, 64, 64, 64, 64, 64, 64], 'num_heads': [4, 4, 4, 4, 6, 6, 6], 'mlp_ratio': [32, 8, 16, 16, 16, 32, 8]}
+sampled model parameters: 1772553
+Test:  [0/5]  eta: 0:00:08  loss: 1.0295 (1.0295)  acc1: 89.8438 (89.8438)  acc5: 100.0000 (100.0000)  time: 1.7330  data: 1.7151  max mem: 4001
+Test:  [4/5]  eta: 0:00:00  loss: 0.9856 (0.9169)  acc1: 85.9375 (86.5079)  acc5: 100.0000 (99.8413)  time: 0.3591  data: 0.3431  max mem: 4001
+Test: Total time: 0:00:02 (0.4299 s / it)
+* Acc@1 86.508 Acc@5 99.841 loss 0.917
+Accuracy of the network on the 630 test images: 86.5%
+Max accuracy: 86.51%
+**************************************************
+Accuracy results:
+OA: 0.8651 | AA: 0.8651 | Kappa: 0.8482
+**************************************************
+{'layer_num': 7, 'embed_dim': [64, 64, 64, 64, 64, 64, 64], 'num_heads': [4, 4, 4, 4, 6, 6, 6], 'mlp_ratio': [32, 8, 16, 16, 16, 32, 8]}
+1772553
+FLOPS is 7944509440
+Epoch: [42]  [0/8]  eta: 0:00:14  lr: 0.000044  loss: 0.8791 (0.8791)  time: 1.7654  data: 1.7144  max mem: 4001
+Epoch: [42]  [7/8]  eta: 0:00:00  lr: 0.000044  loss: 0.8614 (0.8561)  time: 0.2609  data: 0.2143  max mem: 4001
+Epoch: [42] Total time: 0:00:02 (0.3072 s / it)
+Averaged stats: lr: 0.000044  loss: 0.8614 (0.8561)
+sampled model config: {'layer_num': 7, 'embed_dim': [64, 64, 64, 64, 64, 64, 64], 'num_heads': [4, 4, 4, 4, 6, 6, 6], 'mlp_ratio': [32, 8, 16, 16, 16, 32, 8]}
+sampled model parameters: 1772553
+Test:  [0/5]  eta: 0:00:08  loss: 1.1915 (1.1915)  acc1: 64.8438 (64.8438)  acc5: 100.0000 (100.0000)  time: 1.7209  data: 1.7024  max mem: 4001
+Test:  [4/5]  eta: 0:00:00  loss: 0.9189 (0.9212)  acc1: 87.5000 (85.5556)  acc5: 100.0000 (99.8413)  time: 0.3568  data: 0.3405  max mem: 4001
+Test: Total time: 0:00:02 (0.4311 s / it)
+* Acc@1 85.556 Acc@5 99.841 loss 0.921
+Accuracy of the network on the 630 test images: 85.6%
+Max accuracy: 86.51%
+**************************************************
+Accuracy results:
+OA: 0.8556 | AA: 0.8556 | Kappa: 0.8375
+**************************************************
+{'layer_num': 7, 'embed_dim': [64, 64, 64, 64, 64, 64, 64], 'num_heads': [4, 4, 4, 4, 6, 6, 6], 'mlp_ratio': [32, 8, 16, 16, 16, 32, 8]}
+1772553
+FLOPS is 7944509440
+Epoch: [43]  [0/8]  eta: 0:00:14  lr: 0.000043  loss: 0.8753 (0.8753)  time: 1.7630  data: 1.7044  max mem: 4001
+Epoch: [43]  [7/8]  eta: 0:00:00  lr: 0.000043  loss: 0.8697 (0.8597)  time: 0.2604  data: 0.2131  max mem: 4001
+Epoch: [43] Total time: 0:00:02 (0.3046 s / it)
+Averaged stats: lr: 0.000043  loss: 0.8697 (0.8597)
+sampled model config: {'layer_num': 7, 'embed_dim': [64, 64, 64, 64, 64, 64, 64], 'num_heads': [4, 4, 4, 4, 6, 6, 6], 'mlp_ratio': [32, 8, 16, 16, 16, 32, 8]}
+sampled model parameters: 1772553
+Test:  [0/5]  eta: 0:00:08  loss: 1.0326 (1.0326)  acc1: 76.5625 (76.5625)  acc5: 100.0000 (100.0000)  time: 1.7054  data: 1.6876  max mem: 4001
+Test:  [4/5]  eta: 0:00:00  loss: 0.9288 (0.9046)  acc1: 85.1562 (85.7143)  acc5: 100.0000 (99.8413)  time: 0.3537  data: 0.3376  max mem: 4001
+Test: Total time: 0:00:02 (0.4239 s / it)
+* Acc@1 85.714 Acc@5 99.841 loss 0.905
+Accuracy of the network on the 630 test images: 85.7%
+Max accuracy: 86.51%
+**************************************************
+Accuracy results:
+OA: 0.8571 | AA: 0.8571 | Kappa: 0.8393
+**************************************************
+{'layer_num': 7, 'embed_dim': [64, 64, 64, 64, 64, 64, 64], 'num_heads': [4, 4, 4, 4, 6, 6, 6], 'mlp_ratio': [32, 8, 16, 16, 16, 32, 8]}
+1772553
+FLOPS is 7944509440
+Epoch: [44]  [0/8]  eta: 0:00:14  lr: 0.000042  loss: 0.8433 (0.8433)  time: 1.7731  data: 1.7136  max mem: 4001
+Epoch: [44]  [7/8]  eta: 0:00:00  lr: 0.000042  loss: 0.8165 (0.8331)  time: 0.2624  data: 0.2142  max mem: 4001
+Epoch: [44] Total time: 0:00:02 (0.3091 s / it)
+Averaged stats: lr: 0.000042  loss: 0.8165 (0.8331)
+sampled model config: {'layer_num': 7, 'embed_dim': [64, 64, 64, 64, 64, 64, 64], 'num_heads': [4, 4, 4, 4, 6, 6, 6], 'mlp_ratio': [32, 8, 16, 16, 16, 32, 8]}
+sampled model parameters: 1772553
+Test:  [0/5]  eta: 0:00:08  loss: 1.0411 (1.0411)  acc1: 82.8125 (82.8125)  acc5: 99.2188 (99.2188)  time: 1.7482  data: 1.7263  max mem: 4001
+Test:  [4/5]  eta: 0:00:00  loss: 0.9405 (0.9011)  acc1: 86.7188 (85.5556)  acc5: 100.0000 (99.6825)  time: 0.3628  data: 0.3453  max mem: 4001
+Test: Total time: 0:00:02 (0.4379 s / it)
+* Acc@1 85.556 Acc@5 99.683 loss 0.901
+Accuracy of the network on the 630 test images: 85.6%
+Max accuracy: 86.51%
+**************************************************
+Accuracy results:
+OA: 0.8556 | AA: 0.8556 | Kappa: 0.8375
+**************************************************
+{'layer_num': 7, 'embed_dim': [64, 64, 64, 64, 64, 64, 64], 'num_heads': [4, 4, 4, 4, 6, 6, 6], 'mlp_ratio': [32, 8, 16, 16, 16, 32, 8]}
+1772553
+FLOPS is 7944509440
+Epoch: [45]  [0/8]  eta: 0:00:14  lr: 0.000041  loss: 0.7567 (0.7567)  time: 1.7777  data: 1.7188  max mem: 4001
+Epoch: [45]  [7/8]  eta: 0:00:00  lr: 0.000041  loss: 0.8078 (0.8127)  time: 0.2615  data: 0.2149  max mem: 4001
+Epoch: [45] Total time: 0:00:02 (0.3086 s / it)
+Averaged stats: lr: 0.000041  loss: 0.8078 (0.8127)
+sampled model config: {'layer_num': 7, 'embed_dim': [64, 64, 64, 64, 64, 64, 64], 'num_heads': [4, 4, 4, 4, 6, 6, 6], 'mlp_ratio': [32, 8, 16, 16, 16, 32, 8]}
+sampled model parameters: 1772553
+Test:  [0/5]  eta: 0:00:08  loss: 1.0477 (1.0477)  acc1: 78.1250 (78.1250)  acc5: 100.0000 (100.0000)  time: 1.7353  data: 1.7174  max mem: 4001
+Test:  [4/5]  eta: 0:00:00  loss: 0.9153 (0.8867)  acc1: 89.0625 (86.5079)  acc5: 100.0000 (99.8413)  time: 0.3594  data: 0.3435  max mem: 4001
+Test: Total time: 0:00:02 (0.4282 s / it)
+* Acc@1 86.508 Acc@5 99.841 loss 0.887
+Accuracy of the network on the 630 test images: 86.5%
+Max accuracy: 86.51%
+**************************************************
+Accuracy results:
+OA: 0.8651 | AA: 0.8651 | Kappa: 0.8482
+**************************************************
+{'layer_num': 7, 'embed_dim': [64, 64, 64, 64, 64, 64, 64], 'num_heads': [4, 4, 4, 4, 6, 6, 6], 'mlp_ratio': [32, 8, 16, 16, 16, 32, 8]}
+1772553
+FLOPS is 7944509440
+Epoch: [46]  [0/8]  eta: 0:00:14  lr: 0.000040  loss: 0.8453 (0.8453)  time: 1.7523  data: 1.6948  max mem: 4001
+Epoch: [46]  [7/8]  eta: 0:00:00  lr: 0.000040  loss: 0.7924 (0.8006)  time: 0.2600  data: 0.2119  max mem: 4001
+Epoch: [46] Total time: 0:00:02 (0.3039 s / it)
+Averaged stats: lr: 0.000040  loss: 0.7924 (0.8006)
+sampled model config: {'layer_num': 7, 'embed_dim': [64, 64, 64, 64, 64, 64, 64], 'num_heads': [4, 4, 4, 4, 6, 6, 6], 'mlp_ratio': [32, 8, 16, 16, 16, 32, 8]}
+sampled model parameters: 1772553
+Test:  [0/5]  eta: 0:00:08  loss: 1.0331 (1.0331)  acc1: 78.1250 (78.1250)  acc5: 98.4375 (98.4375)  time: 1.7305  data: 1.7124  max mem: 4001
+Test:  [4/5]  eta: 0:00:00  loss: 0.9226 (0.8764)  acc1: 84.3750 (85.2381)  acc5: 100.0000 (99.5238)  time: 0.3587  data: 0.3425  max mem: 4001
+Test: Total time: 0:00:02 (0.4341 s / it)
+* Acc@1 85.238 Acc@5 99.524 loss 0.876
+Accuracy of the network on the 630 test images: 85.2%
+Max accuracy: 86.51%
+**************************************************
+Accuracy results:
+OA: 0.8524 | AA: 0.8524 | Kappa: 0.8339
+**************************************************
+{'layer_num': 7, 'embed_dim': [64, 64, 64, 64, 64, 64, 64], 'num_heads': [4, 4, 4, 4, 6, 6, 6], 'mlp_ratio': [32, 8, 16, 16, 16, 32, 8]}
+1772553
+FLOPS is 7944509440
+Epoch: [47]  [0/8]  eta: 0:00:14  lr: 0.000040  loss: 0.8721 (0.8721)  time: 1.7787  data: 1.7170  max mem: 4001
+Epoch: [47]  [7/8]  eta: 0:00:00  lr: 0.000040  loss: 0.7850 (0.7934)  time: 0.2628  data: 0.2146  max mem: 4001
+Epoch: [47] Total time: 0:00:02 (0.3103 s / it)
+Averaged stats: lr: 0.000040  loss: 0.7850 (0.7934)
+sampled model config: {'layer_num': 7, 'embed_dim': [64, 64, 64, 64, 64, 64, 64], 'num_heads': [4, 4, 4, 4, 6, 6, 6], 'mlp_ratio': [32, 8, 16, 16, 16, 32, 8]}
+sampled model parameters: 1772553
+Test:  [0/5]  eta: 0:00:08  loss: 0.9746 (0.9746)  acc1: 85.9375 (85.9375)  acc5: 100.0000 (100.0000)  time: 1.7288  data: 1.7106  max mem: 4001
+Test:  [4/5]  eta: 0:00:00  loss: 0.8890 (0.8527)  acc1: 85.9375 (88.5714)  acc5: 100.0000 (99.6825)  time: 0.3582  data: 0.3422  max mem: 4001
+Test: Total time: 0:00:02 (0.4293 s / it)
+* Acc@1 88.571 Acc@5 99.683 loss 0.853
+Accuracy of the network on the 630 test images: 88.6%
+Max accuracy: 88.57%
+**************************************************
+Accuracy results:
+OA: 0.8857 | AA: 0.8857 | Kappa: 0.8714
+**************************************************
+{'layer_num': 7, 'embed_dim': [64, 64, 64, 64, 64, 64, 64], 'num_heads': [4, 4, 4, 4, 6, 6, 6], 'mlp_ratio': [32, 8, 16, 16, 16, 32, 8]}
+1772553
+FLOPS is 7944509440
+Epoch: [48]  [0/8]  eta: 0:00:14  lr: 0.000039  loss: 0.7505 (0.7505)  time: 1.7772  data: 1.7162  max mem: 4001
+Epoch: [48]  [7/8]  eta: 0:00:00  lr: 0.000039  loss: 0.7534 (0.7617)  time: 0.2621  data: 0.2145  max mem: 4001
+Epoch: [48] Total time: 0:00:02 (0.3103 s / it)
+Averaged stats: lr: 0.000039  loss: 0.7534 (0.7617)
+sampled model config: {'layer_num': 7, 'embed_dim': [64, 64, 64, 64, 64, 64, 64], 'num_heads': [4, 4, 4, 4, 6, 6, 6], 'mlp_ratio': [32, 8, 16, 16, 16, 32, 8]}
+sampled model parameters: 1772553
+Test:  [0/5]  eta: 0:00:08  loss: 1.0784 (1.0784)  acc1: 75.7812 (75.7812)  acc5: 100.0000 (100.0000)  time: 1.7419  data: 1.7228  max mem: 4001
+Test:  [4/5]  eta: 0:00:00  loss: 0.8469 (0.8549)  acc1: 87.5000 (87.1429)  acc5: 100.0000 (99.8413)  time: 0.3617  data: 0.3446  max mem: 4001
+Test: Total time: 0:00:02 (0.4369 s / it)
+* Acc@1 87.143 Acc@5 99.841 loss 0.855
+Accuracy of the network on the 630 test images: 87.1%
+Max accuracy: 88.57%
+**************************************************
+Accuracy results:
+OA: 0.8714 | AA: 0.8714 | Kappa: 0.8554
+**************************************************
+{'layer_num': 7, 'embed_dim': [64, 64, 64, 64, 64, 64, 64], 'num_heads': [4, 4, 4, 4, 6, 6, 6], 'mlp_ratio': [32, 8, 16, 16, 16, 32, 8]}
+1772553
+FLOPS is 7944509440
+Epoch: [49]  [0/8]  eta: 0:00:14  lr: 0.000038  loss: 0.7535 (0.7535)  time: 1.7575  data: 1.7002  max mem: 4001
+Epoch: [49]  [7/8]  eta: 0:00:00  lr: 0.000038  loss: 0.7501 (0.7496)  time: 0.2621  data: 0.2126  max mem: 4001
+Epoch: [49] Total time: 0:00:02 (0.3095 s / it)
+Averaged stats: lr: 0.000038  loss: 0.7501 (0.7496)
+sampled model config: {'layer_num': 7, 'embed_dim': [64, 64, 64, 64, 64, 64, 64], 'num_heads': [4, 4, 4, 4, 6, 6, 6], 'mlp_ratio': [32, 8, 16, 16, 16, 32, 8]}
+sampled model parameters: 1772553
+Test:  [0/5]  eta: 0:00:08  loss: 1.0018 (1.0018)  acc1: 82.8125 (82.8125)  acc5: 99.2188 (99.2188)  time: 1.7491  data: 1.7306  max mem: 4001
+Test:  [4/5]  eta: 0:00:00  loss: 0.9012 (0.8504)  acc1: 85.1562 (87.1429)  acc5: 99.2188 (99.5238)  time: 0.3623  data: 0.3461  max mem: 4001
+Test: Total time: 0:00:02 (0.4391 s / it)
+* Acc@1 87.143 Acc@5 99.524 loss 0.850
+Accuracy of the network on the 630 test images: 87.1%
+Max accuracy: 88.57%
+**************************************************
+Accuracy results:
+OA: 0.8714 | AA: 0.8714 | Kappa: 0.8554
+**************************************************
+{'layer_num': 7, 'embed_dim': [64, 64, 64, 64, 64, 64, 64], 'num_heads': [4, 4, 4, 4, 6, 6, 6], 'mlp_ratio': [32, 8, 16, 16, 16, 32, 8]}
+1772553
+FLOPS is 7944509440
+Epoch: [50]  [0/8]  eta: 0:00:14  lr: 0.000037  loss: 0.7450 (0.7450)  time: 1.7773  data: 1.7145  max mem: 4001
+Epoch: [50]  [7/8]  eta: 0:00:00  lr: 0.000037  loss: 0.7321 (0.7419)  time: 0.2637  data: 0.2143  max mem: 4001
+Epoch: [50] Total time: 0:00:02 (0.3113 s / it)
+Averaged stats: lr: 0.000037  loss: 0.7321 (0.7419)
+sampled model config: {'layer_num': 7, 'embed_dim': [64, 64, 64, 64, 64, 64, 64], 'num_heads': [4, 4, 4, 4, 6, 6, 6], 'mlp_ratio': [32, 8, 16, 16, 16, 32, 8]}
+sampled model parameters: 1772553
+Test:  [0/5]  eta: 0:00:08  loss: 0.9007 (0.9007)  acc1: 92.1875 (92.1875)  acc5: 100.0000 (100.0000)  time: 1.7520  data: 1.7337  max mem: 4001
+Test:  [4/5]  eta: 0:00:00  loss: 0.9007 (0.8535)  acc1: 91.4062 (88.4127)  acc5: 100.0000 (99.6825)  time: 0.3628  data: 0.3468  max mem: 4001
+Test: Total time: 0:00:02 (0.4340 s / it)
+* Acc@1 88.413 Acc@5 99.683 loss 0.853
+Accuracy of the network on the 630 test images: 88.4%
+Max accuracy: 88.57%
+**************************************************
+Accuracy results:
+OA: 0.8841 | AA: 0.8841 | Kappa: 0.8696
+**************************************************
+{'layer_num': 7, 'embed_dim': [64, 64, 64, 64, 64, 64, 64], 'num_heads': [4, 4, 4, 4, 6, 6, 6], 'mlp_ratio': [32, 8, 16, 16, 16, 32, 8]}
+1772553
+FLOPS is 7944509440
+Epoch: [51]  [0/8]  eta: 0:00:14  lr: 0.000036  loss: 0.8055 (0.8055)  time: 1.7999  data: 1.7391  max mem: 4001
+Epoch: [51]  [7/8]  eta: 0:00:00  lr: 0.000036  loss: 0.7371 (0.7512)  time: 0.2658  data: 0.2174  max mem: 4001
+Epoch: [51] Total time: 0:00:02 (0.3098 s / it)
+Averaged stats: lr: 0.000036  loss: 0.7371 (0.7512)
+sampled model config: {'layer_num': 7, 'embed_dim': [64, 64, 64, 64, 64, 64, 64], 'num_heads': [4, 4, 4, 4, 6, 6, 6], 'mlp_ratio': [32, 8, 16, 16, 16, 32, 8]}
+sampled model parameters: 1772553
+Test:  [0/5]  eta: 0:00:09  loss: 0.9362 (0.9362)  acc1: 89.8438 (89.8438)  acc5: 100.0000 (100.0000)  time: 1.8191  data: 1.8008  max mem: 4001
+Test:  [4/5]  eta: 0:00:00  loss: 0.8322 (0.8601)  acc1: 89.8438 (87.4603)  acc5: 100.0000 (99.6825)  time: 0.3762  data: 0.3602  max mem: 4001
+Test: Total time: 0:00:02 (0.4522 s / it)
+* Acc@1 87.460 Acc@5 99.683 loss 0.860
+Accuracy of the network on the 630 test images: 87.5%
+Max accuracy: 88.57%
+**************************************************
+Accuracy results:
+OA: 0.8746 | AA: 0.8746 | Kappa: 0.8589
+**************************************************
+{'layer_num': 7, 'embed_dim': [64, 64, 64, 64, 64, 64, 64], 'num_heads': [4, 4, 4, 4, 6, 6, 6], 'mlp_ratio': [32, 8, 16, 16, 16, 32, 8]}
+1772553
+FLOPS is 7944509440
+Epoch: [52]  [0/8]  eta: 0:00:14  lr: 0.000035  loss: 0.7205 (0.7205)  time: 1.7757  data: 1.7195  max mem: 4001
+Epoch: [52]  [7/8]  eta: 0:00:00  lr: 0.000035  loss: 0.7180 (0.7359)  time: 0.2613  data: 0.2150  max mem: 4001
+Epoch: [52] Total time: 0:00:02 (0.3089 s / it)
+Averaged stats: lr: 0.000035  loss: 0.7180 (0.7359)
+sampled model config: {'layer_num': 7, 'embed_dim': [64, 64, 64, 64, 64, 64, 64], 'num_heads': [4, 4, 4, 4, 6, 6, 6], 'mlp_ratio': [32, 8, 16, 16, 16, 32, 8]}
+sampled model parameters: 1772553
+Test:  [0/5]  eta: 0:00:08  loss: 0.8929 (0.8929)  acc1: 89.0625 (89.0625)  acc5: 100.0000 (100.0000)  time: 1.7209  data: 1.7026  max mem: 4001
+Test:  [4/5]  eta: 0:00:00  loss: 0.8929 (0.8737)  acc1: 87.5000 (85.7143)  acc5: 100.0000 (99.5238)  time: 0.3567  data: 0.3406  max mem: 4001
+Test: Total time: 0:00:02 (0.4310 s / it)
+* Acc@1 85.714 Acc@5 99.524 loss 0.874
+Accuracy of the network on the 630 test images: 85.7%
+Max accuracy: 88.57%
+**************************************************
+Accuracy results:
+OA: 0.8571 | AA: 0.8571 | Kappa: 0.8393
+**************************************************
+{'layer_num': 7, 'embed_dim': [64, 64, 64, 64, 64, 64, 64], 'num_heads': [4, 4, 4, 4, 6, 6, 6], 'mlp_ratio': [32, 8, 16, 16, 16, 32, 8]}
+1772553
+FLOPS is 7944509440
+Epoch: [53]  [0/8]  eta: 0:00:14  lr: 0.000035  loss: 0.7568 (0.7568)  time: 1.7565  data: 1.7014  max mem: 4001
+Epoch: [53]  [7/8]  eta: 0:00:00  lr: 0.000035  loss: 0.7596 (0.7640)  time: 0.2590  data: 0.2127  max mem: 4001
+Epoch: [53] Total time: 0:00:02 (0.3031 s / it)
+Averaged stats: lr: 0.000035  loss: 0.7596 (0.7640)
+sampled model config: {'layer_num': 7, 'embed_dim': [64, 64, 64, 64, 64, 64, 64], 'num_heads': [4, 4, 4, 4, 6, 6, 6], 'mlp_ratio': [32, 8, 16, 16, 16, 32, 8]}
+sampled model parameters: 1772553
+Test:  [0/5]  eta: 0:00:08  loss: 0.9723 (0.9723)  acc1: 83.5938 (83.5938)  acc5: 98.4375 (98.4375)  time: 1.7347  data: 1.7144  max mem: 4001
+Test:  [4/5]  eta: 0:00:00  loss: 0.8428 (0.8560)  acc1: 84.7458 (86.3492)  acc5: 99.2188 (99.2063)  time: 0.3601  data: 0.3429  max mem: 4001
+Test: Total time: 0:00:02 (0.4314 s / it)
+* Acc@1 86.349 Acc@5 99.206 loss 0.856
+Accuracy of the network on the 630 test images: 86.3%
+Max accuracy: 88.57%
+**************************************************
+Accuracy results:
+OA: 0.8635 | AA: 0.8635 | Kappa: 0.8464
+**************************************************
+{'layer_num': 7, 'embed_dim': [64, 64, 64, 64, 64, 64, 64], 'num_heads': [4, 4, 4, 4, 6, 6, 6], 'mlp_ratio': [32, 8, 16, 16, 16, 32, 8]}
+1772553
+FLOPS is 7944509440
+Epoch: [54]  [0/8]  eta: 0:00:14  lr: 0.000034  loss: 0.6944 (0.6944)  time: 1.7685  data: 1.7080  max mem: 4001
+Epoch: [54]  [7/8]  eta: 0:00:00  lr: 0.000034  loss: 0.7016 (0.7235)  time: 0.2608  data: 0.2135  max mem: 4001
+Epoch: [54] Total time: 0:00:02 (0.3100 s / it)
+Averaged stats: lr: 0.000034  loss: 0.7016 (0.7235)
+sampled model config: {'layer_num': 7, 'embed_dim': [64, 64, 64, 64, 64, 64, 64], 'num_heads': [4, 4, 4, 4, 6, 6, 6], 'mlp_ratio': [32, 8, 16, 16, 16, 32, 8]}
+sampled model parameters: 1772553
+Test:  [0/5]  eta: 0:00:08  loss: 0.8917 (0.8917)  acc1: 89.8438 (89.8438)  acc5: 100.0000 (100.0000)  time: 1.7471  data: 1.7286  max mem: 4001
+Test:  [4/5]  eta: 0:00:00  loss: 0.8917 (0.8440)  acc1: 89.0625 (87.3016)  acc5: 100.0000 (99.6825)  time: 0.3618  data: 0.3458  max mem: 4001
+Test: Total time: 0:00:02 (0.4364 s / it)
+* Acc@1 87.302 Acc@5 99.683 loss 0.844
+Accuracy of the network on the 630 test images: 87.3%
+Max accuracy: 88.57%
+**************************************************
+Accuracy results:
+OA: 0.8730 | AA: 0.8730 | Kappa: 0.8571
+**************************************************
+{'layer_num': 7, 'embed_dim': [64, 64, 64, 64, 64, 64, 64], 'num_heads': [4, 4, 4, 4, 6, 6, 6], 'mlp_ratio': [32, 8, 16, 16, 16, 32, 8]}
+1772553
+FLOPS is 7944509440
+Epoch: [55]  [0/8]  eta: 0:00:14  lr: 0.000033  loss: 0.7164 (0.7164)  time: 1.7700  data: 1.7099  max mem: 4001
+Epoch: [55]  [7/8]  eta: 0:00:00  lr: 0.000033  loss: 0.7152 (0.7059)  time: 0.2632  data: 0.2138  max mem: 4001
+Epoch: [55] Total time: 0:00:02 (0.3129 s / it)
+Averaged stats: lr: 0.000033  loss: 0.7152 (0.7059)
+sampled model config: {'layer_num': 7, 'embed_dim': [64, 64, 64, 64, 64, 64, 64], 'num_heads': [4, 4, 4, 4, 6, 6, 6], 'mlp_ratio': [32, 8, 16, 16, 16, 32, 8]}
+sampled model parameters: 1772553
+Test:  [0/5]  eta: 0:00:08  loss: 0.9298 (0.9298)  acc1: 88.2812 (88.2812)  acc5: 100.0000 (100.0000)  time: 1.7440  data: 1.7259  max mem: 4001
+Test:  [4/5]  eta: 0:00:00  loss: 0.8456 (0.7958)  acc1: 88.2812 (89.5238)  acc5: 100.0000 (99.8413)  time: 0.3612  data: 0.3452  max mem: 4001
+Test: Total time: 0:00:02 (0.4395 s / it)
+* Acc@1 89.524 Acc@5 99.841 loss 0.796
+Accuracy of the network on the 630 test images: 89.5%
+Max accuracy: 89.52%
+**************************************************
+Accuracy results:
+OA: 0.8952 | AA: 0.8952 | Kappa: 0.8821
+**************************************************
+{'layer_num': 7, 'embed_dim': [64, 64, 64, 64, 64, 64, 64], 'num_heads': [4, 4, 4, 4, 6, 6, 6], 'mlp_ratio': [32, 8, 16, 16, 16, 32, 8]}
+1772553
+FLOPS is 7944509440
+Epoch: [56]  [0/8]  eta: 0:00:13  lr: 0.000032  loss: 0.6340 (0.6340)  time: 1.7415  data: 1.6857  max mem: 4001
+Epoch: [56]  [7/8]  eta: 0:00:00  lr: 0.000032  loss: 0.7113 (0.7106)  time: 0.2578  data: 0.2107  max mem: 4001
+Epoch: [56] Total time: 0:00:02 (0.3037 s / it)
+Averaged stats: lr: 0.000032  loss: 0.7113 (0.7106)
+sampled model config: {'layer_num': 7, 'embed_dim': [64, 64, 64, 64, 64, 64, 64], 'num_heads': [4, 4, 4, 4, 6, 6, 6], 'mlp_ratio': [32, 8, 16, 16, 16, 32, 8]}
+sampled model parameters: 1772553
+Test:  [0/5]  eta: 0:00:08  loss: 0.9041 (0.9041)  acc1: 86.7188 (86.7188)  acc5: 100.0000 (100.0000)  time: 1.7331  data: 1.7153  max mem: 4001
+Test:  [4/5]  eta: 0:00:00  loss: 0.8283 (0.7907)  acc1: 86.7188 (88.5714)  acc5: 100.0000 (99.8413)  time: 0.3591  data: 0.3431  max mem: 4001
+Test: Total time: 0:00:02 (0.4339 s / it)
+* Acc@1 88.571 Acc@5 99.841 loss 0.791
+Accuracy of the network on the 630 test images: 88.6%
+Max accuracy: 89.52%
+**************************************************
+Accuracy results:
+OA: 0.8857 | AA: 0.8857 | Kappa: 0.8714
+**************************************************
+{'layer_num': 7, 'embed_dim': [64, 64, 64, 64, 64, 64, 64], 'num_heads': [4, 4, 4, 4, 6, 6, 6], 'mlp_ratio': [32, 8, 16, 16, 16, 32, 8]}
+1772553
+FLOPS is 7944509440
+Epoch: [57]  [0/8]  eta: 0:00:14  lr: 0.000031  loss: 0.6614 (0.6614)  time: 1.7706  data: 1.7195  max mem: 4001
+Epoch: [57]  [7/8]  eta: 0:00:00  lr: 0.000031  loss: 0.6912 (0.6948)  time: 0.2616  data: 0.2150  max mem: 4001
+Epoch: [57] Total time: 0:00:02 (0.3123 s / it)
+Averaged stats: lr: 0.000031  loss: 0.6912 (0.6948)
+sampled model config: {'layer_num': 7, 'embed_dim': [64, 64, 64, 64, 64, 64, 64], 'num_heads': [4, 4, 4, 4, 6, 6, 6], 'mlp_ratio': [32, 8, 16, 16, 16, 32, 8]}
+sampled model parameters: 1772553
+Test:  [0/5]  eta: 0:00:08  loss: 0.9326 (0.9326)  acc1: 85.1562 (85.1562)  acc5: 100.0000 (100.0000)  time: 1.7180  data: 1.6984  max mem: 4001
+Test:  [4/5]  eta: 0:00:00  loss: 0.8821 (0.8091)  acc1: 85.1562 (87.9365)  acc5: 100.0000 (99.6825)  time: 0.3568  data: 0.3397  max mem: 4001
+Test: Total time: 0:00:02 (0.4263 s / it)
+* Acc@1 87.937 Acc@5 99.683 loss 0.809
+Accuracy of the network on the 630 test images: 87.9%
+Max accuracy: 89.52%
+**************************************************
+Accuracy results:
+OA: 0.8794 | AA: 0.8794 | Kappa: 0.8643
+**************************************************
+{'layer_num': 7, 'embed_dim': [64, 64, 64, 64, 64, 64, 64], 'num_heads': [4, 4, 4, 4, 6, 6, 6], 'mlp_ratio': [32, 8, 16, 16, 16, 32, 8]}
+1772553
+FLOPS is 7944509440
+Epoch: [58]  [0/8]  eta: 0:00:14  lr: 0.000031  loss: 0.7385 (0.7385)  time: 1.7770  data: 1.7190  max mem: 4001
+Epoch: [58]  [7/8]  eta: 0:00:00  lr: 0.000031  loss: 0.7086 (0.7116)  time: 0.2625  data: 0.2149  max mem: 4001
+Epoch: [58] Total time: 0:00:02 (0.3061 s / it)
+Averaged stats: lr: 0.000031  loss: 0.7086 (0.7116)
+sampled model config: {'layer_num': 7, 'embed_dim': [64, 64, 64, 64, 64, 64, 64], 'num_heads': [4, 4, 4, 4, 6, 6, 6], 'mlp_ratio': [32, 8, 16, 16, 16, 32, 8]}
+sampled model parameters: 1772553
+Test:  [0/5]  eta: 0:00:08  loss: 0.9473 (0.9473)  acc1: 83.5938 (83.5938)  acc5: 99.2188 (99.2188)  time: 1.7492  data: 1.7280  max mem: 4001
+Test:  [4/5]  eta: 0:00:00  loss: 0.8031 (0.7909)  acc1: 83.5938 (87.9365)  acc5: 100.0000 (99.6825)  time: 0.3622  data: 0.3456  max mem: 4001
+Test: Total time: 0:00:02 (0.4322 s / it)
+* Acc@1 87.937 Acc@5 99.683 loss 0.791
+Accuracy of the network on the 630 test images: 87.9%
+Max accuracy: 89.52%
+**************************************************
+Accuracy results:
+OA: 0.8794 | AA: 0.8794 | Kappa: 0.8643
+**************************************************
+{'layer_num': 7, 'embed_dim': [64, 64, 64, 64, 64, 64, 64], 'num_heads': [4, 4, 4, 4, 6, 6, 6], 'mlp_ratio': [32, 8, 16, 16, 16, 32, 8]}
+1772553
+FLOPS is 7944509440
+Epoch: [59]  [0/8]  eta: 0:00:14  lr: 0.000030  loss: 0.6695 (0.6695)  time: 1.7943  data: 1.7319  max mem: 4001
+Epoch: [59]  [7/8]  eta: 0:00:00  lr: 0.000030  loss: 0.6695 (0.6709)  time: 0.2646  data: 0.2165  max mem: 4001
+Epoch: [59] Total time: 0:00:02 (0.3098 s / it)
+Averaged stats: lr: 0.000030  loss: 0.6695 (0.6709)
+sampled model config: {'layer_num': 7, 'embed_dim': [64, 64, 64, 64, 64, 64, 64], 'num_heads': [4, 4, 4, 4, 6, 6, 6], 'mlp_ratio': [32, 8, 16, 16, 16, 32, 8]}
+sampled model parameters: 1772553
+Test:  [0/5]  eta: 0:00:08  loss: 0.7830 (0.7830)  acc1: 96.8750 (96.8750)  acc5: 100.0000 (100.0000)  time: 1.7493  data: 1.7316  max mem: 4001
+Test:  [4/5]  eta: 0:00:00  loss: 0.7830 (0.8114)  acc1: 88.9830 (86.8254)  acc5: 100.0000 (99.8413)  time: 0.3624  data: 0.3463  max mem: 4001
+Test: Total time: 0:00:02 (0.4366 s / it)
+* Acc@1 86.825 Acc@5 99.841 loss 0.811
+Accuracy of the network on the 630 test images: 86.8%
+Max accuracy: 89.52%
+**************************************************
+Accuracy results:
+OA: 0.8683 | AA: 0.8683 | Kappa: 0.8518
+**************************************************
+{'layer_num': 7, 'embed_dim': [64, 64, 64, 64, 64, 64, 64], 'num_heads': [4, 4, 4, 4, 6, 6, 6], 'mlp_ratio': [32, 8, 16, 16, 16, 32, 8]}
+1772553
+FLOPS is 7944509440
+Epoch: [60]  [0/8]  eta: 0:00:14  lr: 0.000029  loss: 0.6329 (0.6329)  time: 1.7857  data: 1.7256  max mem: 4001
+Epoch: [60]  [7/8]  eta: 0:00:00  lr: 0.000029  loss: 0.6617 (0.6634)  time: 0.2640  data: 0.2157  max mem: 4001
+Epoch: [60] Total time: 0:00:02 (0.3135 s / it)
+Averaged stats: lr: 0.000029  loss: 0.6617 (0.6634)
+sampled model config: {'layer_num': 7, 'embed_dim': [64, 64, 64, 64, 64, 64, 64], 'num_heads': [4, 4, 4, 4, 6, 6, 6], 'mlp_ratio': [32, 8, 16, 16, 16, 32, 8]}
+sampled model parameters: 1772553
+Test:  [0/5]  eta: 0:00:08  loss: 0.9701 (0.9701)  acc1: 75.7812 (75.7812)  acc5: 99.2188 (99.2188)  time: 1.7680  data: 1.7495  max mem: 4001
+Test:  [4/5]  eta: 0:00:00  loss: 0.7566 (0.7840)  acc1: 89.8438 (87.9365)  acc5: 100.0000 (99.6825)  time: 0.3663  data: 0.3499  max mem: 4001
+Test: Total time: 0:00:02 (0.4385 s / it)
+* Acc@1 87.937 Acc@5 99.683 loss 0.784
+Accuracy of the network on the 630 test images: 87.9%
+Max accuracy: 89.52%
+**************************************************
+Accuracy results:
+OA: 0.8794 | AA: 0.8794 | Kappa: 0.8643
+**************************************************
+{'layer_num': 7, 'embed_dim': [64, 64, 64, 64, 64, 64, 64], 'num_heads': [4, 4, 4, 4, 6, 6, 6], 'mlp_ratio': [32, 8, 16, 16, 16, 32, 8]}
+1772553
+FLOPS is 7944509440
+Epoch: [61]  [0/8]  eta: 0:00:14  lr: 0.000028  loss: 0.6960 (0.6960)  time: 1.7734  data: 1.7174  max mem: 4001
+Epoch: [61]  [7/8]  eta: 0:00:00  lr: 0.000028  loss: 0.6794 (0.6781)  time: 0.2627  data: 0.2147  max mem: 4001
+Epoch: [61] Total time: 0:00:02 (0.3133 s / it)
+Averaged stats: lr: 0.000028  loss: 0.6794 (0.6781)
+sampled model config: {'layer_num': 7, 'embed_dim': [64, 64, 64, 64, 64, 64, 64], 'num_heads': [4, 4, 4, 4, 6, 6, 6], 'mlp_ratio': [32, 8, 16, 16, 16, 32, 8]}
+sampled model parameters: 1772553
+Test:  [0/5]  eta: 0:00:09  loss: 0.8558 (0.8558)  acc1: 90.6250 (90.6250)  acc5: 99.2188 (99.2188)  time: 1.8179  data: 1.7998  max mem: 4001
+Test:  [4/5]  eta: 0:00:00  loss: 0.8332 (0.7720)  acc1: 90.6250 (88.7302)  acc5: 99.2188 (99.5238)  time: 0.3760  data: 0.3600  max mem: 4001
+Test: Total time: 0:00:02 (0.4473 s / it)
+* Acc@1 88.730 Acc@5 99.524 loss 0.772
+Accuracy of the network on the 630 test images: 88.7%
+Max accuracy: 89.52%
+**************************************************
+Accuracy results:
+OA: 0.8873 | AA: 0.8873 | Kappa: 0.8732
+**************************************************
+{'layer_num': 7, 'embed_dim': [64, 64, 64, 64, 64, 64, 64], 'num_heads': [4, 4, 4, 4, 6, 6, 6], 'mlp_ratio': [32, 8, 16, 16, 16, 32, 8]}
+1772553
+FLOPS is 7944509440
+Epoch: [62]  [0/8]  eta: 0:00:14  lr: 0.000027  loss: 0.6508 (0.6508)  time: 1.7752  data: 1.7140  max mem: 4001
+Epoch: [62]  [7/8]  eta: 0:00:00  lr: 0.000027  loss: 0.6429 (0.6366)  time: 0.2622  data: 0.2143  max mem: 4001
+Epoch: [62] Total time: 0:00:02 (0.3106 s / it)
+Averaged stats: lr: 0.000027  loss: 0.6429 (0.6366)
+sampled model config: {'layer_num': 7, 'embed_dim': [64, 64, 64, 64, 64, 64, 64], 'num_heads': [4, 4, 4, 4, 6, 6, 6], 'mlp_ratio': [32, 8, 16, 16, 16, 32, 8]}
+sampled model parameters: 1772553
+Test:  [0/5]  eta: 0:00:08  loss: 0.8672 (0.8672)  acc1: 87.5000 (87.5000)  acc5: 99.2188 (99.2188)  time: 1.7244  data: 1.7061  max mem: 4001
+Test:  [4/5]  eta: 0:00:00  loss: 0.8179 (0.7630)  acc1: 87.5000 (88.5714)  acc5: 99.2188 (99.5238)  time: 0.3573  data: 0.3412  max mem: 4001
+Test: Total time: 0:00:02 (0.4380 s / it)
+* Acc@1 88.571 Acc@5 99.524 loss 0.763
+Accuracy of the network on the 630 test images: 88.6%
+Max accuracy: 89.52%
+**************************************************
+Accuracy results:
+OA: 0.8857 | AA: 0.8857 | Kappa: 0.8714
+**************************************************
+{'layer_num': 7, 'embed_dim': [64, 64, 64, 64, 64, 64, 64], 'num_heads': [4, 4, 4, 4, 6, 6, 6], 'mlp_ratio': [32, 8, 16, 16, 16, 32, 8]}
+1772553
+FLOPS is 7944509440
+Epoch: [63]  [0/8]  eta: 0:00:14  lr: 0.000027  loss: 0.6546 (0.6546)  time: 1.7595  data: 1.7018  max mem: 4001
+Epoch: [63]  [7/8]  eta: 0:00:00  lr: 0.000027  loss: 0.6446 (0.6480)  time: 0.2609  data: 0.2128  max mem: 4001
+Epoch: [63] Total time: 0:00:02 (0.3113 s / it)
+Averaged stats: lr: 0.000027  loss: 0.6446 (0.6480)
+sampled model config: {'layer_num': 7, 'embed_dim': [64, 64, 64, 64, 64, 64, 64], 'num_heads': [4, 4, 4, 4, 6, 6, 6], 'mlp_ratio': [32, 8, 16, 16, 16, 32, 8]}
+sampled model parameters: 1772553
+Test:  [0/5]  eta: 0:00:08  loss: 0.8758 (0.8758)  acc1: 88.2812 (88.2812)  acc5: 100.0000 (100.0000)  time: 1.7499  data: 1.7307  max mem: 4001
+Test:  [4/5]  eta: 0:00:00  loss: 0.7954 (0.7504)  acc1: 88.2812 (89.2063)  acc5: 100.0000 (99.8413)  time: 0.3632  data: 0.3462  max mem: 4001
+Test: Total time: 0:00:02 (0.4384 s / it)
+* Acc@1 89.206 Acc@5 99.841 loss 0.750
+Accuracy of the network on the 630 test images: 89.2%
+Max accuracy: 89.52%
+**************************************************
+Accuracy results:
+OA: 0.8921 | AA: 0.8921 | Kappa: 0.8786
+**************************************************
+{'layer_num': 7, 'embed_dim': [64, 64, 64, 64, 64, 64, 64], 'num_heads': [4, 4, 4, 4, 6, 6, 6], 'mlp_ratio': [32, 8, 16, 16, 16, 32, 8]}
+1772553
+FLOPS is 7944509440
+Epoch: [64]  [0/8]  eta: 0:00:14  lr: 0.000026  loss: 0.6193 (0.6193)  time: 1.8004  data: 1.7409  max mem: 4001
+Epoch: [64]  [7/8]  eta: 0:00:00  lr: 0.000026  loss: 0.6193 (0.6447)  time: 0.2685  data: 0.2176  max mem: 4001
+Epoch: [64] Total time: 0:00:02 (0.3141 s / it)
+Averaged stats: lr: 0.000026  loss: 0.6193 (0.6447)
+sampled model config: {'layer_num': 7, 'embed_dim': [64, 64, 64, 64, 64, 64, 64], 'num_heads': [4, 4, 4, 4, 6, 6, 6], 'mlp_ratio': [32, 8, 16, 16, 16, 32, 8]}
+sampled model parameters: 1772553
+Test:  [0/5]  eta: 0:00:08  loss: 0.8631 (0.8631)  acc1: 85.9375 (85.9375)  acc5: 100.0000 (100.0000)  time: 1.7435  data: 1.7258  max mem: 4001
+Test:  [4/5]  eta: 0:00:00  loss: 0.7823 (0.7500)  acc1: 85.9375 (87.7778)  acc5: 100.0000 (99.8413)  time: 0.3612  data: 0.3452  max mem: 4001
+Test: Total time: 0:00:02 (0.4313 s / it)
+* Acc@1 87.778 Acc@5 99.841 loss 0.750
+Accuracy of the network on the 630 test images: 87.8%
+Max accuracy: 89.52%
+**************************************************
+Accuracy results:
+OA: 0.8778 | AA: 0.8778 | Kappa: 0.8625
+**************************************************
+{'layer_num': 7, 'embed_dim': [64, 64, 64, 64, 64, 64, 64], 'num_heads': [4, 4, 4, 4, 6, 6, 6], 'mlp_ratio': [32, 8, 16, 16, 16, 32, 8]}
+1772553
+FLOPS is 7944509440
+Epoch: [65]  [0/8]  eta: 0:00:14  lr: 0.000025  loss: 0.6084 (0.6084)  time: 1.7578  data: 1.6987  max mem: 4001
+Epoch: [65]  [7/8]  eta: 0:00:00  lr: 0.000025  loss: 0.6084 (0.6221)  time: 0.2609  data: 0.2124  max mem: 4001
+Epoch: [65] Total time: 0:00:02 (0.3046 s / it)
+Averaged stats: lr: 0.000025  loss: 0.6084 (0.6221)
+sampled model config: {'layer_num': 7, 'embed_dim': [64, 64, 64, 64, 64, 64, 64], 'num_heads': [4, 4, 4, 4, 6, 6, 6], 'mlp_ratio': [32, 8, 16, 16, 16, 32, 8]}
+sampled model parameters: 1772553
+Test:  [0/5]  eta: 0:00:08  loss: 0.8627 (0.8627)  acc1: 87.5000 (87.5000)  acc5: 100.0000 (100.0000)  time: 1.7010  data: 1.6822  max mem: 4001
+Test:  [4/5]  eta: 0:00:00  loss: 0.7744 (0.7489)  acc1: 89.0625 (88.8889)  acc5: 100.0000 (99.6825)  time: 0.3526  data: 0.3365  max mem: 4001
+Test: Total time: 0:00:02 (0.4284 s / it)
+* Acc@1 88.889 Acc@5 99.683 loss 0.749
+Accuracy of the network on the 630 test images: 88.9%
+Max accuracy: 89.52%
+**************************************************
+Accuracy results:
+OA: 0.8889 | AA: 0.8889 | Kappa: 0.8750
+**************************************************
+{'layer_num': 7, 'embed_dim': [64, 64, 64, 64, 64, 64, 64], 'num_heads': [4, 4, 4, 4, 6, 6, 6], 'mlp_ratio': [32, 8, 16, 16, 16, 32, 8]}
+1772553
+FLOPS is 7944509440
+Epoch: [66]  [0/8]  eta: 0:00:14  lr: 0.000024  loss: 0.6339 (0.6339)  time: 1.7873  data: 1.7271  max mem: 4001
+Epoch: [66]  [7/8]  eta: 0:00:00  lr: 0.000024  loss: 0.6171 (0.6231)  time: 0.2636  data: 0.2159  max mem: 4001
+Epoch: [66] Total time: 0:00:02 (0.3108 s / it)
+Averaged stats: lr: 0.000024  loss: 0.6171 (0.6231)
+sampled model config: {'layer_num': 7, 'embed_dim': [64, 64, 64, 64, 64, 64, 64], 'num_heads': [4, 4, 4, 4, 6, 6, 6], 'mlp_ratio': [32, 8, 16, 16, 16, 32, 8]}
+sampled model parameters: 1772553
+Test:  [0/5]  eta: 0:00:08  loss: 0.8028 (0.8028)  acc1: 92.1875 (92.1875)  acc5: 100.0000 (100.0000)  time: 1.7451  data: 1.7266  max mem: 4001
+Test:  [4/5]  eta: 0:00:00  loss: 0.8028 (0.7321)  acc1: 92.1875 (90.0000)  acc5: 100.0000 (99.6825)  time: 0.3614  data: 0.3454  max mem: 4001
+Test: Total time: 0:00:02 (0.4324 s / it)
+* Acc@1 90.000 Acc@5 99.683 loss 0.732
+Accuracy of the network on the 630 test images: 90.0%
+Max accuracy: 90.00%
+**************************************************
+Accuracy results:
+OA: 0.9000 | AA: 0.9000 | Kappa: 0.8875
+**************************************************
+{'layer_num': 7, 'embed_dim': [64, 64, 64, 64, 64, 64, 64], 'num_heads': [4, 4, 4, 4, 6, 6, 6], 'mlp_ratio': [32, 8, 16, 16, 16, 32, 8]}
+1772553
+FLOPS is 7944509440
+Epoch: [67]  [0/8]  eta: 0:00:14  lr: 0.000024  loss: 0.6259 (0.6259)  time: 1.7549  data: 1.6961  max mem: 4001
+Epoch: [67]  [7/8]  eta: 0:00:00  lr: 0.000024  loss: 0.6090 (0.6092)  time: 0.2607  data: 0.2120  max mem: 4001
+Epoch: [67] Total time: 0:00:02 (0.3076 s / it)
+Averaged stats: lr: 0.000024  loss: 0.6090 (0.6092)
+sampled model config: {'layer_num': 7, 'embed_dim': [64, 64, 64, 64, 64, 64, 64], 'num_heads': [4, 4, 4, 4, 6, 6, 6], 'mlp_ratio': [32, 8, 16, 16, 16, 32, 8]}
+sampled model parameters: 1772553
+Test:  [0/5]  eta: 0:00:08  loss: 0.7910 (0.7910)  acc1: 89.0625 (89.0625)  acc5: 100.0000 (100.0000)  time: 1.7348  data: 1.7159  max mem: 4001
+Test:  [4/5]  eta: 0:00:00  loss: 0.7910 (0.7335)  acc1: 89.0625 (88.8889)  acc5: 100.0000 (99.8413)  time: 0.3601  data: 0.3432  max mem: 4001
+Test: Total time: 0:00:02 (0.4341 s / it)
+* Acc@1 88.889 Acc@5 99.841 loss 0.734
+Accuracy of the network on the 630 test images: 88.9%
+Max accuracy: 90.00%
+**************************************************
+Accuracy results:
+OA: 0.8889 | AA: 0.8889 | Kappa: 0.8750
+**************************************************
+{'layer_num': 7, 'embed_dim': [64, 64, 64, 64, 64, 64, 64], 'num_heads': [4, 4, 4, 4, 6, 6, 6], 'mlp_ratio': [32, 8, 16, 16, 16, 32, 8]}
+1772553
+FLOPS is 7944509440
+Epoch: [68]  [0/8]  eta: 0:00:14  lr: 0.000023  loss: 0.6103 (0.6103)  time: 1.7574  data: 1.7066  max mem: 4001
+Epoch: [68]  [7/8]  eta: 0:00:00  lr: 0.000023  loss: 0.6062 (0.6117)  time: 0.2605  data: 0.2134  max mem: 4001
+Epoch: [68] Total time: 0:00:02 (0.3096 s / it)
+Averaged stats: lr: 0.000023  loss: 0.6062 (0.6117)
+sampled model config: {'layer_num': 7, 'embed_dim': [64, 64, 64, 64, 64, 64, 64], 'num_heads': [4, 4, 4, 4, 6, 6, 6], 'mlp_ratio': [32, 8, 16, 16, 16, 32, 8]}
+sampled model parameters: 1772553
+Test:  [0/5]  eta: 0:00:08  loss: 0.8524 (0.8524)  acc1: 85.1562 (85.1562)  acc5: 99.2188 (99.2188)  time: 1.7410  data: 1.7230  max mem: 4001
+Test:  [4/5]  eta: 0:00:00  loss: 0.7494 (0.7239)  acc1: 87.5000 (90.1587)  acc5: 100.0000 (99.6825)  time: 0.3606  data: 0.3446  max mem: 4001
+Test: Total time: 0:00:02 (0.4360 s / it)
+* Acc@1 90.159 Acc@5 99.683 loss 0.724
+Accuracy of the network on the 630 test images: 90.2%
+Max accuracy: 90.16%
+**************************************************
+Accuracy results:
+OA: 0.9016 | AA: 0.9016 | Kappa: 0.8893
+**************************************************
+{'layer_num': 7, 'embed_dim': [64, 64, 64, 64, 64, 64, 64], 'num_heads': [4, 4, 4, 4, 6, 6, 6], 'mlp_ratio': [32, 8, 16, 16, 16, 32, 8]}
+1772553
+FLOPS is 7944509440
+Epoch: [69]  [0/8]  eta: 0:00:14  lr: 0.000022  loss: 0.6312 (0.6312)  time: 1.7812  data: 1.7251  max mem: 4001
+Epoch: [69]  [7/8]  eta: 0:00:00  lr: 0.000022  loss: 0.6041 (0.6191)  time: 0.2648  data: 0.2157  max mem: 4001
+Epoch: [69] Total time: 0:00:02 (0.3141 s / it)
+Averaged stats: lr: 0.000022  loss: 0.6041 (0.6191)
+sampled model config: {'layer_num': 7, 'embed_dim': [64, 64, 64, 64, 64, 64, 64], 'num_heads': [4, 4, 4, 4, 6, 6, 6], 'mlp_ratio': [32, 8, 16, 16, 16, 32, 8]}
+sampled model parameters: 1772553
+Test:  [0/5]  eta: 0:00:08  loss: 0.8500 (0.8500)  acc1: 86.7188 (86.7188)  acc5: 100.0000 (100.0000)  time: 1.7555  data: 1.7317  max mem: 4001
+Test:  [4/5]  eta: 0:00:00  loss: 0.7819 (0.7209)  acc1: 86.7188 (89.8413)  acc5: 100.0000 (99.6825)  time: 0.3635  data: 0.3464  max mem: 4001
+Test: Total time: 0:00:02 (0.4360 s / it)
+* Acc@1 89.841 Acc@5 99.683 loss 0.721
+Accuracy of the network on the 630 test images: 89.8%
+Max accuracy: 90.16%
+**************************************************
+Accuracy results:
+OA: 0.8984 | AA: 0.8984 | Kappa: 0.8857
+**************************************************
+{'layer_num': 7, 'embed_dim': [64, 64, 64, 64, 64, 64, 64], 'num_heads': [4, 4, 4, 4, 6, 6, 6], 'mlp_ratio': [32, 8, 16, 16, 16, 32, 8]}
+1772553
+FLOPS is 7944509440
+Epoch: [70]  [0/8]  eta: 0:00:14  lr: 0.000021  loss: 0.6590 (0.6590)  time: 1.7987  data: 1.7375  max mem: 4001
+Epoch: [70]  [7/8]  eta: 0:00:00  lr: 0.000021  loss: 0.5994 (0.6120)  time: 0.2661  data: 0.2172  max mem: 4001
+Epoch: [70] Total time: 0:00:02 (0.3134 s / it)
+Averaged stats: lr: 0.000021  loss: 0.5994 (0.6120)
+sampled model config: {'layer_num': 7, 'embed_dim': [64, 64, 64, 64, 64, 64, 64], 'num_heads': [4, 4, 4, 4, 6, 6, 6], 'mlp_ratio': [32, 8, 16, 16, 16, 32, 8]}
+sampled model parameters: 1772553
+Test:  [0/5]  eta: 0:00:08  loss: 0.7800 (0.7800)  acc1: 91.4062 (91.4062)  acc5: 99.2188 (99.2188)  time: 1.7843  data: 1.7643  max mem: 4001
+Test:  [4/5]  eta: 0:00:00  loss: 0.7800 (0.7301)  acc1: 89.0625 (88.8889)  acc5: 99.2188 (99.5238)  time: 0.3692  data: 0.3529  max mem: 4001
+Test: Total time: 0:00:02 (0.4470 s / it)
+* Acc@1 88.889 Acc@5 99.524 loss 0.730
+Accuracy of the network on the 630 test images: 88.9%
+Max accuracy: 90.16%
+**************************************************
+Accuracy results:
+OA: 0.8889 | AA: 0.8889 | Kappa: 0.8750
+**************************************************
+{'layer_num': 7, 'embed_dim': [64, 64, 64, 64, 64, 64, 64], 'num_heads': [4, 4, 4, 4, 6, 6, 6], 'mlp_ratio': [32, 8, 16, 16, 16, 32, 8]}
+1772553
+FLOPS is 7944509440
+Epoch: [71]  [0/8]  eta: 0:00:14  lr: 0.000021  loss: 0.5772 (0.5772)  time: 1.7664  data: 1.7073  max mem: 4001
+Epoch: [71]  [7/8]  eta: 0:00:00  lr: 0.000021  loss: 0.5832 (0.5977)  time: 0.2603  data: 0.2134  max mem: 4001
+Epoch: [71] Total time: 0:00:02 (0.3079 s / it)
+Averaged stats: lr: 0.000021  loss: 0.5832 (0.5977)
+sampled model config: {'layer_num': 7, 'embed_dim': [64, 64, 64, 64, 64, 64, 64], 'num_heads': [4, 4, 4, 4, 6, 6, 6], 'mlp_ratio': [32, 8, 16, 16, 16, 32, 8]}
+sampled model parameters: 1772553
+Test:  [0/5]  eta: 0:00:08  loss: 0.8336 (0.8336)  acc1: 87.5000 (87.5000)  acc5: 99.2188 (99.2188)  time: 1.7290  data: 1.7086  max mem: 4001
+Test:  [4/5]  eta: 0:00:00  loss: 0.7800 (0.7139)  acc1: 87.5000 (89.2063)  acc5: 100.0000 (99.6825)  time: 0.3590  data: 0.3417  max mem: 4001
+Test: Total time: 0:00:02 (0.4343 s / it)
+* Acc@1 89.206 Acc@5 99.683 loss 0.714
+Accuracy of the network on the 630 test images: 89.2%
+Max accuracy: 90.16%
+**************************************************
+Accuracy results:
+OA: 0.8921 | AA: 0.8921 | Kappa: 0.8786
+**************************************************
+{'layer_num': 7, 'embed_dim': [64, 64, 64, 64, 64, 64, 64], 'num_heads': [4, 4, 4, 4, 6, 6, 6], 'mlp_ratio': [32, 8, 16, 16, 16, 32, 8]}
+1772553
+FLOPS is 7944509440
+Epoch: [72]  [0/8]  eta: 0:00:14  lr: 0.000020  loss: 0.6155 (0.6155)  time: 1.7648  data: 1.7043  max mem: 4001
+Epoch: [72]  [7/8]  eta: 0:00:00  lr: 0.000020  loss: 0.5980 (0.6011)  time: 0.2621  data: 0.2131  max mem: 4001
+Epoch: [72] Total time: 0:00:02 (0.3127 s / it)
+Averaged stats: lr: 0.000020  loss: 0.5980 (0.6011)
+sampled model config: {'layer_num': 7, 'embed_dim': [64, 64, 64, 64, 64, 64, 64], 'num_heads': [4, 4, 4, 4, 6, 6, 6], 'mlp_ratio': [32, 8, 16, 16, 16, 32, 8]}
+sampled model parameters: 1772553
+Test:  [0/5]  eta: 0:00:08  loss: 0.7953 (0.7953)  acc1: 92.1875 (92.1875)  acc5: 100.0000 (100.0000)  time: 1.7206  data: 1.7028  max mem: 4001
+Test:  [4/5]  eta: 0:00:00  loss: 0.7825 (0.7109)  acc1: 92.1875 (91.2698)  acc5: 100.0000 (99.8413)  time: 0.3567  data: 0.3406  max mem: 4001
+Test: Total time: 0:00:02 (0.4357 s / it)
+* Acc@1 91.270 Acc@5 99.841 loss 0.711
+Accuracy of the network on the 630 test images: 91.3%
+Max accuracy: 91.27%
+**************************************************
+Accuracy results:
+OA: 0.9127 | AA: 0.9127 | Kappa: 0.9018
+**************************************************
+{'layer_num': 7, 'embed_dim': [64, 64, 64, 64, 64, 64, 64], 'num_heads': [4, 4, 4, 4, 6, 6, 6], 'mlp_ratio': [32, 8, 16, 16, 16, 32, 8]}
+1772553
+FLOPS is 7944509440
+Epoch: [73]  [0/8]  eta: 0:00:14  lr: 0.000020  loss: 0.5929 (0.5929)  time: 1.7754  data: 1.7145  max mem: 4001
+Epoch: [73]  [7/8]  eta: 0:00:00  lr: 0.000020  loss: 0.5713 (0.5770)  time: 0.2643  data: 0.2143  max mem: 4001
+Epoch: [73] Total time: 0:00:02 (0.3147 s / it)
+Averaged stats: lr: 0.000020  loss: 0.5713 (0.5770)
+sampled model config: {'layer_num': 7, 'embed_dim': [64, 64, 64, 64, 64, 64, 64], 'num_heads': [4, 4, 4, 4, 6, 6, 6], 'mlp_ratio': [32, 8, 16, 16, 16, 32, 8]}
+sampled model parameters: 1772553
+Test:  [0/5]  eta: 0:00:08  loss: 0.7794 (0.7794)  acc1: 89.8438 (89.8438)  acc5: 100.0000 (100.0000)  time: 1.7223  data: 1.7004  max mem: 4001
+Test:  [4/5]  eta: 0:00:00  loss: 0.7794 (0.7112)  acc1: 89.8438 (89.0476)  acc5: 100.0000 (99.8413)  time: 0.3568  data: 0.3401  max mem: 4001
+Test: Total time: 0:00:02 (0.4269 s / it)
+* Acc@1 89.048 Acc@5 99.841 loss 0.711
+Accuracy of the network on the 630 test images: 89.0%
+Max accuracy: 91.27%
+**************************************************
+Accuracy results:
+OA: 0.8905 | AA: 0.8905 | Kappa: 0.8768
+**************************************************
+{'layer_num': 7, 'embed_dim': [64, 64, 64, 64, 64, 64, 64], 'num_heads': [4, 4, 4, 4, 6, 6, 6], 'mlp_ratio': [32, 8, 16, 16, 16, 32, 8]}
+1772553
+FLOPS is 7944509440
+Epoch: [74]  [0/8]  eta: 0:00:13  lr: 0.000019  loss: 0.5648 (0.5648)  time: 1.7446  data: 1.6885  max mem: 4001
+Epoch: [74]  [7/8]  eta: 0:00:00  lr: 0.000019  loss: 0.5800 (0.5844)  time: 0.2578  data: 0.2111  max mem: 4001
+Epoch: [74] Total time: 0:00:02 (0.3078 s / it)
+Averaged stats: lr: 0.000019  loss: 0.5800 (0.5844)
+sampled model config: {'layer_num': 7, 'embed_dim': [64, 64, 64, 64, 64, 64, 64], 'num_heads': [4, 4, 4, 4, 6, 6, 6], 'mlp_ratio': [32, 8, 16, 16, 16, 32, 8]}
+sampled model parameters: 1772553
+Test:  [0/5]  eta: 0:00:08  loss: 0.8452 (0.8452)  acc1: 82.8125 (82.8125)  acc5: 100.0000 (100.0000)  time: 1.7622  data: 1.7431  max mem: 4001
+Test:  [4/5]  eta: 0:00:00  loss: 0.7645 (0.7082)  acc1: 86.7188 (89.5238)  acc5: 100.0000 (99.8413)  time: 0.3656  data: 0.3486  max mem: 4001
+Test: Total time: 0:00:02 (0.4469 s / it)
+* Acc@1 89.524 Acc@5 99.841 loss 0.708
+Accuracy of the network on the 630 test images: 89.5%
+Max accuracy: 91.27%
+**************************************************
+Accuracy results:
+OA: 0.8952 | AA: 0.8952 | Kappa: 0.8821
+**************************************************
+{'layer_num': 7, 'embed_dim': [64, 64, 64, 64, 64, 64, 64], 'num_heads': [4, 4, 4, 4, 6, 6, 6], 'mlp_ratio': [32, 8, 16, 16, 16, 32, 8]}
+1772553
+FLOPS is 7944509440
+Epoch: [75]  [0/8]  eta: 0:00:14  lr: 0.000018  loss: 0.5922 (0.5922)  time: 1.7794  data: 1.7232  max mem: 4001
+Epoch: [75]  [7/8]  eta: 0:00:00  lr: 0.000018  loss: 0.5789 (0.5804)  time: 0.2650  data: 0.2154  max mem: 4001
+Epoch: [75] Total time: 0:00:02 (0.3110 s / it)
+Averaged stats: lr: 0.000018  loss: 0.5789 (0.5804)
+sampled model config: {'layer_num': 7, 'embed_dim': [64, 64, 64, 64, 64, 64, 64], 'num_heads': [4, 4, 4, 4, 6, 6, 6], 'mlp_ratio': [32, 8, 16, 16, 16, 32, 8]}
+sampled model parameters: 1772553
+Test:  [0/5]  eta: 0:00:08  loss: 0.7673 (0.7673)  acc1: 88.2812 (88.2812)  acc5: 100.0000 (100.0000)  time: 1.7220  data: 1.7038  max mem: 4001
+Test:  [4/5]  eta: 0:00:00  loss: 0.7673 (0.7341)  acc1: 88.2812 (88.2540)  acc5: 100.0000 (99.6825)  time: 0.3570  data: 0.3408  max mem: 4001
+Test: Total time: 0:00:02 (0.4291 s / it)
+* Acc@1 88.254 Acc@5 99.683 loss 0.734
+Accuracy of the network on the 630 test images: 88.3%
+Max accuracy: 91.27%
+**************************************************
+Accuracy results:
+OA: 0.8825 | AA: 0.8825 | Kappa: 0.8679
+**************************************************
+{'layer_num': 7, 'embed_dim': [64, 64, 64, 64, 64, 64, 64], 'num_heads': [4, 4, 4, 4, 6, 6, 6], 'mlp_ratio': [32, 8, 16, 16, 16, 32, 8]}
+1772553
+FLOPS is 7944509440
+Epoch: [76]  [0/8]  eta: 0:00:14  lr: 0.000018  loss: 0.5502 (0.5502)  time: 1.7610  data: 1.7045  max mem: 4001
+Epoch: [76]  [7/8]  eta: 0:00:00  lr: 0.000018  loss: 0.5687 (0.5780)  time: 0.2619  data: 0.2131  max mem: 4001
+Epoch: [76] Total time: 0:00:02 (0.3103 s / it)
+Averaged stats: lr: 0.000018  loss: 0.5687 (0.5780)
+sampled model config: {'layer_num': 7, 'embed_dim': [64, 64, 64, 64, 64, 64, 64], 'num_heads': [4, 4, 4, 4, 6, 6, 6], 'mlp_ratio': [32, 8, 16, 16, 16, 32, 8]}
+sampled model parameters: 1772553
+Test:  [0/5]  eta: 0:00:08  loss: 0.8344 (0.8344)  acc1: 82.8125 (82.8125)  acc5: 100.0000 (100.0000)  time: 1.7255  data: 1.7068  max mem: 4001
+Test:  [4/5]  eta: 0:00:00  loss: 0.7345 (0.7009)  acc1: 88.2812 (89.5238)  acc5: 100.0000 (99.8413)  time: 0.3578  data: 0.3414  max mem: 4001
+Test: Total time: 0:00:02 (0.4442 s / it)
+* Acc@1 89.524 Acc@5 99.841 loss 0.701
+Accuracy of the network on the 630 test images: 89.5%
+Max accuracy: 91.27%
+**************************************************
+Accuracy results:
+OA: 0.8952 | AA: 0.8952 | Kappa: 0.8821
+**************************************************
+{'layer_num': 7, 'embed_dim': [64, 64, 64, 64, 64, 64, 64], 'num_heads': [4, 4, 4, 4, 6, 6, 6], 'mlp_ratio': [32, 8, 16, 16, 16, 32, 8]}
+1772553
+FLOPS is 7944509440
+Epoch: [77]  [0/8]  eta: 0:00:14  lr: 0.000017  loss: 0.5908 (0.5908)  time: 1.7726  data: 1.7137  max mem: 4001
+Epoch: [77]  [7/8]  eta: 0:00:00  lr: 0.000017  loss: 0.5702 (0.5752)  time: 0.2636  data: 0.2142  max mem: 4001
+Epoch: [77] Total time: 0:00:02 (0.3075 s / it)
+Averaged stats: lr: 0.000017  loss: 0.5702 (0.5752)
+sampled model config: {'layer_num': 7, 'embed_dim': [64, 64, 64, 64, 64, 64, 64], 'num_heads': [4, 4, 4, 4, 6, 6, 6], 'mlp_ratio': [32, 8, 16, 16, 16, 32, 8]}
+sampled model parameters: 1772553
+Test:  [0/5]  eta: 0:00:08  loss: 0.7783 (0.7783)  acc1: 87.5000 (87.5000)  acc5: 99.2188 (99.2188)  time: 1.7266  data: 1.7088  max mem: 4001
+Test:  [4/5]  eta: 0:00:00  loss: 0.7783 (0.7084)  acc1: 87.5000 (88.2540)  acc5: 99.2188 (99.5238)  time: 0.3578  data: 0.3418  max mem: 4001
+Test: Total time: 0:00:02 (0.4380 s / it)
+* Acc@1 88.254 Acc@5 99.524 loss 0.708
+Accuracy of the network on the 630 test images: 88.3%
+Max accuracy: 91.27%
+**************************************************
+Accuracy results:
+OA: 0.8825 | AA: 0.8825 | Kappa: 0.8679
+**************************************************
+{'layer_num': 7, 'embed_dim': [64, 64, 64, 64, 64, 64, 64], 'num_heads': [4, 4, 4, 4, 6, 6, 6], 'mlp_ratio': [32, 8, 16, 16, 16, 32, 8]}
+1772553
+FLOPS is 7944509440
+Epoch: [78]  [0/8]  eta: 0:00:14  lr: 0.000017  loss: 0.5608 (0.5608)  time: 1.7506  data: 1.6943  max mem: 4001
+Epoch: [78]  [7/8]  eta: 0:00:00  lr: 0.000017  loss: 0.5608 (0.5620)  time: 0.2598  data: 0.2118  max mem: 4001
+Epoch: [78] Total time: 0:00:02 (0.3041 s / it)
+Averaged stats: lr: 0.000017  loss: 0.5608 (0.5620)
+sampled model config: {'layer_num': 7, 'embed_dim': [64, 64, 64, 64, 64, 64, 64], 'num_heads': [4, 4, 4, 4, 6, 6, 6], 'mlp_ratio': [32, 8, 16, 16, 16, 32, 8]}
+sampled model parameters: 1772553
+Test:  [0/5]  eta: 0:00:08  loss: 0.8071 (0.8071)  acc1: 85.9375 (85.9375)  acc5: 100.0000 (100.0000)  time: 1.7479  data: 1.7289  max mem: 4001
+Test:  [4/5]  eta: 0:00:00  loss: 0.7297 (0.6930)  acc1: 88.2812 (90.1587)  acc5: 100.0000 (99.8413)  time: 0.3629  data: 0.3458  max mem: 4001
+Test: Total time: 0:00:02 (0.4329 s / it)
+* Acc@1 90.159 Acc@5 99.841 loss 0.693
+Accuracy of the network on the 630 test images: 90.2%
+Max accuracy: 91.27%
+**************************************************
+Accuracy results:
+OA: 0.9016 | AA: 0.9016 | Kappa: 0.8893
+**************************************************
+{'layer_num': 7, 'embed_dim': [64, 64, 64, 64, 64, 64, 64], 'num_heads': [4, 4, 4, 4, 6, 6, 6], 'mlp_ratio': [32, 8, 16, 16, 16, 32, 8]}
+1772553
+FLOPS is 7944509440
+Epoch: [79]  [0/8]  eta: 0:00:14  lr: 0.000016  loss: 0.5339 (0.5339)  time: 1.7690  data: 1.7132  max mem: 4001
+Epoch: [79]  [7/8]  eta: 0:00:00  lr: 0.000016  loss: 0.5776 (0.5745)  time: 0.2619  data: 0.2142  max mem: 4001
+Epoch: [79] Total time: 0:00:02 (0.3054 s / it)
+Averaged stats: lr: 0.000016  loss: 0.5776 (0.5745)
+sampled model config: {'layer_num': 7, 'embed_dim': [64, 64, 64, 64, 64, 64, 64], 'num_heads': [4, 4, 4, 4, 6, 6, 6], 'mlp_ratio': [32, 8, 16, 16, 16, 32, 8]}
+sampled model parameters: 1772553
+Test:  [0/5]  eta: 0:00:08  loss: 0.7792 (0.7792)  acc1: 90.6250 (90.6250)  acc5: 99.2188 (99.2188)  time: 1.7442  data: 1.7262  max mem: 4001
+Test:  [4/5]  eta: 0:00:00  loss: 0.7515 (0.7058)  acc1: 90.6250 (89.2063)  acc5: 100.0000 (99.6825)  time: 0.3614  data: 0.3453  max mem: 4001
+Test: Total time: 0:00:02 (0.4318 s / it)
+* Acc@1 89.206 Acc@5 99.683 loss 0.706
+Accuracy of the network on the 630 test images: 89.2%
+Max accuracy: 91.27%
+**************************************************
+Accuracy results:
+OA: 0.8921 | AA: 0.8921 | Kappa: 0.8786
+**************************************************
+{'layer_num': 7, 'embed_dim': [64, 64, 64, 64, 64, 64, 64], 'num_heads': [4, 4, 4, 4, 6, 6, 6], 'mlp_ratio': [32, 8, 16, 16, 16, 32, 8]}
+1772553
+FLOPS is 7944509440
+Epoch: [80]  [0/8]  eta: 0:00:14  lr: 0.000016  loss: 0.5463 (0.5463)  time: 1.7792  data: 1.7166  max mem: 4001
+Epoch: [80]  [7/8]  eta: 0:00:00  lr: 0.000016  loss: 0.5605 (0.5692)  time: 0.2653  data: 0.2146  max mem: 4001
+Epoch: [80] Total time: 0:00:02 (0.3098 s / it)
+Averaged stats: lr: 0.000016  loss: 0.5605 (0.5692)
+sampled model config: {'layer_num': 7, 'embed_dim': [64, 64, 64, 64, 64, 64, 64], 'num_heads': [4, 4, 4, 4, 6, 6, 6], 'mlp_ratio': [32, 8, 16, 16, 16, 32, 8]}
+sampled model parameters: 1772553
+Test:  [0/5]  eta: 0:00:08  loss: 0.7722 (0.7722)  acc1: 89.0625 (89.0625)  acc5: 100.0000 (100.0000)  time: 1.7488  data: 1.7275  max mem: 4001
+Test:  [4/5]  eta: 0:00:00  loss: 0.7686 (0.6896)  acc1: 89.0625 (89.8413)  acc5: 100.0000 (99.6825)  time: 0.3622  data: 0.3455  max mem: 4001
+Test: Total time: 0:00:02 (0.4341 s / it)
+* Acc@1 89.841 Acc@5 99.683 loss 0.690
+Accuracy of the network on the 630 test images: 89.8%
+Max accuracy: 91.27%
+**************************************************
+Accuracy results:
+OA: 0.8984 | AA: 0.8984 | Kappa: 0.8857
+**************************************************
+{'layer_num': 7, 'embed_dim': [64, 64, 64, 64, 64, 64, 64], 'num_heads': [4, 4, 4, 4, 6, 6, 6], 'mlp_ratio': [32, 8, 16, 16, 16, 32, 8]}
+1772553
+FLOPS is 7944509440
+Epoch: [81]  [0/8]  eta: 0:00:14  lr: 0.000015  loss: 0.5804 (0.5804)  time: 1.8063  data: 1.7483  max mem: 4001
+Epoch: [81]  [7/8]  eta: 0:00:00  lr: 0.000015  loss: 0.5496 (0.5587)  time: 0.2681  data: 0.2186  max mem: 4001
+Epoch: [81] Total time: 0:00:02 (0.3124 s / it)
+Averaged stats: lr: 0.000015  loss: 0.5496 (0.5587)
+sampled model config: {'layer_num': 7, 'embed_dim': [64, 64, 64, 64, 64, 64, 64], 'num_heads': [4, 4, 4, 4, 6, 6, 6], 'mlp_ratio': [32, 8, 16, 16, 16, 32, 8]}
+sampled model parameters: 1772553
+Test:  [0/5]  eta: 0:00:08  loss: 0.7817 (0.7817)  acc1: 86.7188 (86.7188)  acc5: 98.4375 (98.4375)  time: 1.7346  data: 1.7128  max mem: 4001
+Test:  [4/5]  eta: 0:00:00  loss: 0.7817 (0.7065)  acc1: 86.7188 (88.4127)  acc5: 99.2188 (99.3651)  time: 0.3593  data: 0.3426  max mem: 4001
+Test: Total time: 0:00:02 (0.4318 s / it)
+* Acc@1 88.413 Acc@5 99.365 loss 0.707
+Accuracy of the network on the 630 test images: 88.4%
+Max accuracy: 91.27%
+**************************************************
+Accuracy results:
+OA: 0.8841 | AA: 0.8841 | Kappa: 0.8696
+**************************************************
+{'layer_num': 7, 'embed_dim': [64, 64, 64, 64, 64, 64, 64], 'num_heads': [4, 4, 4, 4, 6, 6, 6], 'mlp_ratio': [32, 8, 16, 16, 16, 32, 8]}
+1772553
+FLOPS is 7944509440
+Epoch: [82]  [0/8]  eta: 0:00:13  lr: 0.000015  loss: 0.5869 (0.5869)  time: 1.7464  data: 1.6893  max mem: 4001
+Epoch: [82]  [7/8]  eta: 0:00:00  lr: 0.000015  loss: 0.5459 (0.5519)  time: 0.2596  data: 0.2112  max mem: 4001
+Epoch: [82] Total time: 0:00:02 (0.3045 s / it)
+Averaged stats: lr: 0.000015  loss: 0.5459 (0.5519)
+sampled model config: {'layer_num': 7, 'embed_dim': [64, 64, 64, 64, 64, 64, 64], 'num_heads': [4, 4, 4, 4, 6, 6, 6], 'mlp_ratio': [32, 8, 16, 16, 16, 32, 8]}
+sampled model parameters: 1772553
+Test:  [0/5]  eta: 0:00:08  loss: 0.7488 (0.7488)  acc1: 92.1875 (92.1875)  acc5: 100.0000 (100.0000)  time: 1.7320  data: 1.7116  max mem: 4001
+Test:  [4/5]  eta: 0:00:00  loss: 0.7488 (0.6843)  acc1: 92.1875 (91.4286)  acc5: 100.0000 (99.8413)  time: 0.3588  data: 0.3423  max mem: 4001
+Test: Total time: 0:00:02 (0.4301 s / it)
+* Acc@1 91.429 Acc@5 99.841 loss 0.684
+Accuracy of the network on the 630 test images: 91.4%
+Max accuracy: 91.43%
+**************************************************
+Accuracy results:
+OA: 0.9143 | AA: 0.9143 | Kappa: 0.9036
+**************************************************
+{'layer_num': 7, 'embed_dim': [64, 64, 64, 64, 64, 64, 64], 'num_heads': [4, 4, 4, 4, 6, 6, 6], 'mlp_ratio': [32, 8, 16, 16, 16, 32, 8]}
+1772553
+FLOPS is 7944509440
+Epoch: [83]  [0/8]  eta: 0:00:14  lr: 0.000014  loss: 0.5547 (0.5547)  time: 1.7557  data: 1.6990  max mem: 4001
+Epoch: [83]  [7/8]  eta: 0:00:00  lr: 0.000014  loss: 0.5492 (0.5612)  time: 0.2601  data: 0.2124  max mem: 4001
+Epoch: [83] Total time: 0:00:02 (0.3045 s / it)
+Averaged stats: lr: 0.000014  loss: 0.5492 (0.5612)
+sampled model config: {'layer_num': 7, 'embed_dim': [64, 64, 64, 64, 64, 64, 64], 'num_heads': [4, 4, 4, 4, 6, 6, 6], 'mlp_ratio': [32, 8, 16, 16, 16, 32, 8]}
+sampled model parameters: 1772553
+Test:  [0/5]  eta: 0:00:08  loss: 0.7405 (0.7405)  acc1: 90.6250 (90.6250)  acc5: 100.0000 (100.0000)  time: 1.7618  data: 1.7439  max mem: 4001
+Test:  [4/5]  eta: 0:00:00  loss: 0.7405 (0.6770)  acc1: 90.6250 (90.4762)  acc5: 100.0000 (99.8413)  time: 0.3648  data: 0.3488  max mem: 4001
+Test: Total time: 0:00:02 (0.4337 s / it)
+* Acc@1 90.476 Acc@5 99.841 loss 0.677
+Accuracy of the network on the 630 test images: 90.5%
+Max accuracy: 91.43%
+**************************************************
+Accuracy results:
+OA: 0.9048 | AA: 0.9048 | Kappa: 0.8929
+**************************************************
+{'layer_num': 7, 'embed_dim': [64, 64, 64, 64, 64, 64, 64], 'num_heads': [4, 4, 4, 4, 6, 6, 6], 'mlp_ratio': [32, 8, 16, 16, 16, 32, 8]}
+1772553
+FLOPS is 7944509440
+Epoch: [84]  [0/8]  eta: 0:00:14  lr: 0.000014  loss: 0.5742 (0.5742)  time: 1.7817  data: 1.7200  max mem: 4001
+Epoch: [84]  [7/8]  eta: 0:00:00  lr: 0.000014  loss: 0.5564 (0.5543)  time: 0.2648  data: 0.2150  max mem: 4001
+Epoch: [84] Total time: 0:00:02 (0.3092 s / it)
+Averaged stats: lr: 0.000014  loss: 0.5564 (0.5543)
+sampled model config: {'layer_num': 7, 'embed_dim': [64, 64, 64, 64, 64, 64, 64], 'num_heads': [4, 4, 4, 4, 6, 6, 6], 'mlp_ratio': [32, 8, 16, 16, 16, 32, 8]}
+sampled model parameters: 1772553
+Test:  [0/5]  eta: 0:00:08  loss: 0.7744 (0.7744)  acc1: 85.9375 (85.9375)  acc5: 98.4375 (98.4375)  time: 1.7440  data: 1.7253  max mem: 4001
+Test:  [4/5]  eta: 0:00:00  loss: 0.7584 (0.6870)  acc1: 85.9375 (88.2540)  acc5: 99.2188 (99.3651)  time: 0.3621  data: 0.3451  max mem: 4001
+Test: Total time: 0:00:02 (0.4359 s / it)
+* Acc@1 88.254 Acc@5 99.365 loss 0.687
+Accuracy of the network on the 630 test images: 88.3%
+Max accuracy: 91.43%
+**************************************************
+Accuracy results:
+OA: 0.8825 | AA: 0.8825 | Kappa: 0.8679
+**************************************************
+{'layer_num': 7, 'embed_dim': [64, 64, 64, 64, 64, 64, 64], 'num_heads': [4, 4, 4, 4, 6, 6, 6], 'mlp_ratio': [32, 8, 16, 16, 16, 32, 8]}
+1772553
+FLOPS is 7944509440
+Epoch: [85]  [0/8]  eta: 0:00:14  lr: 0.000013  loss: 0.5594 (0.5594)  time: 1.8040  data: 1.7228  max mem: 4001
+Epoch: [85]  [7/8]  eta: 0:00:00  lr: 0.000013  loss: 0.5442 (0.5554)  time: 0.2665  data: 0.2154  max mem: 4001
+Epoch: [85] Total time: 0:00:02 (0.3141 s / it)
+Averaged stats: lr: 0.000013  loss: 0.5442 (0.5554)
+sampled model config: {'layer_num': 7, 'embed_dim': [64, 64, 64, 64, 64, 64, 64], 'num_heads': [4, 4, 4, 4, 6, 6, 6], 'mlp_ratio': [32, 8, 16, 16, 16, 32, 8]}
+sampled model parameters: 1772553
+Test:  [0/5]  eta: 0:00:08  loss: 0.7704 (0.7704)  acc1: 85.9375 (85.9375)  acc5: 100.0000 (100.0000)  time: 1.7526  data: 1.7298  max mem: 4001
+Test:  [4/5]  eta: 0:00:00  loss: 0.7586 (0.6882)  acc1: 86.7188 (88.2540)  acc5: 100.0000 (99.6825)  time: 0.3656  data: 0.3481  max mem: 4001
+Test: Total time: 0:00:02 (0.4436 s / it)
+* Acc@1 88.254 Acc@5 99.683 loss 0.688
+Accuracy of the network on the 630 test images: 88.3%
+Max accuracy: 91.43%
+**************************************************
+Accuracy results:
+OA: 0.8825 | AA: 0.8825 | Kappa: 0.8679
+**************************************************
+{'layer_num': 7, 'embed_dim': [64, 64, 64, 64, 64, 64, 64], 'num_heads': [4, 4, 4, 4, 6, 6, 6], 'mlp_ratio': [32, 8, 16, 16, 16, 32, 8]}
+1772553
+FLOPS is 7944509440
+Epoch: [86]  [0/8]  eta: 0:00:13  lr: 0.000013  loss: 0.5736 (0.5736)  time: 1.7387  data: 1.6833  max mem: 4001
+Epoch: [86]  [7/8]  eta: 0:00:00  lr: 0.000013  loss: 0.5352 (0.5408)  time: 0.2599  data: 0.2104  max mem: 4001
+Epoch: [86] Total time: 0:00:02 (0.3054 s / it)
+Averaged stats: lr: 0.000013  loss: 0.5352 (0.5408)
+sampled model config: {'layer_num': 7, 'embed_dim': [64, 64, 64, 64, 64, 64, 64], 'num_heads': [4, 4, 4, 4, 6, 6, 6], 'mlp_ratio': [32, 8, 16, 16, 16, 32, 8]}
+sampled model parameters: 1772553
+Test:  [0/5]  eta: 0:00:08  loss: 0.7255 (0.7255)  acc1: 92.1875 (92.1875)  acc5: 100.0000 (100.0000)  time: 1.7615  data: 1.7411  max mem: 4001
+Test:  [4/5]  eta: 0:00:00  loss: 0.7255 (0.6782)  acc1: 92.1875 (90.3175)  acc5: 100.0000 (99.8413)  time: 0.3647  data: 0.3482  max mem: 4001
+Test: Total time: 0:00:02 (0.4393 s / it)
+* Acc@1 90.317 Acc@5 99.841 loss 0.678
+Accuracy of the network on the 630 test images: 90.3%
+Max accuracy: 91.43%
+**************************************************
+Accuracy results:
+OA: 0.9032 | AA: 0.9032 | Kappa: 0.8911
+**************************************************
+{'layer_num': 7, 'embed_dim': [64, 64, 64, 64, 64, 64, 64], 'num_heads': [4, 4, 4, 4, 6, 6, 6], 'mlp_ratio': [32, 8, 16, 16, 16, 32, 8]}
+1772553
+FLOPS is 7944509440
+Epoch: [87]  [0/8]  eta: 0:00:14  lr: 0.000012  loss: 0.5033 (0.5033)  time: 1.7579  data: 1.7059  max mem: 4001
+Epoch: [87]  [7/8]  eta: 0:00:00  lr: 0.000012  loss: 0.5272 (0.5371)  time: 0.2598  data: 0.2133  max mem: 4001
+Epoch: [87] Total time: 0:00:02 (0.3044 s / it)
+Averaged stats: lr: 0.000012  loss: 0.5272 (0.5371)
+sampled model config: {'layer_num': 7, 'embed_dim': [64, 64, 64, 64, 64, 64, 64], 'num_heads': [4, 4, 4, 4, 6, 6, 6], 'mlp_ratio': [32, 8, 16, 16, 16, 32, 8]}
+sampled model parameters: 1772553
+Test:  [0/5]  eta: 0:00:08  loss: 0.7194 (0.7194)  acc1: 92.1875 (92.1875)  acc5: 99.2188 (99.2188)  time: 1.7235  data: 1.7057  max mem: 4001
+Test:  [4/5]  eta: 0:00:00  loss: 0.7194 (0.6764)  acc1: 89.8438 (89.6825)  acc5: 100.0000 (99.6825)  time: 0.3571  data: 0.3412  max mem: 4001
+Test: Total time: 0:00:02 (0.4273 s / it)
+* Acc@1 89.683 Acc@5 99.683 loss 0.676
+Accuracy of the network on the 630 test images: 89.7%
+Max accuracy: 91.43%
+**************************************************
+Accuracy results:
+OA: 0.8968 | AA: 0.8968 | Kappa: 0.8839
+**************************************************
+{'layer_num': 7, 'embed_dim': [64, 64, 64, 64, 64, 64, 64], 'num_heads': [4, 4, 4, 4, 6, 6, 6], 'mlp_ratio': [32, 8, 16, 16, 16, 32, 8]}
+1772553
+FLOPS is 7944509440
+Epoch: [88]  [0/8]  eta: 0:00:14  lr: 0.000012  loss: 0.5158 (0.5158)  time: 1.7520  data: 1.6964  max mem: 4001
+Epoch: [88]  [7/8]  eta: 0:00:00  lr: 0.000012  loss: 0.5444 (0.5438)  time: 0.2616  data: 0.2121  max mem: 4001
+Epoch: [88] Total time: 0:00:02 (0.3080 s / it)
+Averaged stats: lr: 0.000012  loss: 0.5444 (0.5438)
+sampled model config: {'layer_num': 7, 'embed_dim': [64, 64, 64, 64, 64, 64, 64], 'num_heads': [4, 4, 4, 4, 6, 6, 6], 'mlp_ratio': [32, 8, 16, 16, 16, 32, 8]}
+sampled model parameters: 1772553
+Test:  [0/5]  eta: 0:00:08  loss: 0.7666 (0.7666)  acc1: 87.5000 (87.5000)  acc5: 99.2188 (99.2188)  time: 1.7645  data: 1.7453  max mem: 4001
+Test:  [4/5]  eta: 0:00:00  loss: 0.7517 (0.6768)  acc1: 87.5000 (88.8889)  acc5: 99.2188 (99.5238)  time: 0.3661  data: 0.3491  max mem: 4001
+Test: Total time: 0:00:02 (0.4372 s / it)
+* Acc@1 88.889 Acc@5 99.524 loss 0.677
+Accuracy of the network on the 630 test images: 88.9%
+Max accuracy: 91.43%
+**************************************************
+Accuracy results:
+OA: 0.8889 | AA: 0.8889 | Kappa: 0.8750
+**************************************************
+{'layer_num': 7, 'embed_dim': [64, 64, 64, 64, 64, 64, 64], 'num_heads': [4, 4, 4, 4, 6, 6, 6], 'mlp_ratio': [32, 8, 16, 16, 16, 32, 8]}
+1772553
+FLOPS is 7944509440
+Epoch: [89]  [0/8]  eta: 0:00:14  lr: 0.000012  loss: 0.5514 (0.5514)  time: 1.7893  data: 1.7259  max mem: 4001
+Epoch: [89]  [7/8]  eta: 0:00:00  lr: 0.000012  loss: 0.5369 (0.5420)  time: 0.2659  data: 0.2158  max mem: 4001
+Epoch: [89] Total time: 0:00:02 (0.3102 s / it)
+Averaged stats: lr: 0.000012  loss: 0.5369 (0.5420)
+sampled model config: {'layer_num': 7, 'embed_dim': [64, 64, 64, 64, 64, 64, 64], 'num_heads': [4, 4, 4, 4, 6, 6, 6], 'mlp_ratio': [32, 8, 16, 16, 16, 32, 8]}
+sampled model parameters: 1772553
+Test:  [0/5]  eta: 0:00:08  loss: 0.7236 (0.7236)  acc1: 92.1875 (92.1875)  acc5: 100.0000 (100.0000)  time: 1.7387  data: 1.7189  max mem: 4001
+Test:  [4/5]  eta: 0:00:00  loss: 0.7236 (0.6692)  acc1: 92.1875 (90.6349)  acc5: 100.0000 (99.6825)  time: 0.3601  data: 0.3438  max mem: 4001
+Test: Total time: 0:00:02 (0.4405 s / it)
+* Acc@1 90.635 Acc@5 99.683 loss 0.669
+Accuracy of the network on the 630 test images: 90.6%
+Max accuracy: 91.43%
+**************************************************
+Accuracy results:
+OA: 0.9063 | AA: 0.9063 | Kappa: 0.8946
+**************************************************
+{'layer_num': 7, 'embed_dim': [64, 64, 64, 64, 64, 64, 64], 'num_heads': [4, 4, 4, 4, 6, 6, 6], 'mlp_ratio': [32, 8, 16, 16, 16, 32, 8]}
+1772553
+FLOPS is 7944509440
+Epoch: [90]  [0/8]  eta: 0:00:14  lr: 0.000012  loss: 0.5102 (0.5102)  time: 1.7700  data: 1.7159  max mem: 4001
+Epoch: [90]  [7/8]  eta: 0:00:00  lr: 0.000012  loss: 0.5102 (0.5228)  time: 0.2609  data: 0.2145  max mem: 4001
+Epoch: [90] Total time: 0:00:02 (0.3079 s / it)
+Averaged stats: lr: 0.000012  loss: 0.5102 (0.5228)
+sampled model config: {'layer_num': 7, 'embed_dim': [64, 64, 64, 64, 64, 64, 64], 'num_heads': [4, 4, 4, 4, 6, 6, 6], 'mlp_ratio': [32, 8, 16, 16, 16, 32, 8]}
+sampled model parameters: 1772553
+Test:  [0/5]  eta: 0:00:08  loss: 0.7256 (0.7256)  acc1: 89.8438 (89.8438)  acc5: 100.0000 (100.0000)  time: 1.7548  data: 1.7341  max mem: 4001
+Test:  [4/5]  eta: 0:00:00  loss: 0.7256 (0.6937)  acc1: 89.8438 (89.2063)  acc5: 100.0000 (99.8413)  time: 0.3634  data: 0.3469  max mem: 4001
+Test: Total time: 0:00:02 (0.4346 s / it)
+* Acc@1 89.206 Acc@5 99.841 loss 0.694
+Accuracy of the network on the 630 test images: 89.2%
+Max accuracy: 91.43%
+**************************************************
+Accuracy results:
+OA: 0.8921 | AA: 0.8921 | Kappa: 0.8786
+**************************************************
+{'layer_num': 7, 'embed_dim': [64, 64, 64, 64, 64, 64, 64], 'num_heads': [4, 4, 4, 4, 6, 6, 6], 'mlp_ratio': [32, 8, 16, 16, 16, 32, 8]}
+1772553
+FLOPS is 7944509440
+Epoch: [91]  [0/8]  eta: 0:00:14  lr: 0.000011  loss: 0.5351 (0.5351)  time: 1.7652  data: 1.7058  max mem: 4001
+Epoch: [91]  [7/8]  eta: 0:00:00  lr: 0.000011  loss: 0.5252 (0.5354)  time: 0.2619  data: 0.2132  max mem: 4001
+Epoch: [91] Total time: 0:00:02 (0.3065 s / it)
+Averaged stats: lr: 0.000011  loss: 0.5252 (0.5354)
+sampled model config: {'layer_num': 7, 'embed_dim': [64, 64, 64, 64, 64, 64, 64], 'num_heads': [4, 4, 4, 4, 6, 6, 6], 'mlp_ratio': [32, 8, 16, 16, 16, 32, 8]}
+sampled model parameters: 1772553
+Test:  [0/5]  eta: 0:00:08  loss: 0.7490 (0.7490)  acc1: 88.2812 (88.2812)  acc5: 100.0000 (100.0000)  time: 1.7264  data: 1.7024  max mem: 4001
+Test:  [4/5]  eta: 0:00:00  loss: 0.7410 (0.6646)  acc1: 88.2812 (89.6825)  acc5: 100.0000 (99.8413)  time: 0.3577  data: 0.3405  max mem: 4001
+Test: Total time: 0:00:02 (0.4385 s / it)
+* Acc@1 89.683 Acc@5 99.841 loss 0.665
+Accuracy of the network on the 630 test images: 89.7%
+Max accuracy: 91.43%
+**************************************************
+Accuracy results:
+OA: 0.8968 | AA: 0.8968 | Kappa: 0.8839
+**************************************************
+{'layer_num': 7, 'embed_dim': [64, 64, 64, 64, 64, 64, 64], 'num_heads': [4, 4, 4, 4, 6, 6, 6], 'mlp_ratio': [32, 8, 16, 16, 16, 32, 8]}
+1772553
+FLOPS is 7944509440
+Epoch: [92]  [0/8]  eta: 0:00:14  lr: 0.000011  loss: 0.5108 (0.5108)  time: 1.7669  data: 1.7075  max mem: 4001
+Epoch: [92]  [7/8]  eta: 0:00:00  lr: 0.000011  loss: 0.5271 (0.5435)  time: 0.2603  data: 0.2135  max mem: 4001
+Epoch: [92] Total time: 0:00:02 (0.3047 s / it)
+Averaged stats: lr: 0.000011  loss: 0.5271 (0.5435)
+sampled model config: {'layer_num': 7, 'embed_dim': [64, 64, 64, 64, 64, 64, 64], 'num_heads': [4, 4, 4, 4, 6, 6, 6], 'mlp_ratio': [32, 8, 16, 16, 16, 32, 8]}
+sampled model parameters: 1772553
+Test:  [0/5]  eta: 0:00:09  loss: 0.7489 (0.7489)  acc1: 87.5000 (87.5000)  acc5: 100.0000 (100.0000)  time: 1.8065  data: 1.7831  max mem: 4001
+Test:  [4/5]  eta: 0:00:00  loss: 0.7489 (0.6743)  acc1: 87.5000 (88.7302)  acc5: 100.0000 (99.6825)  time: 0.3744  data: 0.3567  max mem: 4001
+Test: Total time: 0:00:02 (0.4480 s / it)
+* Acc@1 88.730 Acc@5 99.683 loss 0.674
+Accuracy of the network on the 630 test images: 88.7%
+Max accuracy: 91.43%
+**************************************************
+Accuracy results:
+OA: 0.8873 | AA: 0.8873 | Kappa: 0.8732
+**************************************************
+{'layer_num': 7, 'embed_dim': [64, 64, 64, 64, 64, 64, 64], 'num_heads': [4, 4, 4, 4, 6, 6, 6], 'mlp_ratio': [32, 8, 16, 16, 16, 32, 8]}
+1772553
+FLOPS is 7944509440
+Epoch: [93]  [0/8]  eta: 0:00:14  lr: 0.000011  loss: 0.5261 (0.5261)  time: 1.7873  data: 1.7281  max mem: 4001
+Epoch: [93]  [7/8]  eta: 0:00:00  lr: 0.000011  loss: 0.5260 (0.5280)  time: 0.2636  data: 0.2160  max mem: 4001
+Epoch: [93] Total time: 0:00:02 (0.3108 s / it)
+Averaged stats: lr: 0.000011  loss: 0.5260 (0.5280)
+sampled model config: {'layer_num': 7, 'embed_dim': [64, 64, 64, 64, 64, 64, 64], 'num_heads': [4, 4, 4, 4, 6, 6, 6], 'mlp_ratio': [32, 8, 16, 16, 16, 32, 8]}
+sampled model parameters: 1772553
+Test:  [0/5]  eta: 0:00:08  loss: 0.7686 (0.7686)  acc1: 86.7188 (86.7188)  acc5: 100.0000 (100.0000)  time: 1.7319  data: 1.7141  max mem: 4001
+Test:  [4/5]  eta: 0:00:00  loss: 0.7347 (0.6617)  acc1: 87.5000 (90.4762)  acc5: 100.0000 (99.6825)  time: 0.3589  data: 0.3428  max mem: 4001
+Test: Total time: 0:00:02 (0.4301 s / it)
+* Acc@1 90.476 Acc@5 99.683 loss 0.662
+Accuracy of the network on the 630 test images: 90.5%
+Max accuracy: 91.43%
+**************************************************
+Accuracy results:
+OA: 0.9048 | AA: 0.9048 | Kappa: 0.8929
+**************************************************
+{'layer_num': 7, 'embed_dim': [64, 64, 64, 64, 64, 64, 64], 'num_heads': [4, 4, 4, 4, 6, 6, 6], 'mlp_ratio': [32, 8, 16, 16, 16, 32, 8]}
+1772553
+FLOPS is 7944509440
+Epoch: [94]  [0/8]  eta: 0:00:14  lr: 0.000011  loss: 0.5093 (0.5093)  time: 1.7603  data: 1.7042  max mem: 4001
+Epoch: [94]  [7/8]  eta: 0:00:00  lr: 0.000011  loss: 0.5216 (0.5260)  time: 0.2600  data: 0.2130  max mem: 4001
+Epoch: [94] Total time: 0:00:02 (0.3104 s / it)
+Averaged stats: lr: 0.000011  loss: 0.5216 (0.5260)
+sampled model config: {'layer_num': 7, 'embed_dim': [64, 64, 64, 64, 64, 64, 64], 'num_heads': [4, 4, 4, 4, 6, 6, 6], 'mlp_ratio': [32, 8, 16, 16, 16, 32, 8]}
+sampled model parameters: 1772553
+Test:  [0/5]  eta: 0:00:08  loss: 0.7435 (0.7435)  acc1: 86.7188 (86.7188)  acc5: 99.2188 (99.2188)  time: 1.7721  data: 1.7543  max mem: 4001
+Test:  [4/5]  eta: 0:00:00  loss: 0.7435 (0.6850)  acc1: 86.7188 (88.5714)  acc5: 99.2188 (99.5238)  time: 0.3670  data: 0.3509  max mem: 4001
+Test: Total time: 0:00:02 (0.4475 s / it)
+* Acc@1 88.571 Acc@5 99.524 loss 0.685
+Accuracy of the network on the 630 test images: 88.6%
+Max accuracy: 91.43%
+**************************************************
+Accuracy results:
+OA: 0.8857 | AA: 0.8857 | Kappa: 0.8714
+**************************************************
+{'layer_num': 7, 'embed_dim': [64, 64, 64, 64, 64, 64, 64], 'num_heads': [4, 4, 4, 4, 6, 6, 6], 'mlp_ratio': [32, 8, 16, 16, 16, 32, 8]}
+1772553
+FLOPS is 7944509440
+Epoch: [95]  [0/8]  eta: 0:00:14  lr: 0.000010  loss: 0.5151 (0.5151)  time: 1.7760  data: 1.7157  max mem: 4001
+Epoch: [95]  [7/8]  eta: 0:00:00  lr: 0.000010  loss: 0.5171 (0.5233)  time: 0.2634  data: 0.2145  max mem: 4001
+Epoch: [95] Total time: 0:00:02 (0.3109 s / it)
+Averaged stats: lr: 0.000010  loss: 0.5171 (0.5233)
+sampled model config: {'layer_num': 7, 'embed_dim': [64, 64, 64, 64, 64, 64, 64], 'num_heads': [4, 4, 4, 4, 6, 6, 6], 'mlp_ratio': [32, 8, 16, 16, 16, 32, 8]}
+sampled model parameters: 1772553
+Test:  [0/5]  eta: 0:00:08  loss: 0.7574 (0.7574)  acc1: 89.0625 (89.0625)  acc5: 100.0000 (100.0000)  time: 1.7297  data: 1.7049  max mem: 4001
+Test:  [4/5]  eta: 0:00:00  loss: 0.7174 (0.6597)  acc1: 89.0625 (90.3175)  acc5: 100.0000 (99.8413)  time: 0.3583  data: 0.3410  max mem: 4001
+Test: Total time: 0:00:02 (0.4338 s / it)
+* Acc@1 90.317 Acc@5 99.841 loss 0.660
+Accuracy of the network on the 630 test images: 90.3%
+Max accuracy: 91.43%
+**************************************************
+Accuracy results:
+OA: 0.9032 | AA: 0.9032 | Kappa: 0.8911
+**************************************************
+{'layer_num': 7, 'embed_dim': [64, 64, 64, 64, 64, 64, 64], 'num_heads': [4, 4, 4, 4, 6, 6, 6], 'mlp_ratio': [32, 8, 16, 16, 16, 32, 8]}
+1772553
+FLOPS is 7944509440
+Epoch: [96]  [0/8]  eta: 0:00:14  lr: 0.000010  loss: 0.5211 (0.5211)  time: 1.7687  data: 1.7116  max mem: 4001
+Epoch: [96]  [7/8]  eta: 0:00:00  lr: 0.000010  loss: 0.5211 (0.5245)  time: 0.2613  data: 0.2140  max mem: 4001
+Epoch: [96] Total time: 0:00:02 (0.3073 s / it)
+Averaged stats: lr: 0.000010  loss: 0.5211 (0.5245)
+sampled model config: {'layer_num': 7, 'embed_dim': [64, 64, 64, 64, 64, 64, 64], 'num_heads': [4, 4, 4, 4, 6, 6, 6], 'mlp_ratio': [32, 8, 16, 16, 16, 32, 8]}
+sampled model parameters: 1772553
+Test:  [0/5]  eta: 0:00:08  loss: 0.7357 (0.7357)  acc1: 89.8438 (89.8438)  acc5: 100.0000 (100.0000)  time: 1.7076  data: 1.6876  max mem: 4001
+Test:  [4/5]  eta: 0:00:00  loss: 0.7195 (0.6542)  acc1: 89.8438 (90.4762)  acc5: 100.0000 (99.8413)  time: 0.3547  data: 0.3375  max mem: 4001
+Test: Total time: 0:00:02 (0.4238 s / it)
+* Acc@1 90.476 Acc@5 99.841 loss 0.654
+Accuracy of the network on the 630 test images: 90.5%
+Max accuracy: 91.43%
+**************************************************
+Accuracy results:
+OA: 0.9048 | AA: 0.9048 | Kappa: 0.8929
+**************************************************
+{'layer_num': 7, 'embed_dim': [64, 64, 64, 64, 64, 64, 64], 'num_heads': [4, 4, 4, 4, 6, 6, 6], 'mlp_ratio': [32, 8, 16, 16, 16, 32, 8]}
+1772553
+FLOPS is 7944509440
+Epoch: [97]  [0/8]  eta: 0:00:13  lr: 0.000010  loss: 0.5061 (0.5061)  time: 1.7310  data: 1.6772  max mem: 4001
+Epoch: [97]  [7/8]  eta: 0:00:00  lr: 0.000010  loss: 0.5061 (0.5134)  time: 0.2560  data: 0.2097  max mem: 4001
+Epoch: [97] Total time: 0:00:02 (0.3009 s / it)
+Averaged stats: lr: 0.000010  loss: 0.5061 (0.5134)
+sampled model config: {'layer_num': 7, 'embed_dim': [64, 64, 64, 64, 64, 64, 64], 'num_heads': [4, 4, 4, 4, 6, 6, 6], 'mlp_ratio': [32, 8, 16, 16, 16, 32, 8]}
+sampled model parameters: 1772553
+Test:  [0/5]  eta: 0:00:08  loss: 0.7209 (0.7209)  acc1: 91.4062 (91.4062)  acc5: 100.0000 (100.0000)  time: 1.7408  data: 1.7165  max mem: 4001
+Test:  [4/5]  eta: 0:00:00  loss: 0.7062 (0.6489)  acc1: 91.4062 (90.9524)  acc5: 100.0000 (99.6825)  time: 0.3607  data: 0.3433  max mem: 4001
+Test: Total time: 0:00:02 (0.4388 s / it)
+* Acc@1 90.952 Acc@5 99.683 loss 0.649
+Accuracy of the network on the 630 test images: 91.0%
+Max accuracy: 91.43%
+**************************************************
+Accuracy results:
+OA: 0.9095 | AA: 0.9095 | Kappa: 0.8982
+**************************************************
+{'layer_num': 7, 'embed_dim': [64, 64, 64, 64, 64, 64, 64], 'num_heads': [4, 4, 4, 4, 6, 6, 6], 'mlp_ratio': [32, 8, 16, 16, 16, 32, 8]}
+1772553
+FLOPS is 7944509440
+Epoch: [98]  [0/8]  eta: 0:00:14  lr: 0.000010  loss: 0.4936 (0.4936)  time: 1.7982  data: 1.7270  max mem: 4001
+Epoch: [98]  [7/8]  eta: 0:00:00  lr: 0.000010  loss: 0.5103 (0.5199)  time: 0.2649  data: 0.2159  max mem: 4001
+Epoch: [98] Total time: 0:00:02 (0.3114 s / it)
+Averaged stats: lr: 0.000010  loss: 0.5103 (0.5199)
+sampled model config: {'layer_num': 7, 'embed_dim': [64, 64, 64, 64, 64, 64, 64], 'num_heads': [4, 4, 4, 4, 6, 6, 6], 'mlp_ratio': [32, 8, 16, 16, 16, 32, 8]}
+sampled model parameters: 1772553
+Test:  [0/5]  eta: 0:00:08  loss: 0.6906 (0.6906)  acc1: 92.9688 (92.9688)  acc5: 100.0000 (100.0000)  time: 1.7811  data: 1.7443  max mem: 4001
+Test:  [4/5]  eta: 0:00:00  loss: 0.6906 (0.6527)  acc1: 91.4062 (90.3175)  acc5: 100.0000 (99.6825)  time: 0.3686  data: 0.3489  max mem: 4001
+Test: Total time: 0:00:02 (0.4461 s / it)
+* Acc@1 90.317 Acc@5 99.683 loss 0.653
+Accuracy of the network on the 630 test images: 90.3%
+Max accuracy: 91.43%
+**************************************************
+Accuracy results:
+OA: 0.9032 | AA: 0.9032 | Kappa: 0.8911
+**************************************************
+{'layer_num': 7, 'embed_dim': [64, 64, 64, 64, 64, 64, 64], 'num_heads': [4, 4, 4, 4, 6, 6, 6], 'mlp_ratio': [32, 8, 16, 16, 16, 32, 8]}
+1772553
+FLOPS is 7944509440
+Epoch: [99]  [0/8]  eta: 0:00:14  lr: 0.000010  loss: 0.5102 (0.5102)  time: 1.7775  data: 1.7197  max mem: 4001
+Epoch: [99]  [7/8]  eta: 0:00:00  lr: 0.000010  loss: 0.5102 (0.5145)  time: 0.2623  data: 0.2150  max mem: 4001
+Epoch: [99] Total time: 0:00:02 (0.3071 s / it)
+Averaged stats: lr: 0.000010  loss: 0.5102 (0.5145)
+sampled model config: {'layer_num': 7, 'embed_dim': [64, 64, 64, 64, 64, 64, 64], 'num_heads': [4, 4, 4, 4, 6, 6, 6], 'mlp_ratio': [32, 8, 16, 16, 16, 32, 8]}
+sampled model parameters: 1772553
+Test:  [0/5]  eta: 0:00:08  loss: 0.7228 (0.7228)  acc1: 89.8438 (89.8438)  acc5: 100.0000 (100.0000)  time: 1.7524  data: 1.7348  max mem: 4001
+Test:  [4/5]  eta: 0:00:00  loss: 0.7083 (0.6459)  acc1: 89.8438 (90.6349)  acc5: 100.0000 (99.8413)  time: 0.3630  data: 0.3470  max mem: 4001
+Test: Total time: 0:00:02 (0.4445 s / it)
+* Acc@1 90.635 Acc@5 99.841 loss 0.646
+Accuracy of the network on the 630 test images: 90.6%
+Max accuracy: 91.43%
+**************************************************
+Accuracy results:
+OA: 0.9063 | AA: 0.9063 | Kappa: 0.8946
+**************************************************
+**************************************************
+Best Result:
+OA: 0.9143 | AA: 0.9143 | Kappa: 0.9036
+[0.94285714 0.91428571 0.8        0.98571429 1.         0.85714286
+ 0.9        0.82857143 1.        ]
+**************************************************
+Training time 0:18:51
